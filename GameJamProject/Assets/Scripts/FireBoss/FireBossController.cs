@@ -18,6 +18,8 @@ public class FireBossController : MonoBehaviour
 	GameObject fireball;
 	[SerializeField]
 	GameObject groundfire;
+	[SerializeField]
+	GameObject firebreath;
     float minX;
     float minY;
     float maxX;
@@ -132,6 +134,11 @@ public class FireBossController : MonoBehaviour
     IEnumerator FireArea()
     {
         transform.position = new Vector3(player.transform.position.x - range/2, player.transform.position.y);
+		if (transform.position.x < player.transform.position.x) {
+			Instantiate (firebreath, transform.position, Quaternion.Euler (0f, 0f, 0f));
+		} else {
+			Instantiate (firebreath, transform.position, Quaternion.Euler (0f, 0f, 0f));
+		}
         Debug.Log("Fire Area");
         yield return new WaitForSeconds(0.5f);
         state = "movement";

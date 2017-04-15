@@ -105,6 +105,7 @@ MonoBehaviour:
   range: 0.6
   fireball: {fileID: 1966090890345250, guid: c46dc73ccc6ccca4480ba013fbc9865b, type: 2}
   groundfire: {fileID: 1172789237743694, guid: d90df39d8dce30b48a939df63c84c584, type: 2}
+  firebreath: {fileID: 1097198745445062, guid: f9e1a399c6f8bd54fbd38cb067468b55, type: 2}
 --- !u!212 &212657454544838526
 SpriteRenderer:
   m_ObjectHideFlags: 1

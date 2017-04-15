@@ -123,22 +123,21 @@ public class BoneBossController : MonoBehaviour
             return false;
         }
     }
-    IEnumerator FireArea()
+    IEnumerator DashAttack()
     {
         transform.position = new Vector3(player.transform.position.x - range, player.transform.position.y);
         Debug.Log("Fire Area");
         yield return new WaitForSeconds(0.5f);
         state = "movement";
     }
-    IEnumerator FloorOnFire()
-    {
-        Debug.Log("Floor on Fire");
+	IEnumerator WaveAttack(){
+        Debug.Log("Wave Attack");
         yield return new WaitForSeconds(0.5f);
         state = "movement";
     }
-    IEnumerator Fireball()
+    IEnumerator GroundAttack()
     {
-        Debug.Log("Fireball");
+        Debug.Log("Ground Attack");
         yield return new WaitForSeconds(0.5f);
         state = "movement";
     }

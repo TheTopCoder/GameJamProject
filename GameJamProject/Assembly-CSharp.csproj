@@ -46,13 +46,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BoneBossController.cs" />
+     <Compile Include="Assets\Scripts\BoneBoss\BoneBossController.cs" />
+     <Compile Include="Assets\Scripts\BoneBoss\DashAttackScript.cs" />
      <Compile Include="Assets\Scripts\BossSliderScript.cs" />
      <Compile Include="Assets\Scripts\BoxTrigger.cs" />
      <Compile Include="Assets\Scripts\CreditsScript.cs" />
-     <Compile Include="Assets\Scripts\FireBossController.cs" />
-     <Compile Include="Assets\Scripts\FireballScript.cs" />
-     <Compile Include="Assets\Scripts\GroundFireScript.cs" />
+     <Compile Include="Assets\Scripts\FireBoss\FireBossController.cs" />
+     <Compile Include="Assets\Scripts\FireBoss\FireBreathScript.cs" />
+     <Compile Include="Assets\Scripts\FireBoss\FireballScript.cs" />
+     <Compile Include="Assets\Scripts\FireBoss\GroundFireScript.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />

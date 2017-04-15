@@ -68,7 +68,7 @@ public class PlayerAttack : MonoBehaviour {
 				} else if (boss.name.Equals ("FireBoss")) {
 					boss.GetComponent<FireBossController> ().life -= attackStrongDamage;
 				}
-					
+
 			}
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
