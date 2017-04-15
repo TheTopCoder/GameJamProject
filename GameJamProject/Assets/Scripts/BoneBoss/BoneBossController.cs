@@ -9,6 +9,7 @@ public class BoneBossController : MonoBehaviour
     Vector3 newPosition;
 
 	public GameObject waveAttack;
+	public GameObject groundAttack;
     public int life;
     public int maxLife = 50;
 	int dashAttackDamage = 10;
@@ -35,6 +36,7 @@ public class BoneBossController : MonoBehaviour
 	float arenaY = 0.7f;
 	bool canHit = false;
 	bool hit = false;
+	GameObject wave;
 
     #endregion
     void Start()
@@ -160,10 +162,13 @@ public class BoneBossController : MonoBehaviour
 	IEnumerator WaveAttack(){
         Debug.Log("Wave Attack");
         yield return new WaitForSeconds(0.2f);
-		GameObject wave = Instantiate (waveAttack,transform.position,Quaternion.Euler(0f,0f,0f));
-		if (true){
-			
+		wave = (GameObject) Instantiate (waveAttack,transform.position,Quaternion.Euler(0f,0f,0f));
+		if (transform.position.x < player.transform.position.x) {
+			wave.GetComponent<WaveAttackScript> ().dir = 1;
+		} else {
+			wave.GetComponent<WaveAttackScript> ().dir = -1;
 		}
+
 		yield return new WaitForSeconds(0.5f);
         state = "movement";
     }
@@ -171,7 +176,8 @@ public class BoneBossController : MonoBehaviour
     {
         Debug.Log("Ground Attack");
 		yield return new WaitForSeconds(0.2f);
-        yield return new WaitForSeconds(0.5f);
+		GameObject earthquake = (GameObject) Instantiate (groundAttack,transform.position,Quaternion.Euler(0f,0f,0f));
+		yield return new WaitForSeconds(0.5f);
         state = "movement";
     }
 

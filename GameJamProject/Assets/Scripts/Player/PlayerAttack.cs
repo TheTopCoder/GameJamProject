@@ -94,7 +94,7 @@ public class PlayerAttack : MonoBehaviour {
 	}
     IEnumerator DamageTime()
     {
-        yield return new WaitForSeconds(handAttackAnim.length * 1.5f);
+        yield return new WaitForSeconds(handAttackAnim.length);
 
         if (boss.name.Equals("BoneBoss"))
         {
