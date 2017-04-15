@@ -13,19 +13,14 @@ public class PlayerStats : MonoBehaviour {
 	public float attackTime = 0.3f;
 	public int attackStrongDamage = 10;
 	public float attackStrongTime = 0.4f;
-	GameObject lifeBar;
-	GameObject boss;
 
-	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		life = maxLife;
-		lifeBar = GameObject.Find ("Life");
-		boss = GameObject.FindGameObjectWithTag ("Boss");
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		lifeBar.transform.localScale = new Vector3 ((float)boss.GetComponent<BoneBossController>().life/(float)boss.GetComponent<BoneBossController>().maxLife,lifeBar.transform.localScale.y,1);
+	void Update ()
+    {
 		if (life <= 0) {
 			Destroy (gameObject);
 		}

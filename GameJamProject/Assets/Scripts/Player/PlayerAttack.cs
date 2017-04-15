@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttack : MonoBehaviour {
 
@@ -41,10 +42,16 @@ public class PlayerAttack : MonoBehaviour {
 		}
 		if (state == "attack") {
 			if (canHit&&!hit) {
-				Debug.Log ("Attack");
 				hit = true;
-				boss.GetComponent<BoneBossController>().life -= attackDamage;
-			}
+                if (boss.name.Equals("BoneBoss"))
+                {
+                    boss.GetComponent<BoneBossController>().life -= attackDamage;
+                }
+                else if (boss.name.Equals("FireBoss"))
+                {
+                    boss.GetComponent<FireBossController>().life -= attackDamage;
+                }
+            }
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
 				attackCurrentTime = attackTime;

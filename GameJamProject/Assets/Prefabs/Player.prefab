@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 212962986339416364}
   - component: {fileID: 61471054295763700}
   - component: {fileID: 114567935939341094}
+  - component: {fileID: 114298575459539336}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -170,6 +171,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.14120375, y: 0.23229322}
   m_EdgeRadius: 0
+--- !u!114 &114298575459539336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1165140154048748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3668c6c153985094b8481f8e1b40809f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.8
+  rollSpeed: 2
+  rollTime: 0.3
+  rollCooldown: 0.5
+  maxLife: 20
+  life: 0
+  attackDamage: 5
+  attackTime: 0.3
+  attackStrongDamage: 10
+  attackStrongTime: 0.4
 --- !u!114 &114477086246269960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ca8a3b7f15a5547a2bed4a4f88bde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 
 --- !u!212 &212962986339416364
 SpriteRenderer:
   m_ObjectHideFlags: 1
