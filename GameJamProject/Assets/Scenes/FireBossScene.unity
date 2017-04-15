@@ -604,6 +604,11 @@ Prefab:
       propertyPath: handAnim
       value: 
       objectReference: {fileID: 1057976755}
+    - target: {fileID: 114567935939341094, guid: 2cb895a07f395484ab5b3fa47605de3b,
+        type: 2}
+      propertyPath: handAttackAnim
+      value: 
+      objectReference: {fileID: 7400000, guid: c000e8ea35a00c5489eecf07c109f273, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2cb895a07f395484ab5b3fa47605de3b, type: 2}
   m_IsPrefabParent: 0

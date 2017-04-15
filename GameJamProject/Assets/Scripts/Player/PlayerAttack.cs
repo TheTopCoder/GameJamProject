@@ -17,12 +17,14 @@ public class PlayerAttack : MonoBehaviour {
 	GameObject boss;
     [SerializeField]
     Animator handAnim;
+    [SerializeField]
+    AnimationClip handAttackAnim;
 
 	// Use this for initialization
 	void Start () {
 		playerStats = GetComponent<PlayerStats> ();
 		attackDamage = playerStats.attackDamage;
-		attackTime = playerStats.attackTime;
+		attackTime = handAttackAnim.length * 3;
 		attackStrongDamage = playerStats.attackStrongDamage;
 		attackStrongTime = playerStats.attackStrongTime;
 		state = "wait";
@@ -46,14 +48,7 @@ public class PlayerAttack : MonoBehaviour {
 		if (state == "attack") {
 			if (canHit&&!hit) {
 				hit = true;
-                if (boss.name.Equals("BoneBoss"))
-                {
-                    boss.GetComponent<BoneBossController>().life -= attackDamage;
-                }
-                else if (boss.name.Equals("FireBoss"))
-                {
-                    boss.GetComponent<FireBossController>().life -= attackDamage;
-                }
+                StartCoroutine(DamageTime());
             }
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
@@ -66,13 +61,16 @@ public class PlayerAttack : MonoBehaviour {
 			if (canHit&&!hit) {
 				Debug.Log ("AttackStrong");
 				hit = true;
-				if (boss.name.Equals ("BoneBoss")) {
-					boss.GetComponent<BoneBossController> ().life -= attackStrongDamage;
-				} else if (boss.name.Equals ("FireBoss")) {
-					boss.GetComponent<FireBossController> ().life -= attackStrongDamage;
-				}
 
-			}
+                if (boss.name.Equals("BoneBoss"))
+                {
+                    boss.GetComponent<BoneBossController>().life -= attackStrongDamage;
+                }
+                else if (boss.name.Equals("FireBoss"))
+                {
+                    boss.GetComponent<FireBossController>().life -= attackStrongDamage;
+                }
+            }
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
 				attackCurrentTime = attackStrongTime;
@@ -94,5 +92,18 @@ public class PlayerAttack : MonoBehaviour {
 			canHit = false;
 		}
 	}
+    IEnumerator DamageTime()
+    {
+        yield return new WaitForSeconds(handAttackAnim.length * 1.5f);
+
+        if (boss.name.Equals("BoneBoss"))
+        {
+            boss.GetComponent<BoneBossController>().life -= attackDamage;
+        }
+        else if (boss.name.Equals("FireBoss"))
+        {
+            boss.GetComponent<FireBossController>().life -= attackDamage;
+        }
+    }
 }
 
