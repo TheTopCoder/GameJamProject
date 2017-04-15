@@ -91,21 +91,21 @@ public class BoneBossController : MonoBehaviour
         int abilityNumber = Random.Range(1, prob1Current + prob2Current + prob3Current + 1);
         if (abilityNumber >= 1 && abilityNumber <= prob1Current)
         {
-            StartCoroutine(FireArea());
+            StartCoroutine(DashAttack());
             prob1Current = prob1;
             prob2Current = prob2 + 1;
             prob3Current = prob3 + 1;
         }
         else if (abilityNumber >= prob1Current + 1 && abilityNumber <= prob1Current + prob2Current)
         {
-			StartCoroutine(FloorOnFire());
+			StartCoroutine(WaveAttack());
             prob2Current = prob2;
             prob1Current = prob1 + 1;
             prob3Current = prob3 + 1;
         }
         else if (abilityNumber >= prob1Current + prob2Current + 1 && abilityNumber <= prob1Current + prob2Current + prob3Current)
         {
-			StartCoroutine(Fireball());
+			StartCoroutine(GroundAttack());
             prob3Current = prob3;
             prob2Current = prob2 + 1;
             prob1Current = prob1 + 1;
