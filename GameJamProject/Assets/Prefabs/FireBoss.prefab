@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 50024340594220554}
   - component: {fileID: 61471402108804728}
   - component: {fileID: 212657454544838526}
-  - component: {fileID: 114696831819561060}
   - component: {fileID: 114973046349012850}
   m_Layer: 0
   m_Name: FireBoss
@@ -89,31 +88,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
---- !u!114 &114696831819561060
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1444638182688182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cc6a4987f7c684798156c56d545838, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 3.5
-  mass: 20
-  stoppingDistance: 0.1
-  slowingDistance: 1
-  accelerationRate: 2
-  decelerationRate: 2
-  rotateTransform: 0
-  rotateSpeed: 350
-  avoidRadius: 0
-  lookAheadDistance: 1
-  repath: 1
-  restrict: 1
-  closerPointOnInvalid: 1
-  debugPath: 1
 --- !u!114 &114973046349012850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0
+  maxLife: 50
   player: {fileID: 1165140154048748, guid: f7be2735367c9034b93d5bc716ca2c91, type: 2}
   range: 0.6
 --- !u!212 &212657454544838526
