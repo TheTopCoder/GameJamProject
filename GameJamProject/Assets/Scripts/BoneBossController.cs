@@ -98,14 +98,14 @@ public class BoneBossController : MonoBehaviour
         }
         else if (abilityNumber >= prob1Current + 1 && abilityNumber <= prob1Current + prob2Current)
         {
-            FloorOnFire();
+			StartCoroutine(FloorOnFire());
             prob2Current = prob2;
             prob1Current = prob1 + 1;
             prob3Current = prob3 + 1;
         }
         else if (abilityNumber >= prob1Current + prob2Current + 1 && abilityNumber <= prob1Current + prob2Current + prob3Current)
         {
-            Fireball();
+			StartCoroutine(Fireball());
             prob3Current = prob3;
             prob2Current = prob2 + 1;
             prob1Current = prob1 + 1;
@@ -132,7 +132,7 @@ public class BoneBossController : MonoBehaviour
     }
     IEnumerator FloorOnFire()
     {
-        Debug.Log("Fire Area");
+        Debug.Log("Floor on Fire");
         yield return new WaitForSeconds(0.5f);
         state = "movement";
     }

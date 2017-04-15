@@ -46,16 +46,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PolyNav2D\Scripts\Runtime\AStar.cs" />
-     <Compile Include="Assets\PolyNav2D\Scripts\Runtime\Heap.cs" />
-     <Compile Include="Assets\PolyNav2D\Scripts\Runtime\PolyNav2D.cs" />
-     <Compile Include="Assets\PolyNav2D\Scripts\Runtime\PolyNavAgent.cs" />
-     <Compile Include="Assets\PolyNav2D\Scripts\Runtime\PolyNavObstacle.cs" />
      <Compile Include="Assets\Scripts\BoneBossController.cs" />
      <Compile Include="Assets\Scripts\BossSliderScript.cs" />
      <Compile Include="Assets\Scripts\BoxTrigger.cs" />
      <Compile Include="Assets\Scripts\CreditsScript.cs" />
      <Compile Include="Assets\Scripts\FireBossController.cs" />
+     <Compile Include="Assets\Scripts\FireballScript.cs" />
+     <Compile Include="Assets\Scripts\GroundFireScript.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />

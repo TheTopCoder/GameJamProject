@@ -63,8 +63,12 @@ public class PlayerAttack : MonoBehaviour {
 			if (canHit&&!hit) {
 				Debug.Log ("AttackStrong");
 				hit = true;
-				boss.GetComponent<BoneBossController>().life -= attackStrongDamage;
-
+				if (boss.name.Equals ("BoneBoss")) {
+					boss.GetComponent<BoneBossController> ().life -= attackStrongDamage;
+				} else if (boss.name.Equals ("FireBoss")) {
+					boss.GetComponent<FireBossController> ().life -= attackStrongDamage;
+				}
+					
 			}
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {

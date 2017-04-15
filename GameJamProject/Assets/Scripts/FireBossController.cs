@@ -14,6 +14,10 @@ public class FireBossController : MonoBehaviour
     GameObject player;
     [SerializeField]
     float range;
+	[SerializeField]
+	GameObject fireball;
+	[SerializeField]
+	GameObject groundfire;
     float minX;
     float minY;
     float maxX;
@@ -28,6 +32,8 @@ public class FireBossController : MonoBehaviour
     int prob3Current;
     string state;
     bool moving;
+	float arenaX = 1.5f;
+	float arenaY = 0.7f;
     #endregion
     void Start()
     {
@@ -36,7 +42,7 @@ public class FireBossController : MonoBehaviour
         cooldownAbility = 0;
         prob1 = 1;
         prob2 = 1;
-        prob3 = 1;
+        prob3 = 5;
         prob1Current = prob1;
         prob2Current = prob2;
         prob3Current = prob3;
@@ -59,7 +65,7 @@ public class FireBossController : MonoBehaviour
             if (cooldownAbility <= 0)
             {
                 state = "ChooseAbility";
-                cooldownAbility = Random.Range(10, 15);
+                cooldownAbility = Random.Range(6, 10);
             }
             else if (cooldownMovement <= 0)
             {
@@ -125,21 +131,28 @@ public class FireBossController : MonoBehaviour
     }
     IEnumerator FireArea()
     {
-        transform.position = new Vector3(player.transform.position.x - range, player.transform.position.y);
+        transform.position = new Vector3(player.transform.position.x - range/2, player.transform.position.y);
         Debug.Log("Fire Area");
         yield return new WaitForSeconds(0.5f);
         state = "movement";
     }
     IEnumerator FloorOnFire()
     {
-        Debug.Log("Fire Area");
+        Debug.Log("Floor on Fire");
         yield return new WaitForSeconds(0.5f);
+		for (int i = 0; i < 4; i++) {
+			float fireX = Random.Range (-arenaX,arenaX);
+			float fireY = Random.Range (-arenaY,arenaY);
+			Instantiate (groundfire, new Vector3(fireX,fireY,0), Quaternion.Euler (0f, 0f, 0f));
+		}
+		yield return new WaitForSeconds (0.4f);
         state = "movement";
     }
     IEnumerator Fireball()
     {
-        Debug.Log("Fireball");
-        yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds (0.2f);
+		Instantiate (fireball, transform.position, Quaternion.Euler (0f, 0f, 0f));
+		yield return new WaitForSeconds (0.5f);
         state = "movement";
     }
 }
