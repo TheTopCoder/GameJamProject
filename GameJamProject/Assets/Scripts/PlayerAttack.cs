@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviour {
 			if (canHit&&!hit) {
 				Debug.Log ("Attack");
 				hit = true;
-				boss.GetComponent<BossController>().life -= attackDamage;
+				boss.GetComponent<BoneBossController>().life -= attackDamage;
 			}
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
