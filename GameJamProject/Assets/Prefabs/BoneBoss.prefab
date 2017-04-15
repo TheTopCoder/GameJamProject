@@ -105,8 +105,8 @@ MonoBehaviour:
   mass: 20
   stoppingDistance: 0.1
   slowingDistance: 1
-  accelerationRate: 2
-  decelerationRate: 2
+  accelerationRate: 0
+  decelerationRate: 0
   rotateTransform: 0
   rotateSpeed: 350
   avoidRadius: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   player: {fileID: 0}
-  range: 6
+  range: 0.6
 --- !u!212 &212718599757107374
 SpriteRenderer:
   m_ObjectHideFlags: 1

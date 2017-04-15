@@ -52,11 +52,14 @@
      <Compile Include="Assets\PolyNav2D\Scripts\Runtime\PolyNavAgent.cs" />
      <Compile Include="Assets\PolyNav2D\Scripts\Runtime\PolyNavObstacle.cs" />
      <Compile Include="Assets\Scripts\BoneBossController.cs" />
+     <Compile Include="Assets\Scripts\BossController.cs" />
+     <Compile Include="Assets\Scripts\BoxTrigger.cs" />
      <Compile Include="Assets\Scripts\CreditsScript.cs" />
      <Compile Include="Assets\Scripts\FireBossController.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
-     <Compile Include="Assets\Scripts\PlayerAttack.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

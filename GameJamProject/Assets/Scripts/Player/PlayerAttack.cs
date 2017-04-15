@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour {
 
-	string state;
-	int attackDamage = 5;
-	float attackTime = 0.3f;
-	float attackCurrentTime;
+	public string state;
 	bool canHit;
 	bool hit;
+	int attackDamage;
+	float attackTime;
+	int attackStrongDamage;
+	float attackStrongTime;
+	float attackCurrentTime;
+	PlayerStats playerStats;
 	GameObject boss;
 
 	// Use this for initialization
 	void Start () {
+		playerStats = GetComponent<PlayerStats> ();
+		attackDamage = playerStats.attackDamage;
+		attackTime = playerStats.attackTime;
+		attackStrongDamage = playerStats.attackStrongDamage;
+		attackStrongTime = playerStats.attackStrongTime;
 		state = "wait";
 		canHit = false;
 		hit = false;
@@ -26,6 +34,9 @@ public class PlayerAttack : MonoBehaviour {
 		if (state == "wait") {
 			if (Input.GetAxisRaw ("XboxR2")>0) {
 				state = "attack";
+			}
+			else if (Input.GetAxisRaw ("XboxL2")>0) {
+				state = "attackStrong";
 			}
 		}
 		if (state == "attack") {
@@ -41,6 +52,21 @@ public class PlayerAttack : MonoBehaviour {
 				state = "wait";
 			}
 		}
+		if (state == "attackStrong") {
+			if (canHit&&!hit) {
+				Debug.Log ("AttackStrong");
+				hit = true;
+				boss.GetComponent<BoneBossController>().life -= attackStrongDamage;
+
+			}
+			attackCurrentTime -= Time.deltaTime;
+			if (attackCurrentTime < 0) {
+				attackCurrentTime = attackStrongTime;
+				hit = false;
+				state = "wait";
+			}
+		}
+
 	}
 
 	void OnTriggerEnter2D(Collider2D other){

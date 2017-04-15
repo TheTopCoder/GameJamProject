@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoneBossController : MonoBehaviour
-{
+public class BossController : MonoBehaviour {
 	Vector3 newPosition;
 
 	public int life;
-	public int maxLife=80;
 	[SerializeField]
 	GameObject player;
 	[SerializeField]
@@ -25,7 +23,7 @@ public class BoneBossController : MonoBehaviour
 
 	void Start ()
 	{
-		life = maxLife;
+		life = 50;
 		cooldownMovement = 0;
 		cooldownAbility = 0;
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -69,21 +67,19 @@ public class BoneBossController : MonoBehaviour
 //			ChooseAbility ();
 //		}
 	}
-
-	bool MoveToPosition(Vector3 newPosition)
+		bool MoveToPosition(Vector3 newPosition)
 	{
 		if (Vector3.Distance(transform.position, newPosition) < 0.01f)
 		{
-//			GetComponent<Rigidbody2D>.velocity = new Vector2(speedX,speedY);
 			return true;
 		}
 		else
 		{
+				GetComponent<PolyNavAgent>().SetDestination(newPosition);
 			return false;
 		}
-	}
-
-	void ChooseAbility(){
+		}
+		void ChooseAbility(){
 		int ability;
 		ability = (int) Mathf.Floor(Random.Range (1f,4f));
 		Debug.Log (ability);
@@ -97,14 +93,14 @@ public class BoneBossController : MonoBehaviour
 			GroundAttack ();
 		}
 	}
-
 	void BasicAttack(){
 		newPosition = new Vector3(player.transform.position.x, player.transform.position.y);
+		GetComponent<PolyNavAgent>().SetDestination(newPosition);
 		if (Vector3.Distance (transform.position, newPosition) < 0.01f) {
 			state = "movement";
 		}
 		if (canHit) {
-//			player.life -= attackDamage;
+			//			player.life -= attackDamage;
 		}
 		state = "movement";
 	}
@@ -114,7 +110,6 @@ public class BoneBossController : MonoBehaviour
 	void GroundAttack(){
 		state = "movement";
 	}
-
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
 			canHit = true;
@@ -126,3 +121,4 @@ public class BoneBossController : MonoBehaviour
 		}
 	}
 }
+

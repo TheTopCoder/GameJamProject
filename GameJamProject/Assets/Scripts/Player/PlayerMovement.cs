@@ -12,24 +12,34 @@ public class PlayerMovement : MonoBehaviour {
 	float rollDirX;
 	float rollDirY;
 	string state;
-	float speed = 0.8f;
-	float rollSpeed = 2f;
-	float rollTime = 0.3f;
+	float speed;
+	float rollSpeed;
+	float rollTime;
 	float rollCurrentTime;
-	float rollCooldown = 0.5f;
+	float rollCooldown;
 	float rollCurrentCooldown;
-
-
+	PlayerAttack playerAttack;
+	PlayerStats playerStats;
 	// Use this for initialization
 	void Start (){
+		playerAttack = GetComponent<PlayerAttack> ();
+		playerStats = GetComponent<PlayerStats> ();
+		speed = playerStats.speed;
+		rollSpeed = playerStats.rollSpeed;
+		rollTime = playerStats.rollTime;
+		rollCooldown = playerStats.rollCooldown;
 		state = "movement";
 		rollCurrentTime = rollTime;
 		rollCurrentCooldown = 0;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (state == "movement") {
+		if (playerAttack.state == "attackStrong") {
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+		}
+		else if (state == "movement") {
 			dirX = Input.GetAxis ("Horizontal");
 			dirY = Input.GetAxis ("Vertical");
 			float dirAbs = Mathf.Sqrt (dirX * dirX + dirY * dirY);
