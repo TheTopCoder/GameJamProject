@@ -46,8 +46,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+     <Compile Include="Assets\PolyNav2D\Scripts\Runtime\AStar.cs" />
+     <Compile Include="Assets\PolyNav2D\Scripts\Runtime\Heap.cs" />
+     <Compile Include="Assets\PolyNav2D\Scripts\Runtime\PolyNav2D.cs" />
+     <Compile Include="Assets\PolyNav2D\Scripts\Runtime\PolyNavAgent.cs" />
+     <Compile Include="Assets\PolyNav2D\Scripts\Runtime\PolyNavObstacle.cs" />
+>>>>>>> origin/master
      <Compile Include="Assets\Scripts\BossController.cs" />
      <Compile Include="Assets\Scripts\CreditsScript.cs" />
+     <Compile Include="Assets\Scripts\FireBossController.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
