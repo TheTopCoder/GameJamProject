@@ -25,4 +25,9 @@ public class PlayerStats : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
+
+	public void DamagePlayer(int damage){
+		life -= damage;
+
+	}
 }

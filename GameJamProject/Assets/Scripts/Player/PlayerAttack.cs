@@ -76,7 +76,7 @@ public class PlayerAttack : MonoBehaviour {
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
 				attackCurrentTime = attackStrongTime;
-				hit = false;
+				hit = true;
 				state = "wait";
 			}
 		}

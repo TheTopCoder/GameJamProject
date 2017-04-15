@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BoneBoss\BoneBossController.cs" />
-     <Compile Include="Assets\Scripts\BoneBoss\DashAttackScript.cs" />
+     <Compile Include="Assets\Scripts\BoneBoss\WaveAttackScript.cs" />
      <Compile Include="Assets\Scripts\BossSliderScript.cs" />
      <Compile Include="Assets\Scripts\BoxTrigger.cs" />
      <Compile Include="Assets\Scripts\CreditsScript.cs" />

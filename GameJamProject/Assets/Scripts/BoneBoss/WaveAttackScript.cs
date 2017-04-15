@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DashAttackScript : MonoBehaviour {
+	float waveSpeed;
+
 
 	// Use this for initialization
 	void Start () {

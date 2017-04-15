@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6d102669a28f94292def1885ce4d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveAttack: {fileID: 1687622807601412, guid: 266cb5f7d7d0c0e46bf6c68d770ae4ef, type: 2}
   life: 0
   maxLife: 50
   player: {fileID: 0}

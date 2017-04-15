@@ -8,8 +8,11 @@ public class BoneBossController : MonoBehaviour
     #region Variables
     Vector3 newPosition;
 
+	public GameObject waveAttack;
     public int life;
     public int maxLife = 50;
+	int dashAttackDamage = 10;
+	float dashSpeed = 1.5f;
     [SerializeField]
     GameObject player;
     [SerializeField]
@@ -28,6 +31,11 @@ public class BoneBossController : MonoBehaviour
     int prob3Current;
     string state;
     bool moving;
+	float arenaX = 1.5f;
+	float arenaY = 0.7f;
+	bool canHit = false;
+	bool hit = false;
+
     #endregion
     void Start()
     {
@@ -125,20 +133,57 @@ public class BoneBossController : MonoBehaviour
     }
     IEnumerator DashAttack()
     {
-        transform.position = new Vector3(player.transform.position.x - range, player.transform.position.y);
-        Debug.Log("Fire Area");
-        yield return new WaitForSeconds(0.5f);
+		Debug.Log("Dash Attack");
+		yield return new WaitForSeconds(0.2f);
+		Rigidbody2D rb = GetComponent<Rigidbody2D> ();
+		Vector3 playerPosition = player.transform.position;
+		float dirX = playerPosition.x - transform.position.x;
+		float dirY = playerPosition.y - transform.position.y;
+		float dirAbs = Mathf.Sqrt (dirX * dirX + dirY * dirY);
+		if (dirAbs != 0) {
+			dirX = dirX / dirAbs;
+			dirY = dirY / dirAbs;
+		}
+		float speedX = dashSpeed * dirX;
+		float speedY = dashSpeed * dirY;
+		rb.velocity = new Vector2 (speedX,speedY);
+		while (Mathf.Abs (transform.position.x) < arenaX && Mathf.Abs (transform.position.y) < arenaY) {
+			yield return new WaitForSeconds(Time.deltaTime);
+			if (canHit&&!hit) {
+				hit = true;
+				player.GetComponent<PlayerStats>().DamagePlayer (dashAttackDamage);
+				break;
+			}
+		}
         state = "movement";
     }
 	IEnumerator WaveAttack(){
         Debug.Log("Wave Attack");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
+		GameObject wave = Instantiate (waveAttack,transform.position,Quaternion.Euler(0f,0f,0f));
+		if (true){
+			
+		}
+		yield return new WaitForSeconds(0.5f);
         state = "movement";
     }
     IEnumerator GroundAttack()
     {
         Debug.Log("Ground Attack");
+		yield return new WaitForSeconds(0.2f);
         yield return new WaitForSeconds(0.5f);
         state = "movement";
     }
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.tag == "Player") {
+			canHit = true;
+		}
+	}
+	void OnTriggerExit2D(Collider2D other){
+		if (other.tag == "Player") {
+			canHit = false;
+		}
+	}
+
 }
