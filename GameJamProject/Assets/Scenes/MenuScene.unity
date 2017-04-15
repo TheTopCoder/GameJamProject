@@ -438,6 +438,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitCanvas: {fileID: 607369144}
+  EventSytem: {fileID: 1895375184}
+  yesButton: {fileID: 956876862}
+  playButton: {fileID: 370556593}
+  creditsButton: {fileID: 1068757959}
+  exitButton: {fileID: 971302341}
 --- !u!1 &648484943
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.32215455, y: 0.12100001}
   m_AnchorMax: {x: 0.6745529, y: 0.2511697}
-  m_AnchoredPosition: {x: -1.5, y: 0.40000153}
+  m_AnchoredPosition: {x: -1.5, y: 0.3999939}
   m_SizeDelta: {x: -3, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &971302343
@@ -1232,7 +1237,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 370556593}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1895375187
