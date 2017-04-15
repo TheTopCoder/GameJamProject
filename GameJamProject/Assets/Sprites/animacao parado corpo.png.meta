@@ -1,0 +1,832 @@
+fileFormatVersion: 2
+guid: 0934da9f7b7cb9845bb20b2da051272f
+timeCreated: 1492273075
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: animacao parado corpo_0
+    21300002: animacao parado corpo_1
+    21300004: animacao parado corpo_2
+    21300006: animacao parado corpo_3
+    21300008: animacao parado corpo_4
+    21300010: animacao parado corpo_5
+    21300012: animacao parado corpo_6
+    21300014: animacao parado corpo_7
+    21300016: animacao parado corpo_8
+    21300018: animacao parado corpo_9
+    21300020: animacao parado corpo_10
+    21300022: animacao parado corpo_11
+    21300024: animacao parado corpo_12
+    21300026: animacao parado corpo_13
+    21300028: animacao parado corpo_14
+    21300030: animacao parado corpo_15
+    21300032: animacao parado corpo_16
+    21300034: animacao parado corpo_17
+    21300036: animacao parado corpo_18
+    21300038: animacao parado corpo_19
+    21300040: animacao parado corpo_20
+    21300042: animacao parado corpo_21
+    21300044: animacao parado corpo_22
+    21300046: animacao parado corpo_23
+    21300048: animacao parado corpo_24
+    21300050: animacao parado corpo_25
+    21300052: animacao parado corpo_26
+    21300054: animacao parado corpo_27
+    21300056: animacao parado corpo_28
+    21300058: animacao parado corpo_29
+    21300060: animacao parado corpo_30
+    21300062: animacao parado corpo_31
+    21300064: animacao parado corpo_32
+    21300066: animacao parado corpo_33
+    21300068: animacao parado corpo_34
+    21300070: animacao parado corpo_35
+    21300072: animacao parado corpo_36
+    21300074: animacao parado corpo_37
+    21300076: animacao parado corpo_38
+    21300078: animacao parado corpo_39
+    21300080: animacao parado corpo_40
+    21300082: animacao parado corpo_41
+    21300084: animacao parado corpo_42
+    21300086: animacao parado corpo_43
+    21300088: animacao parado corpo_44
+    21300090: animacao parado corpo_45
+    21300092: animacao parado corpo_46
+    21300094: animacao parado corpo_47
+    21300096: animacao parado corpo_48
+    21300098: animacao parado corpo_49
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: tvOS
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Tizen
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Samsung TV
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: animacao parado corpo_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3272
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_1
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 3272
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_2
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 3272
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_3
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 3272
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_4
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 3272
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_5
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 3272
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_6
+      rect:
+        serializedVersion: 2
+        x: 2904
+        y: 3272
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_7
+      rect:
+        serializedVersion: 2
+        x: 3388
+        y: 3272
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_8
+      rect:
+        serializedVersion: 2
+        x: 3872
+        y: 3272
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_9
+      rect:
+        serializedVersion: 2
+        x: 4356
+        y: 3272
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2454
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_11
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 2454
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_12
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 2454
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_13
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 2454
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_14
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 2454
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_15
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 2454
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_16
+      rect:
+        serializedVersion: 2
+        x: 2904
+        y: 2454
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_17
+      rect:
+        serializedVersion: 2
+        x: 3388
+        y: 2454
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_18
+      rect:
+        serializedVersion: 2
+        x: 3872
+        y: 2454
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_19
+      rect:
+        serializedVersion: 2
+        x: 4356
+        y: 2454
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1636
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_21
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 1636
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_22
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 1636
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_23
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 1636
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_24
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 1636
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_25
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 1636
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_26
+      rect:
+        serializedVersion: 2
+        x: 2904
+        y: 1636
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_27
+      rect:
+        serializedVersion: 2
+        x: 3388
+        y: 1636
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_28
+      rect:
+        serializedVersion: 2
+        x: 3872
+        y: 1636
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_29
+      rect:
+        serializedVersion: 2
+        x: 4356
+        y: 1636
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 818
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_31
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 818
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_32
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 818
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_33
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 818
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_34
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 818
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_35
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 818
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_36
+      rect:
+        serializedVersion: 2
+        x: 2904
+        y: 818
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_37
+      rect:
+        serializedVersion: 2
+        x: 3388
+        y: 818
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_38
+      rect:
+        serializedVersion: 2
+        x: 3872
+        y: 818
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_39
+      rect:
+        serializedVersion: 2
+        x: 4356
+        y: 818
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_41
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 0
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_42
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 0
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_43
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 0
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_44
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 0
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_45
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 0
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_46
+      rect:
+        serializedVersion: 2
+        x: 2904
+        y: 0
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_47
+      rect:
+        serializedVersion: 2
+        x: 3388
+        y: 0
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_48
+      rect:
+        serializedVersion: 2
+        x: 3872
+        y: 0
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: animacao parado corpo_49
+      rect:
+        serializedVersion: 2
+        x: 4356
+        y: 0
+        width: 484
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

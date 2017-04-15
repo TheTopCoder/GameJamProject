@@ -15,6 +15,8 @@ public class PlayerAttack : MonoBehaviour {
 	float attackCurrentTime;
 	PlayerStats playerStats;
 	GameObject boss;
+    [SerializeField]
+    Animator handAnim;
 
 	// Use this for initialization
 	void Start () {
@@ -35,7 +37,8 @@ public class PlayerAttack : MonoBehaviour {
 		if (state == "wait") {
 			if (Input.GetAxisRaw ("XboxR2")>0) {
 				state = "attack";
-			}
+                handAnim.SetTrigger("Attack");
+            }
 			else if (Input.GetAxisRaw ("XboxL2")>0) {
 				state = "attackStrong";
 			}

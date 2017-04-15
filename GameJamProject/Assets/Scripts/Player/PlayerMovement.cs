@@ -18,8 +18,13 @@ public class PlayerMovement : MonoBehaviour {
 	float rollCurrentTime;
 	float rollCooldown;
 	float rollCurrentCooldown;
+    bool faceRight;
 	PlayerAttack playerAttack;
 	PlayerStats playerStats;
+    [SerializeField]
+    Animator bodyAnim;
+    [SerializeField]
+    Animator handAnim;
 	// Use this for initialization
 	void Start (){
 		playerAttack = GetComponent<PlayerAttack> ();
@@ -42,6 +47,25 @@ public class PlayerMovement : MonoBehaviour {
 		else if (state == "movement") {
 			dirX = Input.GetAxis ("Horizontal");
 			dirY = Input.GetAxis ("Vertical");
+
+            if (dirX > 0 && !faceRight)
+            {
+                Flip();
+            }
+            else if (dirX < 0 && faceRight)
+            {
+                Flip();
+            }
+            if (dirX == 0 && dirY == 0)
+            {
+                handAnim.SetBool("Walking", false);
+                bodyAnim.SetBool("Walking", false);
+            }
+            else
+            {
+                handAnim.SetBool("Walking", true);
+                bodyAnim.SetBool("Walking", true);
+            }
 			float dirAbs = Mathf.Sqrt (dirX * dirX + dirY * dirY);
 			if (dirAbs != 0) {
 				dirX = dirX / dirAbs;
@@ -60,7 +84,6 @@ public class PlayerMovement : MonoBehaviour {
 			rollDirX = dirX;
 			rollDirY = dirY;
 			rollCurrentCooldown -= Time.deltaTime;
-
 			if (Input.GetAxisRaw("XboxR1")>0 && rollCurrentCooldown < 0) {
 				state = "roll";
 			}
@@ -77,5 +100,15 @@ public class PlayerMovement : MonoBehaviour {
 				state = "movement";
 			}
 		}
+
 	}
+
+    void Flip()
+    {
+        faceRight = !faceRight;
+
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
 }
