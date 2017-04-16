@@ -11,13 +11,21 @@ public class BoneBossController : MonoBehaviour
 	public GameObject waveAttack;
 	public GameObject groundAttack;
     public int life;
-    public int maxLife = 50;
+    public int maxLife = 500;
 	int dashAttackDamage = 10;
 	float dashSpeed = 1.5f;
+    [SerializeField]
+    AnimationClip animClipUp;
+    [SerializeField]
+    AnimationClip animClipDown;
+    [SerializeField]
+    AnimationClip animClip;
     [SerializeField]
     GameObject player;
     [SerializeField]
     float range;
+    [SerializeField]
+    Transform[] rocksArea;
     float minX;
     float minY;
     float maxX;
@@ -36,8 +44,10 @@ public class BoneBossController : MonoBehaviour
 	float arenaY = 0.7f;
 	bool canHit = false;
 	bool hit = false;
-	GameObject wave;
-
+    public bool faceRight = false;
+    GameObject wave;
+    [SerializeField]
+    GameObject rockSpawner;
     #endregion
     void Start()
     {
@@ -55,9 +65,28 @@ public class BoneBossController : MonoBehaviour
         maxX = player.transform.position.x + range;
         maxY = player.transform.position.y + range;
         state = "movement";
+        faceRight = false;
     }
     void Update()
     {
+        if(player.transform.position.y < transform.FindChild("point").transform.position.y)
+        {
+            GetComponentInChildren<SpriteRenderer>().sortingOrder = -1;
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().sortingOrder = 1;
+        }
+        if (player.transform.position.x < transform.FindChild("point").transform.position.x && faceRight)
+        {
+            Flip();
+            transform.position -= new Vector3(3,0,0);
+        }
+        else if(player.transform.position.x > transform.FindChild("point").transform.position.x && !faceRight)
+        {
+            Flip();
+            transform.position += new Vector3(3, 0, 0);
+        }
         if (state == "movement")
         {
             if (life <= 0)
@@ -69,9 +98,9 @@ public class BoneBossController : MonoBehaviour
             if (cooldownAbility <= 0)
             {
                 state = "ChooseAbility";
-                cooldownAbility = Random.Range(10, 15);
+                cooldownAbility = Random.Range(3, 5);
             }
-            else if (cooldownMovement <= 0)
+           /* else if (cooldownMovement <= 0)
             {
                 moving = true;
                 minX = player.transform.position.x - range;
@@ -80,7 +109,7 @@ public class BoneBossController : MonoBehaviour
                 maxY = player.transform.position.y + range;
                 newPosition = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY));
                 cooldownMovement = Random.Range(1, 2);
-            }
+            }*/
             if (moving)
             {
                 if (MoveToPosition(newPosition))
@@ -135,53 +164,57 @@ public class BoneBossController : MonoBehaviour
     }
     IEnumerator DashAttack()
     {
-		Debug.Log("Dash Attack");
-		yield return new WaitForSeconds(0.2f);
-		Rigidbody2D rb = GetComponent<Rigidbody2D> ();
-		Vector3 playerPosition = player.transform.position;
-		float dirX = playerPosition.x - transform.position.x;
-		float dirY = playerPosition.y - transform.position.y;
-		float dirAbs = Mathf.Sqrt (dirX * dirX + dirY * dirY);
-		if (dirAbs != 0) {
-			dirX = dirX / dirAbs;
-			dirY = dirY / dirAbs;
-		}
-		float speedX = dashSpeed * dirX;
-		float speedY = dashSpeed * dirY;
-		rb.velocity = new Vector2 (speedX,speedY);
-		while (Mathf.Abs (transform.position.x) < arenaX && Mathf.Abs (transform.position.y) < arenaY) {
-			yield return new WaitForSeconds(Time.deltaTime);
-			if (canHit&&!hit) {
-				hit = true;
-				player.GetComponent<PlayerStats>().DamagePlayer (dashAttackDamage);
-				break;
-			}
-		}
+        GetComponentInChildren<Animator>().SetTrigger("WaveAttack2");
+        yield return new WaitForSeconds(animClipDown.length / 2);
+        if (canHit)
+        {
+            StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+        }
         state = "movement";
     }
 	IEnumerator WaveAttack(){
-        Debug.Log("Wave Attack");
-        yield return new WaitForSeconds(0.2f);
-		wave = (GameObject) Instantiate (waveAttack,transform.position,Quaternion.Euler(0f,0f,0f));
-		if (transform.position.x < player.transform.position.x) {
-			wave.GetComponent<WaveAttackScript> ().dir = 1;
-		} else {
-			wave.GetComponent<WaveAttackScript> ().dir = -1;
-		}
-
+        GetComponentInChildren<Animator>().SetTrigger("WaveAttack");
+        yield return new WaitForSeconds(animClipUp.length / 2);
+        if (canHit)
+        {
+            StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+        }
+        wave = (GameObject) Instantiate (waveAttack,transform.position,Quaternion.Euler(0f,0f,0f));
 		yield return new WaitForSeconds(0.5f);
         state = "movement";
     }
     IEnumerator GroundAttack()
     {
         Debug.Log("Ground Attack");
-		yield return new WaitForSeconds(0.2f);
-		GameObject earthquake = (GameObject) Instantiate (groundAttack,transform.position,Quaternion.Euler(0f,0f,0f));
+        GetComponentInChildren<Animator>().SetBool("EarthquakeAttack", true);
+        yield return new WaitForSeconds(animClip.length / 2);
+        StartCoroutine(SpawnRocks());
+        if(canHit)
+        {
+            StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+        }
 		yield return new WaitForSeconds(0.5f);
         state = "movement";
     }
+    IEnumerator SpawnRocks()
+    {
+        for(int i = 0; i < 10; i++)
+        {
+            Instantiate(rockSpawner, new Vector3(Random.Range(rocksArea[0].position.x, rocksArea[1].position.x), Random.Range(rocksArea[0].position.y, rocksArea[1].position.y)), new Quaternion(0f, 0f, 0f, 0f));
+            yield return new WaitForSeconds(0.5f);
+        }
+        GetComponentInChildren<Animator>().SetBool("EarthquakeAttack", false);
+    }
+    void Flip()
+    {
+        faceRight = !faceRight;
 
-	void OnTriggerEnter2D(Collider2D other){
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
 			canHit = true;
 		}

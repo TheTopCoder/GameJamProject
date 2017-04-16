@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: dfbf6ba3d7aa28740b9cedec9f815540
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Playground.unity
     guid: 0cf367dbfe7259449bdd5c49364fa41b
+  - enabled: 1
+    path: Assets/Scenes/BoneBossScene.unity
+    guid: 44a4e333bc3f3824a8bc439bf88733f5
   - enabled: 1
     path: Assets/Scenes/CreditsScene.unity
     guid: 1ab4c5e7a9eba0b46a9e804189476ea1

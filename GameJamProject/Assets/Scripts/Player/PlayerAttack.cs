@@ -39,6 +39,7 @@ public class PlayerAttack : MonoBehaviour {
 		if (state == "wait") {
 			if (Input.GetAxisRaw ("XboxR2")>0) {
 				state = "attack";
+                transform.FindChild("ShakeWeaponSound").GetComponent<AudioSource>().Play();
                 handAnim.SetTrigger("Attack");
             }
 			else if (Input.GetAxisRaw ("XboxL2")>0) {
@@ -69,6 +70,7 @@ public class PlayerAttack : MonoBehaviour {
                 else if (boss.name.Equals("FireBoss"))
                 {
                     boss.GetComponent<FireBossController>().life -= attackStrongDamage;
+                    
                 }
             }
 			attackCurrentTime -= Time.deltaTime;
@@ -98,7 +100,10 @@ public class PlayerAttack : MonoBehaviour {
 
         if (boss.name.Equals("BoneBoss"))
         {
-            boss.GetComponent<BoneBossController>().life -= attackDamage;
+            boss.GetComponentInChildren<BoneBossController>().life -= attackDamage;
+            boss.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+            yield return new WaitForSeconds(0.05f);
+            boss.GetComponentInChildren<SpriteRenderer>().color = Color.white;
         }
         else if (boss.name.Equals("FireBoss"))
         {

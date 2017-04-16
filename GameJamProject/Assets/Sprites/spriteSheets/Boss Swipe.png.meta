@@ -1,0 +1,832 @@
+fileFormatVersion: 2
+guid: 3d6924c2a45d34844aa9e06984adcbe6
+timeCreated: 1492302385
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Boss Swipe_0
+    21300002: Boss Swipe_1
+    21300004: Boss Swipe_2
+    21300006: Boss Swipe_3
+    21300008: Boss Swipe_4
+    21300010: Boss Swipe_5
+    21300012: Boss Swipe_6
+    21300014: Boss Swipe_7
+    21300016: Boss Swipe_8
+    21300018: Boss Swipe_9
+    21300020: Boss Swipe_10
+    21300022: Boss Swipe_11
+    21300024: Boss Swipe_12
+    21300026: Boss Swipe_13
+    21300028: Boss Swipe_14
+    21300030: Boss Swipe_15
+    21300032: Boss Swipe_16
+    21300034: Boss Swipe_17
+    21300036: Boss Swipe_18
+    21300038: Boss Swipe_19
+    21300040: Boss Swipe_20
+    21300042: Boss Swipe_21
+    21300044: Boss Swipe_22
+    21300046: Boss Swipe_23
+    21300048: Boss Swipe_24
+    21300050: Boss Swipe_25
+    21300052: Boss Swipe_26
+    21300054: Boss Swipe_27
+    21300056: Boss Swipe_28
+    21300058: Boss Swipe_29
+    21300060: Boss Swipe_30
+    21300062: Boss Swipe_31
+    21300064: Boss Swipe_32
+    21300066: Boss Swipe_33
+    21300068: Boss Swipe_34
+    21300070: Boss Swipe_35
+    21300072: Boss Swipe_36
+    21300074: Boss Swipe_37
+    21300076: Boss Swipe_38
+    21300078: Boss Swipe_39
+    21300080: Boss Swipe_40
+    21300082: Boss Swipe_41
+    21300084: Boss Swipe_42
+    21300086: Boss Swipe_43
+    21300088: Boss Swipe_44
+    21300090: Boss Swipe_45
+    21300092: Boss Swipe_46
+    21300094: Boss Swipe_47
+    21300096: Boss Swipe_48
+    21300098: Boss Swipe_49
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: tvOS
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Tizen
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Samsung TV
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Boss Swipe_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2408
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_1
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 2408
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_2
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 2408
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_3
+      rect:
+        serializedVersion: 2
+        x: 2055
+        y: 2408
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_4
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 2408
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_5
+      rect:
+        serializedVersion: 2
+        x: 3425
+        y: 2408
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_6
+      rect:
+        serializedVersion: 2
+        x: 4110
+        y: 2408
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_7
+      rect:
+        serializedVersion: 2
+        x: 4795
+        y: 2408
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_8
+      rect:
+        serializedVersion: 2
+        x: 5480
+        y: 2408
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_9
+      rect:
+        serializedVersion: 2
+        x: 6165
+        y: 2408
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1806
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_11
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 1806
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_12
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 1806
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_13
+      rect:
+        serializedVersion: 2
+        x: 2055
+        y: 1806
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_14
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 1806
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_15
+      rect:
+        serializedVersion: 2
+        x: 3425
+        y: 1806
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_16
+      rect:
+        serializedVersion: 2
+        x: 4110
+        y: 1806
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_17
+      rect:
+        serializedVersion: 2
+        x: 4795
+        y: 1806
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_18
+      rect:
+        serializedVersion: 2
+        x: 5480
+        y: 1806
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_19
+      rect:
+        serializedVersion: 2
+        x: 6165
+        y: 1806
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1204
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_21
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 1204
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_22
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 1204
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_23
+      rect:
+        serializedVersion: 2
+        x: 2055
+        y: 1204
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_24
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 1204
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_25
+      rect:
+        serializedVersion: 2
+        x: 3425
+        y: 1204
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_26
+      rect:
+        serializedVersion: 2
+        x: 4110
+        y: 1204
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_27
+      rect:
+        serializedVersion: 2
+        x: 4795
+        y: 1204
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_28
+      rect:
+        serializedVersion: 2
+        x: 5480
+        y: 1204
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_29
+      rect:
+        serializedVersion: 2
+        x: 6165
+        y: 1204
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 602
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_31
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 602
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_32
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 602
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_33
+      rect:
+        serializedVersion: 2
+        x: 2055
+        y: 602
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_34
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 602
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_35
+      rect:
+        serializedVersion: 2
+        x: 3425
+        y: 602
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_36
+      rect:
+        serializedVersion: 2
+        x: 4110
+        y: 602
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_37
+      rect:
+        serializedVersion: 2
+        x: 4795
+        y: 602
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_38
+      rect:
+        serializedVersion: 2
+        x: 5480
+        y: 602
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_39
+      rect:
+        serializedVersion: 2
+        x: 6165
+        y: 602
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_41
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 0
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_42
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 0
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_43
+      rect:
+        serializedVersion: 2
+        x: 2055
+        y: 0
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_44
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 0
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_45
+      rect:
+        serializedVersion: 2
+        x: 3425
+        y: 0
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_46
+      rect:
+        serializedVersion: 2
+        x: 4110
+        y: 0
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_47
+      rect:
+        serializedVersion: 2
+        x: 4795
+        y: 0
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_48
+      rect:
+        serializedVersion: 2
+        x: 5480
+        y: 0
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boss Swipe_49
+      rect:
+        serializedVersion: 2
+        x: 6165
+        y: 0
+        width: 685
+        height: 602
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

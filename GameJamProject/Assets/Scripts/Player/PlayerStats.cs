@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour {
 	public float speed = 0.8f;
 	public float rollSpeed = 2f;
-	public float rollTime = 0.3f;
+	public float rollTime = 0.5f;
 	public float rollCooldown = 0.5f;
 	public int maxLife = 20;
 	public int life;

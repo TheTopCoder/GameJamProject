@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-	float dirX;
+    float life;
+    float maxLife = 10;
+    float dirX;
 	float dirY;
 	float speedX;
 	float speedY;
@@ -19,14 +21,18 @@ public class PlayerMovement : MonoBehaviour {
 	float rollCooldown;
 	float rollCurrentCooldown;
     bool faceRight;
+    bool damaging = true;
 	PlayerAttack playerAttack;
 	PlayerStats playerStats;
     [SerializeField]
     Animator bodyAnim;
     [SerializeField]
     Animator handAnim;
+    [SerializeField]
+    GameObject smearPrefab;
 	// Use this for initialization
 	void Start (){
+        life = maxLife;
 		playerAttack = GetComponent<PlayerAttack> ();
 		playerStats = GetComponent<PlayerStats> ();
 		speed = playerStats.speed;
@@ -90,12 +96,16 @@ public class PlayerMovement : MonoBehaviour {
 
 
 		} else if (state == "roll") {
+            handAnim.SetBool("Dash", true);
+            bodyAnim.SetBool("Dash", true);
 			speedX = rollDirX * rollSpeed;
 			speedY = rollDirY * rollSpeed;
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (speedX, speedY);
 			rollCurrentTime -= Time.deltaTime;
 			if (rollCurrentTime < 0){
-				rollCurrentTime = rollTime;
+                handAnim.SetBool("Dash", false);
+                bodyAnim.SetBool("Dash", false);
+                rollCurrentTime = rollTime;
 				rollCurrentCooldown = rollCooldown;
 				state = "movement";
 			}
@@ -103,6 +113,53 @@ public class PlayerMovement : MonoBehaviour {
 
 	}
 
+    public IEnumerator DamagedPlayer()
+    {
+        if (damaging)
+        {
+            handAnim.SetBool("Flint", true);
+            bodyAnim.SetBool("Flint", true);
+            damaging = false;
+            life--;
+            Color auxColor = new Color(bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.r, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.g, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 0);
+            StartCoroutine(KnockBack());
+            for (int i = 0; i < 7; i++)
+            {
+                if (handAnim.gameObject.GetComponent<SpriteRenderer>().color != auxColor)
+                {
+                    handAnim.gameObject.GetComponent<SpriteRenderer>().color = auxColor;
+                    bodyAnim.gameObject.GetComponent<SpriteRenderer>().color = auxColor;
+                }
+                else
+                {
+                    handAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(handAnim.gameObject.GetComponent<SpriteRenderer>().color.r, handAnim.gameObject.GetComponent<SpriteRenderer>().color.g, handAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 1f);
+                    bodyAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.r, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.g, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 1f);
+                }
+                yield return new WaitForSeconds(0.1f);
+            }
+            handAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+            bodyAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+            damaging = true;
+        }
+    }
+    IEnumerator KnockBack()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (faceRight)
+            {
+                transform.position -= new Vector3(0.1f, 0f);
+            }
+            else
+            {
+                transform.position += new Vector3(0.1f, 0f);
+            }
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        handAnim.SetBool("Flint", false);
+        bodyAnim.SetBool("Flint", false);
+    }
     void Flip()
     {
         faceRight = !faceRight;

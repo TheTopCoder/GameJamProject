@@ -1,0 +1,384 @@
+fileFormatVersion: 2
+guid: c8ef9731eba3eeb44864e885e1d914ea
+timeCreated: 1492273141
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: "anima\xE7\xE3o golpe smear_0"
+    21300002: "anima\xE7\xE3o golpe smear_1"
+    21300004: "anima\xE7\xE3o golpe smear_2"
+    21300006: "anima\xE7\xE3o golpe smear_3"
+    21300008: "anima\xE7\xE3o golpe smear_4"
+    21300010: "anima\xE7\xE3o golpe smear_5"
+    21300012: "anima\xE7\xE3o golpe smear_6"
+    21300014: "anima\xE7\xE3o golpe smear_7"
+    21300016: "anima\xE7\xE3o golpe smear_8"
+    21300018: "anima\xE7\xE3o golpe smear_9"
+    21300020: "anima\xE7\xE3o golpe smear_10"
+    21300022: "anima\xE7\xE3o golpe smear_11"
+    21300024: "anima\xE7\xE3o golpe smear_12"
+    21300026: "anima\xE7\xE3o golpe smear_13"
+    21300028: "anima\xE7\xE3o golpe smear_14"
+    21300030: "anima\xE7\xE3o golpe smear_15"
+    21300032: "anima\xE7\xE3o golpe smear_16"
+    21300034: "anima\xE7\xE3o golpe smear_17"
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: tvOS
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Tizen
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Samsung TV
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1133
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_1"
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 1133
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_2"
+      rect:
+        serializedVersion: 2
+        x: 1674
+        y: 1133
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_3"
+      rect:
+        serializedVersion: 2
+        x: 2511
+        y: 1133
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_4"
+      rect:
+        serializedVersion: 2
+        x: 3348
+        y: 1133
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_5"
+      rect:
+        serializedVersion: 2
+        x: 4185
+        y: 1133
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_6"
+      rect:
+        serializedVersion: 2
+        x: 5022
+        y: 1133
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_7"
+      rect:
+        serializedVersion: 2
+        x: 5859
+        y: 1133
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_8"
+      rect:
+        serializedVersion: 2
+        x: 6696
+        y: 1133
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_9"
+      rect:
+        serializedVersion: 2
+        x: 7533
+        y: 1133
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_10"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_11"
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 0
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_12"
+      rect:
+        serializedVersion: 2
+        x: 1674
+        y: 0
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_13"
+      rect:
+        serializedVersion: 2
+        x: 2511
+        y: 0
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_14"
+      rect:
+        serializedVersion: 2
+        x: 3348
+        y: 0
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_15"
+      rect:
+        serializedVersion: 2
+        x: 4185
+        y: 0
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_16"
+      rect:
+        serializedVersion: 2
+        x: 5022
+        y: 0
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "anima\xE7\xE3o golpe smear_17"
+      rect:
+        serializedVersion: 2
+        x: 5859
+        y: 0
+        width: 837
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

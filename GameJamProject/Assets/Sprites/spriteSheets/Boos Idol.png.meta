@@ -1,0 +1,832 @@
+fileFormatVersion: 2
+guid: 16855b3fa597367439ba0c04b5845a62
+timeCreated: 1492297076
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Boos Idol_0
+    21300002: Boos Idol_1
+    21300004: Boos Idol_2
+    21300006: Boos Idol_3
+    21300008: Boos Idol_4
+    21300010: Boos Idol_5
+    21300012: Boos Idol_6
+    21300014: Boos Idol_7
+    21300016: Boos Idol_8
+    21300018: Boos Idol_9
+    21300020: Boos Idol_10
+    21300022: Boos Idol_11
+    21300024: Boos Idol_12
+    21300026: Boos Idol_13
+    21300028: Boos Idol_14
+    21300030: Boos Idol_15
+    21300032: Boos Idol_16
+    21300034: Boos Idol_17
+    21300036: Boos Idol_18
+    21300038: Boos Idol_19
+    21300040: Boos Idol_20
+    21300042: Boos Idol_21
+    21300044: Boos Idol_22
+    21300046: Boos Idol_23
+    21300048: Boos Idol_24
+    21300050: Boos Idol_25
+    21300052: Boos Idol_26
+    21300054: Boos Idol_27
+    21300056: Boos Idol_28
+    21300058: Boos Idol_29
+    21300060: Boos Idol_30
+    21300062: Boos Idol_31
+    21300064: Boos Idol_32
+    21300066: Boos Idol_33
+    21300068: Boos Idol_34
+    21300070: Boos Idol_35
+    21300072: Boos Idol_36
+    21300074: Boos Idol_37
+    21300076: Boos Idol_38
+    21300078: Boos Idol_39
+    21300080: Boos Idol_40
+    21300082: Boos Idol_41
+    21300084: Boos Idol_42
+    21300086: Boos Idol_43
+    21300088: Boos Idol_44
+    21300090: Boos Idol_45
+    21300092: Boos Idol_46
+    21300094: Boos Idol_47
+    21300096: Boos Idol_48
+    21300098: Boos Idol_49
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: tvOS
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Tizen
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Samsung TV
+    maxTextureSize: 8192
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Boos Idol_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1580
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_1
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 1580
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_2
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 1580
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_3
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 1580
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_4
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 1580
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_5
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1580
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_6
+      rect:
+        serializedVersion: 2
+        x: 3276
+        y: 1580
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_7
+      rect:
+        serializedVersion: 2
+        x: 3822
+        y: 1580
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_8
+      rect:
+        serializedVersion: 2
+        x: 4368
+        y: 1580
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_9
+      rect:
+        serializedVersion: 2
+        x: 4914
+        y: 1580
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1185
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_11
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 1185
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_12
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 1185
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_13
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 1185
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_14
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 1185
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_15
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1185
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_16
+      rect:
+        serializedVersion: 2
+        x: 3276
+        y: 1185
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_17
+      rect:
+        serializedVersion: 2
+        x: 3822
+        y: 1185
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_18
+      rect:
+        serializedVersion: 2
+        x: 4368
+        y: 1185
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_19
+      rect:
+        serializedVersion: 2
+        x: 4914
+        y: 1185
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 790
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_21
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 790
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_22
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 790
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_23
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 790
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_24
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 790
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_25
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 790
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_26
+      rect:
+        serializedVersion: 2
+        x: 3276
+        y: 790
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_27
+      rect:
+        serializedVersion: 2
+        x: 3822
+        y: 790
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_28
+      rect:
+        serializedVersion: 2
+        x: 4368
+        y: 790
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_29
+      rect:
+        serializedVersion: 2
+        x: 4914
+        y: 790
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 395
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_31
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 395
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_32
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 395
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_33
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 395
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_34
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 395
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_35
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 395
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_36
+      rect:
+        serializedVersion: 2
+        x: 3276
+        y: 395
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_37
+      rect:
+        serializedVersion: 2
+        x: 3822
+        y: 395
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_38
+      rect:
+        serializedVersion: 2
+        x: 4368
+        y: 395
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_39
+      rect:
+        serializedVersion: 2
+        x: 4914
+        y: 395
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_41
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 0
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_42
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 0
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_43
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 0
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_44
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 0
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_45
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 0
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_46
+      rect:
+        serializedVersion: 2
+        x: 3276
+        y: 0
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_47
+      rect:
+        serializedVersion: 2
+        x: 3822
+        y: 0
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_48
+      rect:
+        serializedVersion: 2
+        x: 4368
+        y: 0
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boos Idol_49
+      rect:
+        serializedVersion: 2
+        x: 4914
+        y: 0
+        width: 546
+        height: 395
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
