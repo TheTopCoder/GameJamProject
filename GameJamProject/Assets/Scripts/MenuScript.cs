@@ -8,57 +8,53 @@ using UnityEngine.EventSystems;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField]
-    Canvas exitCanvas;
+    Image panel;
     [SerializeField]
-    GameObject EventSytem;
-    [SerializeField]
-    GameObject yesButton;
-    [SerializeField]
-    GameObject playButton;
-    [SerializeField]
-    GameObject creditsButton;
-    [SerializeField]
-    GameObject exitButton;
+    Text texto;
 
-    Canvas thisCanvas;
-    void Awake()
+    float time;
+    bool goingUp;
+    void Update()
     {
-        exitCanvas.enabled = false;
-    }
-    public void OnPlay()
-    {
-        SceneManager.LoadScene("Playground");
+        if (Input.GetButtonDown("Submit"))
+        {
+            StartCoroutine(LoadScene("CorridorScene"));
+        }
+        BlinkText();
     }
 
-    public void OnCredits()
+    IEnumerator LoadScene(string scene)
     {
-        SceneManager.LoadScene("CreditsScene");
+        for (int i = 0; i <= 100; i++)
+        {
+            Color aux = panel.color;
+            aux.a += 0.01f;
+            panel.color = aux;
+            yield return new WaitForSeconds(0.01f);
+        }
+        SceneManager.LoadScene(scene);
     }
-
-    public void OnExit()
+    void BlinkText()
     {
-        exitCanvas.enabled = true;
-        this.GetComponent<Canvas>().enabled = false;
-        playButton.GetComponent<Button>().enabled = false;
-        creditsButton.GetComponent<Button>().enabled = false;
-        exitButton.GetComponent<Button>().enabled = false;
-        EventSytem.GetComponent<EventSystem>().SetSelectedGameObject(yesButton);
-    }
+        time += Time.deltaTime;
+        if (goingUp)
+        {
+            Color aux = texto.color;
+            aux.a += Time.deltaTime;
+            texto.color = aux;
+        }
+        else if (!goingUp)
+        {
+            Color aux = texto.color;
+            aux.a -= Time.deltaTime ;
+            texto.color = aux;
+        }
 
-    public void OnYes()
-    {
-        Application.Quit();
+        if (time >= 1)
+        {
+            goingUp = !goingUp;
+            time = 0;
+        }
     }
-
-    public void OnNo()
-    {
-        exitCanvas.enabled = false;
-        this.GetComponent<Canvas>().enabled = true;
-        playButton.GetComponent<Button>().enabled = true;
-        creditsButton.GetComponent<Button>().enabled = true;
-        exitButton.GetComponent<Button>().enabled = true;
-        EventSytem.GetComponent<EventSystem>().SetSelectedGameObject(playButton);
-    }
-
     
 }

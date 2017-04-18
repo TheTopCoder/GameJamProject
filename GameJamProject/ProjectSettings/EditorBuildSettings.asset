@@ -8,12 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: dfbf6ba3d7aa28740b9cedec9f815540
-  - enabled: 0
-    path: Assets/Scenes/Playground.unity
-    guid: 0cf367dbfe7259449bdd5c49364fa41b
+  - enabled: 1
+    path: Assets/Scenes/CorridorScene.unity
+    guid: 8afd30afb19016a4fb06f965453469b1
+  - enabled: 1
+    path: Assets/Scenes/BossTransitionScene.unity
+    guid: 86efe65c47b27ba4b82203699c7abfe0
   - enabled: 1
     path: Assets/Scenes/BoneBossScene.unity
     guid: 44a4e333bc3f3824a8bc439bf88733f5
   - enabled: 1
     path: Assets/Scenes/CreditsScene.unity
     guid: 1ab4c5e7a9eba0b46a9e804189476ea1
+  - enabled: 0
+    path: 
+    guid: 0cf367dbfe7259449bdd5c49364fa41b

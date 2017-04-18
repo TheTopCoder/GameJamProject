@@ -1,0 +1,524 @@
+fileFormatVersion: 2
+guid: ab8a7645d95e2274e9aef2d90a6efda6
+timeCreated: 1492375206
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: estocada boneco 2_0
+    21300002: estocada boneco 2_1
+    21300004: estocada boneco 2_2
+    21300006: estocada boneco 2_3
+    21300008: estocada boneco 2_4
+    21300010: estocada boneco 2_5
+    21300012: estocada boneco 2_6
+    21300014: estocada boneco 2_7
+    21300016: estocada boneco 2_8
+    21300018: estocada boneco 2_9
+    21300020: estocada boneco 2_10
+    21300022: estocada boneco 2_11
+    21300024: estocada boneco 2_12
+    21300026: estocada boneco 2_13
+    21300028: estocada boneco 2_14
+    21300030: estocada boneco 2_15
+    21300032: estocada boneco 2_16
+    21300034: estocada boneco 2_17
+    21300036: estocada boneco 2_18
+    21300038: estocada boneco 2_19
+    21300040: estocada boneco 2_20
+    21300042: estocada boneco 2_21
+    21300044: estocada boneco 2_22
+    21300046: estocada boneco 2_23
+    21300048: estocada boneco 2_24
+    21300050: estocada boneco 2_25
+    21300052: estocada boneco 2_26
+    21300054: estocada boneco 2_27
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 4096
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 4096
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: tvOS
+    maxTextureSize: 4096
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 4096
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Tizen
+    maxTextureSize: 4096
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 4096
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 4096
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Samsung TV
+    maxTextureSize: 4096
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: estocada boneco 2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_1
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_2
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_3
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_5
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_6
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_7
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_8
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_9
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_10
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_11
+      rect:
+        serializedVersion: 2
+        x: 3520
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_12
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_13
+      rect:
+        serializedVersion: 2
+        x: 4160
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_14
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_15
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_16
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_17
+      rect:
+        serializedVersion: 2
+        x: 5440
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_18
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_19
+      rect:
+        serializedVersion: 2
+        x: 6080
+        y: 441.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_21
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_22
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_23
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_24
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_25
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_26
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: estocada boneco 2_27
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 0.5
+        width: 320.5
+        height: 441.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

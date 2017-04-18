@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 175575567ddd0b547a943ee1a0edcd05
+timeCreated: 1492344333
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: QUARTZO demo
+  fontNames:
+  - QUARTZO demo
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

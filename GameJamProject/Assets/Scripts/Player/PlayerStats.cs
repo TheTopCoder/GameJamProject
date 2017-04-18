@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour {
-	public float speed = 0.8f;
-	public float rollSpeed = 2f;
-	public float rollTime = 0.5f;
+	public float speed = 1f;
+	public float rollSpeed = 4.5f;
+	public float rollTime = 1.8f;
 	public float rollCooldown = 0.5f;
 	public int maxLife = 20;
 	public int life;

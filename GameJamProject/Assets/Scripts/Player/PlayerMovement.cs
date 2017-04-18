@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
     float life;
@@ -21,7 +22,9 @@ public class PlayerMovement : MonoBehaviour {
 	float rollCooldown;
 	float rollCurrentCooldown;
     bool faceRight;
-    bool damaging = true;
+    bool canEnterDoor = false;
+    bool invulnerable;
+    bool spawnedTop = true;
 	PlayerAttack playerAttack;
 	PlayerStats playerStats;
     [SerializeField]
@@ -30,6 +33,14 @@ public class PlayerMovement : MonoBehaviour {
     Animator handAnim;
     [SerializeField]
     GameObject smearPrefab;
+    [SerializeField]
+    GameObject dashDust;
+    [SerializeField]
+    GameObject dashDustPosition;
+    [SerializeField]
+    AudioSource walkingAudio;
+    [SerializeField]
+    GameObject canvas;
 	// Use this for initialization
 	void Start (){
         life = maxLife;
@@ -42,7 +53,8 @@ public class PlayerMovement : MonoBehaviour {
 		state = "movement";
 		rollCurrentTime = rollTime;
 		rollCurrentCooldown = 0;
-
+        invulnerable = false;
+        walkingAudio.Pause();
 	}
 	
 	// Update is called once per frame
@@ -66,11 +78,13 @@ public class PlayerMovement : MonoBehaviour {
             {
                 handAnim.SetBool("Walking", false);
                 bodyAnim.SetBool("Walking", false);
+                walkingAudio.Pause();
             }
             else
             {
                 handAnim.SetBool("Walking", true);
                 bodyAnim.SetBool("Walking", true);
+                walkingAudio.UnPause();
             }
 			float dirAbs = Mathf.Sqrt (dirX * dirX + dirY * dirY);
 			if (dirAbs != 0) {
@@ -90,12 +104,17 @@ public class PlayerMovement : MonoBehaviour {
 			rollDirX = dirX;
 			rollDirY = dirY;
 			rollCurrentCooldown -= Time.deltaTime;
-			if (Input.GetAxisRaw("XboxR1")>0 && rollCurrentCooldown < 0) {
+			if (Input.GetAxisRaw("XboxA")>0 || (Input.GetAxisRaw("XboxR1") > 0) && rollCurrentCooldown < 0) {
 				state = "roll";
 			}
 
 
 		} else if (state == "roll") {
+            if (spawnedTop)
+            {
+                Instantiate(dashDust, dashDustPosition.transform.position, new Quaternion(0f, 0f, 0f, 0f), gameObject.transform);
+                spawnedTop = false;
+            }
             handAnim.SetBool("Dash", true);
             bodyAnim.SetBool("Dash", true);
 			speedX = rollDirX * rollSpeed;
@@ -105,22 +124,31 @@ public class PlayerMovement : MonoBehaviour {
 			if (rollCurrentTime < 0){
                 handAnim.SetBool("Dash", false);
                 bodyAnim.SetBool("Dash", false);
+                spawnedTop = true;
                 rollCurrentTime = rollTime;
 				rollCurrentCooldown = rollCooldown;
 				state = "movement";
 			}
 		}
+        if(canEnterDoor && Input.GetButtonDown("XboxA"))
+        {
+            canvas.GetComponent<TransitionScript>().ChangeScene();
+        }
+        if (Input.GetButtonDown("XboxA"))
+        {
+            Debug.Log("A pressed");
+        }
 
-	}
+    }
 
     public IEnumerator DamagedPlayer()
     {
-        if (damaging)
+        if (!invulnerable)
         {
             handAnim.SetBool("Flint", true);
             bodyAnim.SetBool("Flint", true);
-            damaging = false;
             life--;
+            invulnerable = true;
             Color auxColor = new Color(bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.r, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.g, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 0);
             StartCoroutine(KnockBack());
             for (int i = 0; i < 7; i++)
@@ -132,14 +160,13 @@ public class PlayerMovement : MonoBehaviour {
                 }
                 else
                 {
-                    handAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(handAnim.gameObject.GetComponent<SpriteRenderer>().color.r, handAnim.gameObject.GetComponent<SpriteRenderer>().color.g, handAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 1f);
-                    bodyAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.r, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.g, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 1f);
+                    handAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(handAnim.gameObject.GetComponent<SpriteRenderer>().color.r, handAnim.gameObject.GetComponent<SpriteRenderer>().color.g, handAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 1);
+                    bodyAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.r, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.g, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 1);
                 }
                 yield return new WaitForSeconds(0.1f);
             }
             handAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
             bodyAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-            damaging = true;
         }
     }
     IEnumerator KnockBack()
@@ -159,6 +186,7 @@ public class PlayerMovement : MonoBehaviour {
 
         handAnim.SetBool("Flint", false);
         bodyAnim.SetBool("Flint", false);
+        invulnerable = false;
     }
     void Flip()
     {
@@ -167,5 +195,21 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.name.Equals("Corredor Intro 5"))
+        {
+            canEnterDoor = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.name.Equals("Corredor Intro 5"))
+        {
+            canEnterDoor = false;
+        }
     }
 }

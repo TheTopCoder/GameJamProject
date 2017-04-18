@@ -11,7 +11,7 @@ public class BoneBossController : MonoBehaviour
 	public GameObject waveAttack;
 	public GameObject groundAttack;
     public int life;
-    public int maxLife = 500;
+    public int maxLife = 5000;
 	int dashAttackDamage = 10;
 	float dashSpeed = 1.5f;
     [SerializeField]
@@ -44,6 +44,12 @@ public class BoneBossController : MonoBehaviour
 	float arenaY = 0.7f;
 	bool canHit = false;
 	bool hit = false;
+    public Transform mainCamera;
+    private float shakeDuration;
+    private float shakeAmount;
+    private float decreaseFactor;
+    private Vector3 camPosition;
+    private bool canShock;
     public bool faceRight = false;
     GameObject wave;
     [SerializeField]
@@ -66,10 +72,26 @@ public class BoneBossController : MonoBehaviour
         maxY = player.transform.position.y + range;
         state = "movement";
         faceRight = false;
+        canShock = true;
+        mainCamera = Camera.main.transform;
+        shakeDuration = 0f;
+        shakeAmount = 0.1f;
+        decreaseFactor = 1;
     }
     void Update()
     {
-        if(player.transform.position.y < transform.FindChild("point").transform.position.y)
+        camPosition = mainCamera.position;
+        if (shakeDuration > 0)
+        {
+            mainCamera.position = camPosition + Random.insideUnitSphere * shakeAmount;
+            shakeDuration -= Time.deltaTime * decreaseFactor;
+        }
+        else
+        {
+            shakeDuration = 0f;
+            mainCamera.position = camPosition;
+        }
+        if (player.transform.position.y < transform.FindChild("point").transform.position.y)
         {
             GetComponentInChildren<SpriteRenderer>().sortingOrder = -1;
         }
@@ -188,6 +210,7 @@ public class BoneBossController : MonoBehaviour
         Debug.Log("Ground Attack");
         GetComponentInChildren<Animator>().SetBool("EarthquakeAttack", true);
         yield return new WaitForSeconds(animClip.length / 2);
+        shakeDuration = 5f;
         StartCoroutine(SpawnRocks());
         if(canHit)
         {
@@ -198,7 +221,7 @@ public class BoneBossController : MonoBehaviour
     }
     IEnumerator SpawnRocks()
     {
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 5; i++)
         {
             Instantiate(rockSpawner, new Vector3(Random.Range(rocksArea[0].position.x, rocksArea[1].position.x), Random.Range(rocksArea[0].position.y, rocksArea[1].position.y)), new Quaternion(0f, 0f, 0f, 0f));
             yield return new WaitForSeconds(0.5f);

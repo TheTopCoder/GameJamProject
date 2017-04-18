@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50955292858076754}
   - component: {fileID: 61252783940733714}
   - component: {fileID: 114502396296670746}
+  - component: {fileID: 95330500405687280}
   m_Layer: 0
   m_Name: WaveAttack
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1687622807601412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.53, y: -0.17, z: 0.7913809}
+  m_LocalPosition: {x: 5.492564, y: -3.891183, z: 0.7913809}
   m_LocalScale: {x: 0.25830686, y: 0.25830686, z: 0.43051142}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +79,7 @@ BoxCollider2D:
   m_Offset: {x: -0.061468124, y: -1.020381}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 1, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 6.59, y: 5.58}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
@@ -88,6 +89,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.879715, y: 2.9783888}
   m_EdgeRadius: 0
+--- !u!95 &95330500405687280
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687622807601412}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 357466d78f4fcab4dbcf85d5df572f2e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114502396296670746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,7 +151,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 04d67a2b585f23e47a5acdf175f08848, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5da36b92f4ff434caa8b3ce3111eeee, type: 3}
   m_Color: {r: 0.6728482, g: 0.758963, b: 0.9632353, a: 1}
   m_FlipX: 0
   m_FlipY: 0

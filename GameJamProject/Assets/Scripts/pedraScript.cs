@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class pedraScript: MonoBehaviour
 {
-    [SerializeField]
     GameObject player;
     [SerializeField]
     AnimationClip animClip;
+    bool alreadyHit;
+    GameObject pedraPlace;
     void Start()
     {
-        transform.localScale = new Vector3(0.0571315f, 0.1724727f, 0.3142073f);
+        player = GameObject.FindGameObjectWithTag("Player");
+        pedraPlace = transform.parent.gameObject;
+        transform.parent = null;
+        transform.localScale = new Vector3(0.280222f, 0.280222f, 0.280222f);
+        alreadyHit = false;
     }
     void Update()
     {
-        if (gameObject.transform.position.y <= transform.parent.position.y + 0.5)
+        if (gameObject.transform.position.y <= pedraPlace.transform.position.y + 0.5 && !alreadyHit)
         {
-            StartCoroutine(FloorHit(transform.parent.gameObject));
+            alreadyHit = true;
+            StartCoroutine(FloorHit(pedraPlace));
+
         }
     }
 

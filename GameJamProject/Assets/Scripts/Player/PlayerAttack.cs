@@ -18,6 +18,8 @@ public class PlayerAttack : MonoBehaviour {
     [SerializeField]
     Animator handAnim;
     [SerializeField]
+    Animator bodyAnim;
+    [SerializeField]
     AnimationClip handAttackAnim;
 
 	// Use this for initialization
@@ -37,7 +39,7 @@ public class PlayerAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (state == "wait") {
-			if (Input.GetAxisRaw ("XboxR2")>0) {
+			if (Input.GetAxisRaw ("XboxX")>0 || Input.GetAxisRaw("XboxR2") > 0) {
 				state = "attack";
                 transform.FindChild("ShakeWeaponSound").GetComponent<AudioSource>().Play();
                 handAnim.SetTrigger("Attack");
@@ -59,7 +61,9 @@ public class PlayerAttack : MonoBehaviour {
 			}
 		}
 		if (state == "attackStrong") {
-			if (canHit&&!hit) {
+            handAnim.SetBool("Estocada", true);
+            bodyAnim.SetBool("Estocada", true);
+            if (canHit&&!hit) {
 				Debug.Log ("AttackStrong");
 				hit = true;
 
@@ -75,7 +79,9 @@ public class PlayerAttack : MonoBehaviour {
             }
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
-				attackCurrentTime = attackStrongTime;
+                handAnim.SetBool("Estocada", false);
+                bodyAnim.SetBool("Estocada", false);
+                attackCurrentTime = attackStrongTime;
 				hit = true;
 				state = "wait";
 			}
