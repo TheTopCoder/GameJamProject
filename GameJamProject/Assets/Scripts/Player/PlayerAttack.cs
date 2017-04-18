@@ -39,7 +39,7 @@ public class PlayerAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (state == "wait") {
-			if (Input.GetAxisRaw ("XboxX")>0 || Input.GetAxisRaw("XboxR2") > 0) {
+			if (Input.GetAxisRaw ("XboxX")>0 || Input.GetAxisRaw("XboxR2") > 0 || Input.GetKey(KeyCode.E)) {
 				state = "attack";
                 transform.FindChild("ShakeWeaponSound").GetComponent<AudioSource>().Play();
                 handAnim.SetTrigger("Attack");

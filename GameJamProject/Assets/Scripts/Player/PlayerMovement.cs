@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour {
 			rollDirX = dirX;
 			rollDirY = dirY;
 			rollCurrentCooldown -= Time.deltaTime;
-			if (Input.GetAxisRaw("XboxA")>0 || (Input.GetAxisRaw("XboxR1") > 0) && rollCurrentCooldown < 0) {
+			if (Input.GetAxisRaw("XboxA")>0 || (Input.GetAxisRaw("XboxR1") > 0) || Input.GetKey(KeyCode.Q)&& rollCurrentCooldown < 0) {
 				state = "roll";
 			}
 

@@ -16,7 +16,7 @@ public class MenuScript : MonoBehaviour
     bool goingUp;
     void Update()
     {
-        if (Input.GetButtonDown("Submit"))
+        if (Input.GetButtonDown("Submit") || Input.anyKeyDown)
         {
             StartCoroutine(LoadScene("CorridorScene"));
         }
