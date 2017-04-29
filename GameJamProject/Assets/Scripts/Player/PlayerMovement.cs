@@ -17,9 +17,9 @@ public class PlayerMovement : MonoBehaviour {
 	string state;
 	float speed;
 	float rollSpeed;
-	float rollTime;
+	float rollTime=0.19f;
 	float rollCurrentTime;
-	float rollCooldown;
+	float rollCooldown=0.4f;
 	float rollCurrentCooldown;
     bool faceRight;
     bool canEnterDoor = false;
@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour {
 		rollCurrentCooldown = 0;
         invulnerable = false;
         walkingAudio.Pause();
+		spawnedTop = true;
 	}
 	
 	// Update is called once per frame
@@ -104,7 +105,7 @@ public class PlayerMovement : MonoBehaviour {
 			rollDirX = dirX;
 			rollDirY = dirY;
 			rollCurrentCooldown -= Time.deltaTime;
-			if (Input.GetAxisRaw("XboxA")>0 || (Input.GetAxisRaw("XboxR1") > 0) || Input.GetKey(KeyCode.Q)&& rollCurrentCooldown < 0) {
+			if ((Input.GetAxisRaw("XboxA")>0 || (Input.GetAxisRaw("XboxR1") > 0) || Input.GetKey(KeyCode.Q)|| Input.GetMouseButtonDown(1))&& rollCurrentCooldown < 0 && dirAbs!=0) {
 				state = "roll";
 			}
 
@@ -130,25 +131,27 @@ public class PlayerMovement : MonoBehaviour {
 				state = "movement";
 			}
 		}
-        if(canEnterDoor && Input.GetButtonDown("XboxA"))
+		if(canEnterDoor && (Input.GetButtonDown("XboxA") || Input.GetKeyDown(KeyCode.Q) || Input.GetMouseButtonDown(0)))
         {
             canvas.GetComponent<TransitionScript>().ChangeScene();
         }
-        if (Input.GetButtonDown("XboxA"))
-        {
-            Debug.Log("A pressed");
-        }
-
     }
 
-    public IEnumerator DamagedPlayer()
+	public IEnumerator DamagedPlayer()
+	{
+		if (invulnerable == false) {
+			invulnerable = true;
+			StartCoroutine ("ReceiveDamage");
+		}
+		yield return null;
+	}
+
+    public IEnumerator ReceiveDamage()
     {
-        if (!invulnerable)
-        {
+			//Debug.Log (invulnerable);
             handAnim.SetBool("Flint", true);
             bodyAnim.SetBool("Flint", true);
-            life--;
-            invulnerable = true;
+			GetComponent<PlayerStats> ().DamagePlayer ();
             Color auxColor = new Color(bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.r, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.g, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 0);
             StartCoroutine(KnockBack());
             for (int i = 0; i < 7; i++)
@@ -167,7 +170,8 @@ public class PlayerMovement : MonoBehaviour {
             }
             handAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
             bodyAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        }
+//			Debug.Log ("Vulnerable");
+			invulnerable = false;
     }
     IEnumerator KnockBack()
     {
@@ -186,7 +190,7 @@ public class PlayerMovement : MonoBehaviour {
 
         handAnim.SetBool("Flint", false);
         bodyAnim.SetBool("Flint", false);
-        invulnerable = false;
+        //invulnerable = false;
     }
     void Flip()
     {

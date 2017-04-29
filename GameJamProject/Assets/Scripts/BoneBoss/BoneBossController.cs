@@ -14,7 +14,10 @@ public class BoneBossController : MonoBehaviour
     public int maxLife = 5000;
 	int dashAttackDamage = 10;
 	float dashSpeed = 1.5f;
-    [SerializeField]
+	GameObject fade;
+	[SerializeField]
+	GameObject FadeOut;
+	[SerializeField]
     AnimationClip animClipUp;
     [SerializeField]
     AnimationClip animClipDown;
@@ -113,6 +116,8 @@ public class BoneBossController : MonoBehaviour
         {
             if (life <= 0)
             {
+				fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
+				fade.GetComponent<FadeTransition>().nextScene = "BeatDemo";
                 Destroy(gameObject);
             }
             cooldownMovement -= Time.deltaTime;
@@ -120,7 +125,7 @@ public class BoneBossController : MonoBehaviour
             if (cooldownAbility <= 0)
             {
                 state = "ChooseAbility";
-                cooldownAbility = Random.Range(3, 5);
+                cooldownAbility = Random.Range(2.25f, 3.25f);
             }
            /* else if (cooldownMovement <= 0)
             {
@@ -149,6 +154,15 @@ public class BoneBossController : MonoBehaviour
     }
     void ChooseAbility()
     {
+		if (Vector3.Distance (transform.position, player.transform.position) > 2f) {
+			prob1 = 1;
+			prob2 = 1;
+			prob3 = 2;
+		} else {
+			prob1 = 1;
+			prob2 = 1;
+			prob3 = 1;
+		}
         int abilityNumber = Random.Range(1, prob1Current + prob2Current + prob3Current + 1);
         if (abilityNumber >= 1 && abilityNumber <= prob1Current)
         {
@@ -201,7 +215,7 @@ public class BoneBossController : MonoBehaviour
         {
             StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
         }
-        wave = (GameObject) Instantiate (waveAttack,transform.position,Quaternion.Euler(0f,0f,0f));
+		wave = (GameObject) Instantiate (waveAttack,transform.position-new Vector3(-1f,0f,0f),Quaternion.Euler(0f,0f,0f));
 		yield return new WaitForSeconds(0.5f);
         state = "movement";
     }
@@ -221,9 +235,18 @@ public class BoneBossController : MonoBehaviour
     }
     IEnumerator SpawnRocks()
     {
+//		make rock fall into player
+		yield return new WaitForSeconds(0.25f);
+		Instantiate(rockSpawner, player.transform.position, new Quaternion(0f, 0f, 0f, 0f));
+		yield return new WaitForSeconds(0.5f);
         for(int i = 0; i < 5; i++)
         {
-            Instantiate(rockSpawner, new Vector3(Random.Range(rocksArea[0].position.x, rocksArea[1].position.x), Random.Range(rocksArea[0].position.y, rocksArea[1].position.y)), new Quaternion(0f, 0f, 0f, 0f));
+			if (Random.Range(0f,1f) > 0.3f){
+			Instantiate(rockSpawner, new Vector3(Random.Range(rocksArea[0].position.x, rocksArea[1].position.x), Random.Range(rocksArea[0].position.y, rocksArea[1].position.y)), new Quaternion(0f, 0f, 0f, 0f));
+			}
+			else{
+				Instantiate(rockSpawner, player.transform.position, new Quaternion(0f, 0f, 0f, 0f));
+			}
             yield return new WaitForSeconds(0.5f);
         }
         GetComponentInChildren<Animator>().SetBool("EarthquakeAttack", false);

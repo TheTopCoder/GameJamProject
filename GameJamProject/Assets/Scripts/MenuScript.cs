@@ -37,15 +37,16 @@ public class MenuScript : MonoBehaviour
     void BlinkText()
     {
         time += Time.deltaTime;
+		Color aux;
         if (goingUp)
         {
-            Color aux = texto.color;
+            aux = texto.color;
             aux.a += Time.deltaTime;
             texto.color = aux;
         }
         else if (!goingUp)
         {
-            Color aux = texto.color;
+            aux = texto.color;
             aux.a -= Time.deltaTime ;
             texto.color = aux;
         }

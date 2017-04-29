@@ -12,16 +12,19 @@ public class pedraPlaceScript : MonoBehaviour
     public bool playerInCircle;
     float maxDist;
     float distance;
+	float height;
     GameObject rochaGameObject;
     Vector3 maxScale;
     Vector3 minScale;
     void Start()
     {
         rochaGameObject = (GameObject)Instantiate(rocha, new Vector3(this.transform.position.x, 5.21f), new Quaternion(0f, 0f, 0f, 0f), gameObject.transform);
-        maxDist = 5.21f - transform.position.y;
+		height = 9f;
+		maxDist = height - transform.position.y;
         maxScale = new Vector3(2.009045f, 0.6654951f, 0.2722615f);
         minScale = maxScale/ 3;
         transform.localScale = minScale;
+		player = GameObject.FindGameObjectWithTag ("Player");
         Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
     }
     void Update()

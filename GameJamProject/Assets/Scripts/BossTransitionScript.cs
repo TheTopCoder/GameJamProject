@@ -16,6 +16,7 @@ public class BossTransitionScript : MonoBehaviour
     }
     IEnumerator imageTransition()
     {
+		yield return new WaitForSeconds(0.2f);
         for (int i = 0; i <= 100; i++)
         {
             Color aux = image.color;
@@ -23,7 +24,7 @@ public class BossTransitionScript : MonoBehaviour
             image.color = aux;
             yield return new WaitForSeconds(0.01f);
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.75f);
         for (int i = 0; i <= 100; i++)
         {
             Color aux = image2.color;
@@ -31,7 +32,7 @@ public class BossTransitionScript : MonoBehaviour
             image2.color = aux;
             yield return new WaitForSeconds(0.01f);
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         SceneManager.LoadScene("BoneBossScene");
 
     }

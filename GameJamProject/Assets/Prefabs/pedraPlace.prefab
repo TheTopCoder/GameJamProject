@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1808911129985320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6541, y: -4.6169, z: 0}
+  m_LocalPosition: {x: 0.24841838, y: -5.3007874, z: 0}
   m_LocalScale: {x: 2.6018212, y: 0.8618519, z: 0.35259324}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0015522242, y: -0.0046859235}
+  m_Offset: {x: 0.0015522242, y: 0.061422795}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -86,7 +86,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.265193, y: 0.43429682}
+  m_Size: {x: 0.265193, y: 0.78341705}
   m_EdgeRadius: 0
 --- !u!114 &114097455903903244
 MonoBehaviour:
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocha: {fileID: 1648964598404528, guid: b666da21466c8814b9673a39c5a5b602, type: 2}
-  player: {fileID: 1165140154048748, guid: 2cb895a07f395484ab5b3fa47605de3b, type: 2}
+  player: {fileID: 0}
   playerInCircle: 0
 --- !u!212 &212724006774102812
 SpriteRenderer:

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAttack : MonoBehaviour {
 
-	public string state;
+	public string state;//wait,attack,attackStrong,recoverAttack
 	bool canHit;
 	bool hit;
 	int attackDamage;
@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour {
 	void Start () {
 		playerStats = GetComponent<PlayerStats> ();
 		attackDamage = playerStats.attackDamage;
-		attackTime = handAttackAnim.length * 3;
+		attackTime = handAttackAnim.length * 1.2f;
 		attackStrongDamage = playerStats.attackStrongDamage;
 		attackStrongTime = playerStats.attackStrongTime;
 		state = "wait";
@@ -39,13 +39,13 @@ public class PlayerAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (state == "wait") {
-			if (Input.GetAxisRaw ("XboxX")>0 || Input.GetAxisRaw("XboxR2") > 0 || Input.GetKey(KeyCode.E)) {
+			if (Input.GetAxisRaw ("XboxX")>0 || Input.GetAxisRaw("XboxR2") > 0 || Input.GetKey(KeyCode.E) || Input.GetMouseButtonDown(0)) {
 				state = "attack";
                 transform.FindChild("ShakeWeaponSound").GetComponent<AudioSource>().Play();
                 handAnim.SetTrigger("Attack");
             }
 			else if (Input.GetAxisRaw ("XboxL2")>0) {
-				state = "attackStrong";
+//				state = "attackStrong";
 			}
 		}
 		if (state == "attack") {
