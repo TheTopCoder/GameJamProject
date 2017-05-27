@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour {
 	void Start () {
 		playerStats = GetComponent<PlayerStats> ();
 		attackDamage = playerStats.attackDamage;
-		attackTime = handAttackAnim.length * 1.2f;
+		attackTime = handAttackAnim.length * 1.05f;
 		attackStrongDamage = playerStats.attackStrongDamage;
 		attackStrongTime = playerStats.attackStrongTime;
 		state = "wait";

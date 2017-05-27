@@ -593,7 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3668c6c153985094b8481f8e1b40809f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 1.5
   rollSpeed: 6.5
   rollTime: 0.18
   rollCooldown: 0.4
@@ -618,10 +618,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8e3e5a5e1471744b730272aa899d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundShadow: {fileID: 1808911129985320, guid: 8f1be6cbc98119642a486bbfd810ac13,
+    type: 2}
   bodyAnim: {fileID: 95423060716706658}
   handAnim: {fileID: 95308437064773608}
-  smearPrefab: {fileID: 1376077639778216, guid: d91bb8e7ec43ea347a4bbd357184505e,
-    type: 2}
   dashDust: {fileID: 1046454170340766, guid: ecd598df92550f6449c420b61beb7790, type: 2}
   dashDustPosition: {fileID: 1654017572327304}
   walkingAudio: {fileID: 82535202412978190}

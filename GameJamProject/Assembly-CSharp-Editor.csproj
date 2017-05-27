@@ -46,7 +46,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PolyNav2D\Scripts\Editor\PolyNav2DInspector.cs" />
+     <Compile Include="Assets\Spriter2UnityDX\Editor\AnimationBuilder.cs" />
+     <Compile Include="Assets\Spriter2UnityDX\Editor\CustomEditors.cs" />
+     <Compile Include="Assets\Spriter2UnityDX\Editor\PrefabBuilder.cs" />
+     <Compile Include="Assets\Spriter2UnityDX\Editor\S2USettings.cs" />
+     <Compile Include="Assets\Spriter2UnityDX\Editor\ScmlImportOptions.cs" />
+     <Compile Include="Assets\Spriter2UnityDX\Editor\ScmlPostProcessor.cs" />
+     <Compile Include="Assets\Spriter2UnityDX\Editor\ScmlSupport.cs" />
+ <Reference Include="Facebook.Unity.Settings">
+ <HintPath>C:/Users/Leonardo/Documents/GameJamProject/GameJamProject/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
