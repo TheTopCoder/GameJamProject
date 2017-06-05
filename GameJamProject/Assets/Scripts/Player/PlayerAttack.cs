@@ -60,6 +60,7 @@ public class PlayerAttack : MonoBehaviour {
 				state = "wait";
 			}
 		}
+		//Aqui atira o tacape
 		if (state == "attackStrong") {
             handAnim.SetBool("Estocada", true);
             bodyAnim.SetBool("Estocada", true);
