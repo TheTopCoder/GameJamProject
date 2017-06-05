@@ -59,10 +59,6 @@
      <Compile Include="Assets\Scripts\ExitGame.cs" />
      <Compile Include="Assets\Scripts\FadeBlackScript.cs" />
      <Compile Include="Assets\Scripts\FadeTransition.cs" />
-     <Compile Include="Assets\Scripts\FireBoss\FireBossController.cs" />
-     <Compile Include="Assets\Scripts\FireBoss\FireBreathScript.cs" />
-     <Compile Include="Assets\Scripts\FireBoss\FireballScript.cs" />
-     <Compile Include="Assets\Scripts\FireBoss\GroundFireScript.cs" />
      <Compile Include="Assets\Scripts\GameOverScript.cs" />
      <Compile Include="Assets\Scripts\HeartScript.cs" />
      <Compile Include="Assets\Scripts\LightScript.cs" />

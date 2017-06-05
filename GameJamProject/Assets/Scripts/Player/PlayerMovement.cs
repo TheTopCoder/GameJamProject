@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour {
 	float jumpGravity = 0.3f;
 	float previousSpeedY = 0;
 	float dirAbs = 0;
+//	float playerRelPos = 0;
 	GameObject groundReference;
 
 	[SerializeField]
@@ -138,14 +139,15 @@ public class PlayerMovement : MonoBehaviour {
 			groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
 			transform.position = new Vector3 (groundReference.transform.position.x,groundReference.transform.position.y+0.35f,transform.position.z);
 
-//			groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
-//			groundReference.transform.position = transform.position+new Vector3(0,-0.35f,0);
+			//			groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
+			//			groundReference.transform.position = transform.position+new Vector3(0,-0.35f,0);
 
 			if ((Input.GetAxisRaw("XboxA")>0 || (Input.GetAxisRaw("XboxR1") > 0) || Input.GetKey(KeyCode.Q)|| Input.GetMouseButtonDown(1))&& rollCurrentCooldown < 0 && dirAbs!=0) {
 				state = "roll";
 			}
 			if ((Input.GetAxisRaw("XboxB")>0 || (Input.GetAxisRaw("XboxL1") > 0) || Input.GetKey(KeyCode.Space)|| Input.GetMouseButtonDown(2))) {
 				state = "jump";
+				jumpY = 0;
 				Jump ();
 			}
 		}
@@ -154,13 +156,13 @@ public class PlayerMovement : MonoBehaviour {
 			Move ();
 			groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
 			//GetComponent<Rigidbody2D> ().velocity += new Vector2 (0,jumpSpeedCur);
-			transform.position += new Vector3 (0,jumpSpeedCur*Time.deltaTime,0);
-			transform.position = new Vector3 (groundReference.transform.position.x,transform.position.y,transform.position.z);
+			transform.position = new Vector3 (groundReference.transform.position.x,groundReference.transform.position.y+jumpY+0.35f,transform.position.z);
 			jumpY += jumpSpeedCur * Time.deltaTime;
 			jumpSpeedCur -= jumpGravity;
 			if (jumpY < 0) {
 				groundReference.transform.position = transform.position+new Vector3(0,-0.35f,0);
 				state = "movement";
+				jumpY = 0;
 			}
 		}
 		else if (state == "roll") {
@@ -186,6 +188,7 @@ public class PlayerMovement : MonoBehaviour {
 				state = "movement";
 			}
 		}
+
 		if(canEnterDoor && (Input.GetButtonDown("XboxA") || Input.GetKeyDown(KeyCode.Q) || Input.GetMouseButtonDown(0)))
         {
             canvas.GetComponent<TransitionScript>().ChangeScene();

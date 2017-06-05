@@ -74,7 +74,7 @@ public class PlayerAttack : MonoBehaviour {
                 }
                 else if (boss.name.Equals("FireBoss"))
                 {
-                    boss.GetComponent<FireBossController>().life -= attackStrongDamage;
+//                    boss.GetComponent<FireBossController>().life -= attackStrongDamage;
                     
                 }
             }
@@ -114,7 +114,7 @@ public class PlayerAttack : MonoBehaviour {
         }
         else if (boss.name.Equals("FireBoss"))
         {
-            boss.GetComponent<FireBossController>().life -= attackDamage;
+//            boss.GetComponent<FireBossController>().life -= attackDamage;
         }
     }
 }
