@@ -72,11 +72,14 @@ public class PlayerAttack : MonoBehaviour {
                 {
                     boss.GetComponent<BoneBossController>().life -= attackStrongDamage;
                 }
+<<<<<<< HEAD
                 else if (boss.name.Equals("FireBoss"))
                 {
 //                    boss.GetComponent<FireBossController>().life -= attackStrongDamage;
                     
                 }
+=======
+>>>>>>> 4178732143e2f731bc145c7823c2aea5f24eba7a
             }
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
@@ -112,10 +115,13 @@ public class PlayerAttack : MonoBehaviour {
             yield return new WaitForSeconds(0.05f);
             boss.GetComponentInChildren<SpriteRenderer>().color = Color.white;
         }
+<<<<<<< HEAD
         else if (boss.name.Equals("FireBoss"))
         {
 //            boss.GetComponent<FireBossController>().life -= attackDamage;
         }
+=======
+>>>>>>> 4178732143e2f731bc145c7823c2aea5f24eba7a
     }
 }
 
