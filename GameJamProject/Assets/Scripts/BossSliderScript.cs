@@ -18,9 +18,5 @@ public class BossSliderScript : MonoBehaviour
         {
             GetComponent<Slider>().value = (float)boss.GetComponent<BoneBossController>().life / boss.GetComponent<BoneBossController>().maxLife;
         }
-        else if(boss.name.Equals("FireBoss"))
-        {
-            GetComponent<Slider>().value = (float)boss.GetComponent<FireBossController>().life / boss.GetComponent<FireBossController>().maxLife;
-        }
     }
 }

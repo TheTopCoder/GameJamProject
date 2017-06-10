@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.17863324, g: 0.17403765, b: 0.21323532, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -86,7 +86,8 @@ LightmapSettings:
     m_PVRFilteringAtrousColorSigma: 1
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 690dc9844a20e474681db308ff1fc37a,
+    type: 2}
   m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
@@ -756,7 +757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &833952265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,6 +1155,20 @@ Prefab:
       propertyPath: eventSystem
       value: 
       objectReference: {fileID: 1024997407}
+    - target: {fileID: 224291089579576496, guid: c651f8ad9e993614eab965895a105796,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.2286205
+      objectReference: {fileID: 0}
+    - target: {fileID: 224291089579576496, guid: c651f8ad9e993614eab965895a105796,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.9999924
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962093180811586, guid: c651f8ad9e993614eab965895a105796, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c651f8ad9e993614eab965895a105796, type: 2}
   m_IsPrefabParent: 0
