@@ -51,7 +51,8 @@ public class PlayerAttack : MonoBehaviour {
 		if (state == "attack") {
 			if (canHit&&!hit) {
 				hit = true;
-                StartCoroutine(DamageTime());
+                //StartCoroutine(DamageTime());
+				boss.GetComponent<FomeController>().ReceiveDamage(attackDamage);
             }
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
@@ -101,7 +102,7 @@ public class PlayerAttack : MonoBehaviour {
 			canHit = false;
 		}
 	}
-	IEnumerator DamageTime()
+/*	IEnumerator DamageTime()
 	{
 		yield return new WaitForSeconds(handAttackAnim.length);
 		if (boss != null) {
@@ -120,7 +121,7 @@ public class PlayerAttack : MonoBehaviour {
 			}
 		}
 	}
-		
+*/		
 
 }
 

@@ -54,6 +54,7 @@ public class PlayerStats : MonoBehaviour {
 			Heart3.SetActive (false);
 			fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
 			fade.GetComponent<FadeTransition>().nextScene = "GameOver";
+			Destroy (GameObject.FindGameObjectWithTag ("PlayerBase"));
 			Destroy(gameObject);
 		}
 	}

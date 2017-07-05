@@ -31,13 +31,13 @@ public class Vomit : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		Debug.Log (enabledHit);
-		if (enabledHit && other.tag == "PlayerBase") {
+		if (player!=null && enabledHit && other.tag == "PlayerBase") {
 			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 		}
 	}
 	void OnTriggerStay2D(Collider2D other){
 		Debug.Log (enabledHit);
-		if (enabledHit && other.tag == "PlayerBase") {
+		if (player!=null && enabledHit && other.tag == "PlayerBase") {
 			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 		}
 	}

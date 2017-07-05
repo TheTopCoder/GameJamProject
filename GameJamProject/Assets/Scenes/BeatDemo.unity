@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 854216480}
-  texto: {fileID: 0}
+  texto: {fileID: 809000129}
 --- !u!114 &394323490
 MonoBehaviour:
   m_ObjectHideFlags: 0

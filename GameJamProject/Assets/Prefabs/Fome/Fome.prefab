@@ -203,7 +203,7 @@ MonoBehaviour:
   waveAttack: {fileID: 0}
   groundAttack: {fileID: 0}
   life: 0
-  maxLife: 250
+  maxLife: 300
   FadeOut: {fileID: 1518292290722822, guid: 69121602aaa6ab94c8ef037b74c26b28, type: 2}
   animClipUp: {fileID: 0}
   animClipDown: {fileID: 0}

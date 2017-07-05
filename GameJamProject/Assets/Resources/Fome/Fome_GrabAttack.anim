@@ -20,13 +20,13 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 1fa629399aff60544b1a7020ed44b2de, type: 3}
-    - time: 0.44
+    - time: 0.48
       value: {fileID: 21300000, guid: f1f13382546c8da47a77462491394d17, type: 3}
-    - time: 0.56
+    - time: 0.6
       value: {fileID: 21300000, guid: 045ff0fd9ee3c4e4b8fdf15bbfceeea1, type: 3}
-    - time: 0.72
+    - time: 0.76
       value: {fileID: 21300000, guid: e37417104af4aaa40adf8f0c4b56dc06, type: 3}
-    - time: 0.78
+    - time: 0.82
       value: {fileID: 21300000, guid: e37417104af4aaa40adf8f0c4b56dc06, type: 3}
     attribute: m_Sprite
     path: 
@@ -57,7 +57,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.79999995
+    m_StopTime: 0.84
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -78,21 +78,21 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.44
+  - time: 0.48
     functionName: CreateHitbox
     data: Fome_GrabAttack_Hitbox
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.56
+  - time: 0.6
     functionName: DestroyHitbox
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.74
+  - time: 0.8
     functionName: FinishAttack
     data: 
     objectReferenceParameter: {fileID: 0}

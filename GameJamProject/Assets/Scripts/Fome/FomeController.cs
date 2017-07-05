@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FomeController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class FomeController : MonoBehaviour
 	public GameObject waveAttack;
 	public GameObject groundAttack;
     public int life;
-    public int maxLife = 5000;
+    public int maxLife = 300;
 	int dashAttackDamage = 10;
 	float dashSpeed = 1.5f;
 	GameObject fade;
@@ -356,7 +357,10 @@ void DestroyHitbox(){
         }
         GetComponentInChildren<Animator>().SetBool("EarthquakeAttack", false);
  */   }
-
+	
+	public void ReceiveDamage(int damage){
+		StartCoroutine ("DamageTime", damage);
+	}
 
     void Flip()
     {
@@ -377,5 +381,23 @@ void DestroyHitbox(){
 			//canHit = false;
 		}
 	}
-
+	IEnumerator DamageTime(int attackDamage)
+	{
+		yield return new WaitForSeconds(0.05f);
+		if (name.Equals ("BoneBoss")) {
+			GetComponentInChildren<BoneBossController> ().life -= attackDamage;
+			GetComponentInChildren<SpriteRenderer> ().color = Color.red;
+			yield return new WaitForSeconds (0.05f);
+			GetComponentInChildren<SpriteRenderer> ().color = Color.white;
+		} else if (name.Equals ("Fome")) {
+			GetComponent<FomeController> ().life -= attackDamage;
+			GetComponent<SpriteRenderer> ().color = Color.red;
+			GameObject.FindGameObjectWithTag ("Lifebar").GetComponent<Image> ().color = Color.red;
+			yield return new WaitForSeconds (0.05f);
+			GameObject.FindGameObjectWithTag ("Lifebar").GetComponent<Image> ().color = Color.white;
+			GetComponent<SpriteRenderer> ().color = Color.white;
+		} else if (name.Equals ("FireBoss")) {
+			//            GetComponent<FireBossController>().life -= attackDamage;
+		}
+	}
 }

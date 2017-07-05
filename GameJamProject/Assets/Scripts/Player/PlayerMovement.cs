@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour {
 	float dirAbs = 0;
 	float shadowYOffset = 0.35f;
 	float shadowXOffset = 0f;
+	float lastShadowX;
+	float lastShadowY;
 //	float playerRelPos = 0;
 	GameObject groundReference;
 
@@ -58,6 +60,8 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start (){
 		groundReference = GameObject.FindGameObjectWithTag("PlayerBase");
+		lastShadowX = groundReference.transform.position.x;
+		lastShadowY = groundReference.transform.position.y;
 		//groundReference.transform.position = transform.position+new Vector3(0,-shadowYOffset,0);
 		Color tmp = groundReference.GetComponent<Renderer> ().material.color;
 		tmp.a = 0.4f;
@@ -111,7 +115,7 @@ public class PlayerMovement : MonoBehaviour {
 		speedX = dirX * speed;
 		speedY = dirY * speed;
 		groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (speedX, speedY);
-		GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
+//		GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
 		lookDirX = Input.GetAxis ("Horizontal");
 		lookDirY = Input.GetAxis ("Vertical");
 		float lookDirAbs = Mathf.Sqrt (dirX * dirX + dirY * dirY);
@@ -138,9 +142,14 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		else if (state == "movement") {
 			GetComponent<Collider2D> ().enabled = true;
+
 			Move ();
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (groundReference.transform.position.x - lastShadowX, groundReference.transform.position.y - lastShadowY) / Time.deltaTime;
+			lastShadowX = groundReference.transform.position.x;
+			lastShadowY = groundReference.transform.position.y;
+
 			//groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
-			GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
+/*			GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
 			if (GetComponent<Rigidbody2D> ().velocity.y > 0&&transform.position.y - groundReference.transform.position.y > shadowYOffset){
 				GetComponent<Rigidbody2D> ().velocity = new Vector2(GetComponent<Rigidbody2D> ().velocity.x,0);
 			}
@@ -153,10 +162,11 @@ public class PlayerMovement : MonoBehaviour {
 			else if (GetComponent<Rigidbody2D> ().velocity.x > 0&&transform.position.x - groundReference.transform.position.x > shadowXOffset){
 				GetComponent<Rigidbody2D> ().velocity = new Vector2(0,GetComponent<Rigidbody2D> ().velocity.y);
 			}
-			//transform.position = new Vector3 (groundReference.transform.position.x,groundReference.transform.position.y+shadowYOffset,transform.position.z);
+*/			//transform.position = new Vector3 (groundReference.transform.position.x,groundReference.transform.position.y+shadowYOffset,transform.position.z);
 
 			//			groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
 			//			groundReference.transform.position = transform.position+new Vector3(0,-shadowYOffset,0);
+
 
 			if ((Input.GetAxisRaw("XboxA")>0 || (Input.GetAxisRaw("XboxR1") > 0) || Input.GetKey(KeyCode.Q)|| Input.GetMouseButtonDown(1))&& rollCurrentCooldown < 0 && dirAbs!=0) {
 				state = "roll";
@@ -169,9 +179,14 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		else if (state == "jump") {
 			GetComponent<Collider2D> ().enabled = false;
+
 			Move ();
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (groundReference.transform.position.x - lastShadowX, groundReference.transform.position.y - lastShadowY) / Time.deltaTime;
+			lastShadowX = groundReference.transform.position.x;
+			lastShadowY = groundReference.transform.position.y;
+
 			//groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
-			GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
+/*			GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
 			if (GetComponent<Rigidbody2D> ().velocity.y > 0&&transform.position.y - groundReference.transform.position.y > jumpY+shadowYOffset){
 				GetComponent<Rigidbody2D> ().velocity = new Vector2(GetComponent<Rigidbody2D> ().velocity.x,0);
 			}
@@ -184,8 +199,9 @@ public class PlayerMovement : MonoBehaviour {
 			else if (GetComponent<Rigidbody2D> ().velocity.x > 0&&transform.position.x - groundReference.transform.position.x > shadowXOffset){
 				GetComponent<Rigidbody2D> ().velocity = new Vector2(0,GetComponent<Rigidbody2D> ().velocity.y);
 			}
-			//GetComponent<Rigidbody2D> ().velocity += new Vector2 (0,jumpSpeedCur);
+*/			//GetComponent<Rigidbody2D> ().velocity += new Vector2 (0,jumpSpeedCur);
 			//transform.position = new Vector3 (groundReference.transform.position.x,groundReference.transform.position.y+jumpY+shadowYOffset,transform.position.z);
+			GetComponent<Rigidbody2D> ().velocity += new Vector2 (0,jumpSpeedCur);
 			jumpY += jumpSpeedCur * Time.deltaTime;
 			jumpSpeedCur -= jumpGravity;
 			if (jumpY <= 0) {
@@ -206,8 +222,13 @@ public class PlayerMovement : MonoBehaviour {
             bodyAnim.SetBool("Dash", true);
 			speedX = rollDirX * rollSpeed;
 			speedY = rollDirY * rollSpeed;
+
 			groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (speedX, speedY);
-			GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (groundReference.transform.position.x - lastShadowX, groundReference.transform.position.y - lastShadowY) / Time.deltaTime;
+			lastShadowX = groundReference.transform.position.x;
+			lastShadowY = groundReference.transform.position.y;
+
+/*			GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
 			if (GetComponent<Rigidbody2D> ().velocity.y > 0&&transform.position.y - groundReference.transform.position.y > shadowYOffset){
 				GetComponent<Rigidbody2D> ().velocity = new Vector2(GetComponent<Rigidbody2D> ().velocity.x,0);
 			}
@@ -220,6 +241,7 @@ public class PlayerMovement : MonoBehaviour {
 			else if (GetComponent<Rigidbody2D> ().velocity.x > 0&&transform.position.x - groundReference.transform.position.x > shadowXOffset){
 				GetComponent<Rigidbody2D> ().velocity = new Vector2(0,GetComponent<Rigidbody2D> ().velocity.y);
 			}
+*/
 			rollCurrentTime -= Time.deltaTime;
 			if (rollCurrentTime < 0){
                 handAnim.SetBool("Dash", false);

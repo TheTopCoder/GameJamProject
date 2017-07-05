@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\FadeTransition.cs" />
      <Compile Include="Assets\Scripts\Fome\AttackHitbox.cs" />
      <Compile Include="Assets\Scripts\Fome\FomeController.cs" />
+     <Compile Include="Assets\Scripts\Fome\LifebarScript.cs" />
      <Compile Include="Assets\Scripts\Fome\SpawnableCrown.cs" />
      <Compile Include="Assets\Scripts\Fome\Vomit.cs" />
      <Compile Include="Assets\Scripts\Fome\VomitSpit.cs" />
@@ -74,6 +75,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\Player\ShadowScript.cs" />
      <Compile Include="Assets\Scripts\PlayerShadow.cs" />
+     <Compile Include="Assets\Scripts\TestScript.cs" />
      <Compile Include="Assets\Scripts\TransitionScript.cs" />
      <Compile Include="Assets\Scripts\pedraPlaceScript.cs" />
      <Compile Include="Assets\Scripts\pedraScript.cs" />

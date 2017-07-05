@@ -11,7 +11,7 @@ public class LightScript : MonoBehaviour
 	void Start () {
         goingUp = true;
 		GetComponent<Light>().range = minLight;
-		rate = (maxLight - minLight)*1.5f*Time.deltaTime;
+		rate = (maxLight - minLight)*Time.deltaTime/20;
 	}
 	void FixedUpdate () {
         if(goingUp)
