@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4429943190470608}
   - component: {fileID: 114477086246269960}
   - component: {fileID: 50076101034305112}
-  - component: {fileID: 61331072663836660}
   - component: {fileID: 61471054295763700}
   - component: {fileID: 114567935939341094}
   - component: {fileID: 114298575459539336}
@@ -192,7 +191,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1165140154048748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.033, y: -4.93, z: 0.79}
+  m_LocalPosition: {x: -2.61, y: -2.51, z: 0.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4133534891609026}
@@ -268,7 +267,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -301,31 +300,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.2}
-  m_EdgeRadius: 0
---- !u!61 &61331072663836660
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1165140154048748}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.10091388, y: -0.13268763}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.5642453, y: 0.5642453}
-    adaptiveTilingThreshold: 0.195
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.21559745, y: 0.347306}
   m_EdgeRadius: 0
 --- !u!61 &61471054295763700
 BoxCollider2D:
@@ -594,7 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  rollSpeed: 6.5
+  rollSpeed: 7.5
   rollTime: 0.18
   rollCooldown: 0.4
   maxLife: 3

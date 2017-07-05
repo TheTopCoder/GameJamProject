@@ -16,10 +16,13 @@ public class MenuScript : MonoBehaviour
     bool goingUp;
     void Update()
     {
-        if (Input.GetButtonDown("Submit") || Input.anyKeyDown)
+		if ((Input.GetButtonDown("Submit") || Input.anyKeyDown)&&(!Input.GetKeyDown(KeyCode.Alpha1)))
         {
-            StartCoroutine(LoadScene("CorridorScene"));
+			//StartCoroutine(LoadScene("CorridorScene"));
+			StartCoroutine(LoadScene("FomeTriangularArena"));
         }
+		else if (Input.GetKeyDown(KeyCode.Alpha1))
+			StartCoroutine(LoadScene("FomeNewArena"));
         BlinkText();
     }
 
@@ -40,15 +43,15 @@ public class MenuScript : MonoBehaviour
 		Color aux;
         if (goingUp)
         {
-            aux = texto.color;
-            aux.a += Time.deltaTime;
-            texto.color = aux;
+            //aux = texto.color;
+            //aux.a += Time.deltaTime;
+            //texto.color = aux;
         }
         else if (!goingUp)
         {
-            aux = texto.color;
-            aux.a -= Time.deltaTime ;
-            texto.color = aux;
+            //aux = texto.color;
+            //aux.a -= Time.deltaTime ;
+            //texto.color = aux;
         }
 
         if (time >= 1)

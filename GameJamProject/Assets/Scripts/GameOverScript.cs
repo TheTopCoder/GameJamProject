@@ -16,10 +16,12 @@ public class GameOverScript : MonoBehaviour
 	bool goingUp;
 	void Update()
 	{
-		if (Input.GetButtonDown("Submit") || Input.GetAxisRaw("XboxStart")>0 ||Input.GetAxisRaw("XboxA")>0 || Input.anyKeyDown)
+		if ((Input.GetButtonDown("Submit") || Input.anyKeyDown)&&(!Input.GetKeyDown(KeyCode.Alpha1)))
 		{
-			StartCoroutine(LoadScene("BoneBossScene"));
+			StartCoroutine(LoadScene("FomeTriangularArena"));
 		}
+		else if (Input.GetKeyDown(KeyCode.Alpha1))
+			StartCoroutine(LoadScene("FomeNewArena"));
 		BlinkText();
 	}
 

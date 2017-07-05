@@ -25,10 +25,16 @@ EditorBuildSettings:
     guid: b6bec9b4af2e3844d8f2144ca05fb50a
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
-    guid: 00000000000000000000000000000000
+    guid: 27dc0191a5e2c0941b45e444800cdd7c
   - enabled: 1
     path: Assets/Scenes/BeatDemo.unity
     guid: cb95e23f55975924aa2808be222a7212
+  - enabled: 1
+    path: Assets/Scenes/FomeNewArena.unity
+    guid: 448d0f5b55cdf9b43a973151538b1585
   - enabled: 0
     path: 
     guid: 0cf367dbfe7259449bdd5c49364fa41b
+  - enabled: 1
+    path: Assets/Scenes/FomeTriangularArena.unity
+    guid: a0f3f380184c05246870a051d90f7310

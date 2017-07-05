@@ -72,14 +72,11 @@ public class PlayerAttack : MonoBehaviour {
                 {
                     boss.GetComponent<BoneBossController>().life -= attackStrongDamage;
                 }
-<<<<<<< HEAD
                 else if (boss.name.Equals("FireBoss"))
                 {
 //                    boss.GetComponent<FireBossController>().life -= attackStrongDamage;
                     
                 }
-=======
->>>>>>> 4178732143e2f731bc145c7823c2aea5f24eba7a
             }
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
@@ -104,24 +101,26 @@ public class PlayerAttack : MonoBehaviour {
 			canHit = false;
 		}
 	}
-    IEnumerator DamageTime()
-    {
-        yield return new WaitForSeconds(handAttackAnim.length);
+	IEnumerator DamageTime()
+	{
+		yield return new WaitForSeconds(handAttackAnim.length);
+		if (boss != null) {
+			if (boss.name.Equals ("BoneBoss")) {
+				boss.GetComponentInChildren<BoneBossController> ().life -= attackDamage;
+				boss.GetComponentInChildren<SpriteRenderer> ().color = Color.red;
+				yield return new WaitForSeconds (0.05f);
+				boss.GetComponentInChildren<SpriteRenderer> ().color = Color.white;
+			} else if (boss.name.Equals ("Fome")) {
+				boss.GetComponent<FomeController> ().life -= attackDamage;
+				boss.GetComponent<SpriteRenderer> ().color = Color.red;
+				yield return new WaitForSeconds (0.05f);
+				boss.GetComponent<SpriteRenderer> ().color = Color.white;
+			} else if (boss.name.Equals ("FireBoss")) {
+				//            boss.GetComponent<FireBossController>().life -= attackDamage;
+			}
+		}
+	}
+		
 
-        if (boss.name.Equals("BoneBoss"))
-        {
-            boss.GetComponentInChildren<BoneBossController>().life -= attackDamage;
-            boss.GetComponentInChildren<SpriteRenderer>().color = Color.red;
-            yield return new WaitForSeconds(0.05f);
-            boss.GetComponentInChildren<SpriteRenderer>().color = Color.white;
-        }
-<<<<<<< HEAD
-        else if (boss.name.Equals("FireBoss"))
-        {
-//            boss.GetComponent<FireBossController>().life -= attackDamage;
-        }
-=======
->>>>>>> 4178732143e2f731bc145c7823c2aea5f24eba7a
-    }
 }
 
