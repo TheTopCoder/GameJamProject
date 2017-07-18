@@ -9,6 +9,8 @@ TagManager:
   - Fade
   - PlayerBase
   - Lifebar
+  - Enemy
+  - TransitionCanvas
   layers:
   - Default
   - TransparentFX

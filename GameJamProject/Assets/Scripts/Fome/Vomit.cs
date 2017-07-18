@@ -18,8 +18,8 @@ public class Vomit : MonoBehaviour {
 		target = transform.parent;
 		horSpd = 5f;
 		verSpd = 0;
-		Debug.Log ("X: " + transform.position.x);
-		Debug.Log ("Y: " + transform.position.y);
+		//Debug.Log ("X: " + transform.position.x);
+		//Debug.Log ("Y: " + transform.position.y);
 		timeToHit = (-transform.parent.position.x + transform.position.x) / horSpd;
 		grav = 2 * (-transform.parent.position.y + transform.position.y) / Mathf.Pow (timeToHit, 2);
 		StartCoroutine (DestroyVomit());
@@ -30,13 +30,13 @@ public class Vomit : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		Debug.Log (enabledHit);
+		//Debug.Log (enabledHit);
 		if (player!=null && enabledHit && other.tag == "PlayerBase") {
 			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 		}
 	}
 	void OnTriggerStay2D(Collider2D other){
-		Debug.Log (enabledHit);
+		//Debug.Log (enabledHit);
 		if (player!=null && enabledHit && other.tag == "PlayerBase") {
 			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 		}

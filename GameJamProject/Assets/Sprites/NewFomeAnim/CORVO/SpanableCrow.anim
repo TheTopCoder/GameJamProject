@@ -20,11 +20,11 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: d0b5f602343014649b1fc2ebd9b4ad7e, type: 3}
-    - time: 0.125
+    - time: 0.45
       value: {fileID: 21300000, guid: 327157c3d7ed6c047bb13bf1a4ea4f13, type: 3}
-    - time: 0.6
+    - time: 0.55
       value: {fileID: 21300000, guid: 35d868a589ef10844941e613d332ab38, type: 3}
-    - time: 0.75
+    - time: 0.7
       value: {fileID: 21300000, guid: 64925c5c860357c43a333e922281894f, type: 3}
     - time: 0.85
       value: {fileID: 21300000, guid: e0ee072b4452f304c940ca2755f16a73, type: 3}
@@ -81,8 +81,15 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.6
+  - time: 0.55
     functionName: EnableHit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.85
+    functionName: DisableHit
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

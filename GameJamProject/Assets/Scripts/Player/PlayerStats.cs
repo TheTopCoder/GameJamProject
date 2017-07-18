@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour {
 	public float speed = 1f;
@@ -30,24 +31,27 @@ public class PlayerStats : MonoBehaviour {
 	
 	void Update ()
     {
-		if (life == 3) {
+		if (SceneManager.GetActiveScene().name == "CorridorScene"||SceneManager.GetActiveScene().name == "Lobby"){
+			
+		}
+		else if (life == 3) {
 			Heart1.SetActive (true);
 			Heart2.SetActive (true);
 			Heart3.SetActive (true);
 		}
-		if (life == 2) {
+		else if (life == 2) {
 //			Heart3.GetComponent<HeartScript> ().DestroyHeart ();
 			Heart1.SetActive (true);
 			Heart2.SetActive (true);
 			Heart3.SetActive (false);
 		}
-		if (life == 1) {
+		else if (life == 1) {
 //			Heart2.GetComponent<HeartScript> ().DestroyHeart ();
 			Heart1.SetActive (true);
 			Heart2.SetActive (false);
 			Heart3.SetActive (false);
 		}
-		if (life <= 0) {
+		else if (life <= 0) {
 //			Heart1.GetComponent<HeartScript> ().DestroyHeart ();
 			Heart1.SetActive (false);
 			Heart2.SetActive (false);

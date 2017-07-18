@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 	float rollDirY;
 	string state;
 	float speed;
+	float pushSpeed;
 	float rollSpeed;
 	float rollTime=0.19f;
 	float rollCurrentTime;
@@ -67,6 +68,7 @@ public class PlayerMovement : MonoBehaviour {
 		tmp.a = 0.4f;
 		groundReference.GetComponent<Renderer> ().material.color = tmp;
 		Physics2D.IgnoreCollision (groundReference.GetComponent<Collider2D> (), GetComponent<Collider2D> (), true);
+		pushSpeed = 0;
 
         life = maxLife;
 		playerAttack = GetComponent<PlayerAttack> ();
@@ -84,8 +86,8 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void Move(){
-		dirX = Input.GetAxis ("Horizontal");
-		dirY = Input.GetAxis ("Vertical");
+		dirX = Input.GetAxisRaw ("Horizontal");
+		dirY = Input.GetAxisRaw ("Vertical");
 
 		if (dirX > 0 && !faceRight)
 		{
@@ -115,6 +117,15 @@ public class PlayerMovement : MonoBehaviour {
 		speedX = dirX * speed;
 		speedY = dirY * speed;
 		groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (speedX, speedY);
+
+		//Push
+		groundReference.GetComponent<Rigidbody2D> ().velocity -= new Vector2 (pushSpeed, 0);
+		if (pushSpeed > 0) {
+			pushSpeed -= Time.deltaTime * 3.5f;
+			if (pushSpeed < 0)
+				pushSpeed = 0;
+		}
+
 //		GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
 		lookDirX = Input.GetAxis ("Horizontal");
 		lookDirY = Input.GetAxis ("Vertical");
@@ -134,6 +145,10 @@ public class PlayerMovement : MonoBehaviour {
 //		groundReference.transform.position = transform.position+new Vector3(0,-shadowYOffset,0);
 		//		groundReference.transform.localScale = new Vector3 (groundReference.transform.localScale.x/groundReference.transform.localScale.y,1,1);
 	}
+
+	public void Push(float pushForce){
+		pushSpeed = pushForce;
+	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -142,7 +157,6 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		else if (state == "movement") {
 			GetComponent<Collider2D> ().enabled = true;
-
 			Move ();
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (groundReference.transform.position.x - lastShadowX, groundReference.transform.position.y - lastShadowY) / Time.deltaTime;
 			lastShadowX = groundReference.transform.position.x;
@@ -261,6 +275,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	public IEnumerator DamagedPlayer()
 	{
+		//Debug.Log ("Damaged");
 		if (invulnerable == false) {
 			invulnerable = true;
 			StartCoroutine ("ReceiveDamage");
@@ -276,7 +291,7 @@ public class PlayerMovement : MonoBehaviour {
 			GetComponent<PlayerStats> ().DamagePlayer ();
             Color auxColor = new Color(bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.r, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.g, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 0);
             StartCoroutine(KnockBack());
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 9; i++)
             {
                 if (handAnim.gameObject.GetComponent<SpriteRenderer>().color != auxColor)
                 {
@@ -288,7 +303,7 @@ public class PlayerMovement : MonoBehaviour {
                     handAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(handAnim.gameObject.GetComponent<SpriteRenderer>().color.r, handAnim.gameObject.GetComponent<SpriteRenderer>().color.g, handAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 1);
                     bodyAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.r, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.g, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 1);
                 }
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.125f);
             }
             handAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
             bodyAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);

@@ -38,6 +38,7 @@ public class FomeController : MonoBehaviour
     float cooldownAbility;
 	List<int> attackProb = new List<int>();
 	List<int> attackCurProb = new List<int>();
+	List<int> attackProbUp = new List<int>();
 	int abilityState=0;
     int prob1;
     int prob1Current;
@@ -45,6 +46,8 @@ public class FomeController : MonoBehaviour
     int prob2Current;
     int prob3;
     int prob3Current;
+	int attackCount;
+	int attackLimit;
     string state;
     bool moving;
 	float arenaX = 1.5f;
@@ -68,20 +71,18 @@ public class FomeController : MonoBehaviour
         life = maxLife;
         cooldownMovement = 0;
         cooldownAbility = 2f;
-		attackProb.Add(1);
-		attackProb.Add(1);
-		attackProb.Add(1);
-		attackProb.Add(1);
-		attackProb.Add(1);
-		for (int i = 1; i <= 5; i++) {
+		for (int i = 0; i <= 6; i++) {
+			attackProb.Add (1);
+			attackProbUp.Add (1);
 			attackCurProb.Add(1);
 		}
-        prob1 = 5;
+/*        prob1 = 5;
         prob2 = 15;
         prob3 = 5;
         prob1Current = prob1;
         prob2Current = prob2;
         prob3Current = prob3;
+*/		attackCount = 0;
         minX = player.transform.position.x - range;
         minY = player.transform.position.y - range;
         maxX = player.transform.position.x + range;
@@ -149,7 +150,7 @@ public class FomeController : MonoBehaviour
             {
 				//Debug.Log ("cooldownAbility < 0");
                 state = "ChooseAbility";
-                cooldownAbility = Random.Range(2.25f, 3.25f);
+                cooldownAbility = Random.Range(1.75f, 3.0f);
             }
            /* else if (cooldownMovement <= 0)
             {
@@ -182,63 +183,125 @@ public class FomeController : MonoBehaviour
     void ChooseAbility()
     {
 		Debug.Log ("Choose Ability");
+		attackCount = 0;
+		attackLimit = 1;
 		//Tornar as habilidades mais provaveis a medida que nao sao usadas
 		//Dependendo da posicao/distancia do jogador, a probabilidade de cada ataque é diferente
 		if (player!=null&&Vector3.Distance (transform.position, player.transform.position) > 2.5f) {
-			attackProb [1] = 2;
+			attackProb [1] = 0;
+			attackProbUp [1] = 0;
 			attackProb [2] = 1;
+			attackProbUp [2] = 1;
 			attackProb [3] = 4;
-			attackProb [4] = 3;
+			attackProbUp [3] = 1;
+			attackProb [4] = 0;
+			attackProbUp [4] = 0;
+			if (life <= maxLife * 1 / 2) {
+				attackProb [5] = 2;
+				attackProbUp [5] = 1;
+			} else {
+				attackProb [5] = 0;
+				attackProbUp [5] = 0;
+			}
+			if (life <= maxLife * 2 / 3) {
+				attackProb [6] = 5;
+				attackProbUp [6] = 1;
+			} else {
+				attackProb [6] = 0;
+				attackProbUp [6] = 0;
+			}
+
 			if (abilityState != 1) {
 				abilityState = 1;
-				for (int i = 1; i <= 4; i++) {
+				for (int i = 1; i <= 6; i++) {
 					attackCurProb [i] = attackProb[i];
 				}
 			}
 		} else {
-			attackProb [1] = 5;
+			attackProb [1] = 3;
+			attackProbUp [1] = 1;
 			attackProb [2] = 1;
-			attackProb [3] = 3;
-			attackProb [4] = 7;
+			attackProbUp [2] = 0;
+			attackProb [3] = 2;
+			attackProbUp [3] = 1;
+			attackProb [4] = 4;
+			attackProbUp [4] = 1;
+			if (life <= maxLife * 1 / 2) {
+				attackProb [5] = 2;
+				attackProbUp [5] = 1;
+			} else {
+				attackProb [5] = 0;
+				attackProbUp [5] = 0;
+			}
+			if (life <= maxLife * 2 / 3) {
+				attackProb [6] = 3;
+				attackProbUp [6] = 1;
+			} else {
+				attackProb [6] = 0;
+				attackProbUp [6] = 0;
+			}
 			if (abilityState != 2) {
 				abilityState = 2;
-				for (int i = 1; i <= 4; i++) {
+				for (int i = 1; i <= 6; i++) {
 					attackCurProb [i] = attackProb [i];
 				}
 			}
 		}
 		int sumProb = 0;
-		for (int i = 1; i <= 4; i++) {
+		int sumCurProb = 0;
+		int curAbility = 1;
+		int thatAttackProb = 0;
+		for (int i = 1; i <= 6; i++) {
 			sumProb += attackCurProb [i];
 		}
-		int abilityNumber = Random.Range(1, sumProb + 1);
-		for (int i = 1; i <= 4; i++) {
-			attackCurProb [i]++;
+		float abilityNumber = Random.Range(0, sumProb);
+		for (int i = 1; i <= 6; i++) {
+			attackCurProb [i]+= attackProbUp[i];
 		}
-		if (abilityNumber >= 1 && abilityNumber <= attackCurProb[1])
+		thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
+		if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)
         {
             StartCoroutine(ClawAttack());
-			attackCurProb [1] = attackProb[1];
+			attackCurProb [curAbility] = attackProb[curAbility];
         }
-	else if (abilityNumber >= attackCurProb[1] + 1 && abilityNumber <= attackCurProb[1] + attackCurProb[2])
-        {
+		sumCurProb += thatAttackProb;
+		curAbility++;
+		thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
+		if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)		{
 			StartCoroutine(SpitAttack());
-//			FinishAttack();
-			attackCurProb [2] = attackProb[2];
-        }
-	else if (abilityNumber >= attackCurProb[1] + attackCurProb[2] + 1 && abilityNumber <= attackCurProb[1] + attackCurProb[2] + attackCurProb[3])
-	{
-		StartCoroutine(CrowAttack());
-		//			FinishAttack();
-		attackCurProb [3] = attackProb[3];
-	}
-	else if (abilityNumber >= attackCurProb[1] + attackCurProb[2] + attackCurProb[3] + 1 && abilityNumber <= attackCurProb[1] + attackCurProb[2] + attackCurProb[3] + attackCurProb[4])
-	{
-		StartCoroutine(GrabAttack());
-		//			FinishAttack();
-		attackCurProb [4] = attackProb[4];
-	}
-
+			attackCurProb [curAbility] = attackProb[curAbility];
+		}
+		sumCurProb += thatAttackProb;
+		curAbility++;
+		thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
+		if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)		{
+			StartCoroutine(CrowAttack());
+			attackCurProb [curAbility] = attackProb[curAbility];
+		}
+		sumCurProb += thatAttackProb;
+		curAbility++;
+		thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
+		if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)		{
+			StartCoroutine(GrabAttack());
+			attackCurProb [curAbility] = attackProb[curAbility];
+		}
+		sumCurProb += thatAttackProb;
+		curAbility++;
+		thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
+		if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)		{
+			StartCoroutine(GroundAttack());
+			attackCurProb [curAbility] = attackProb[curAbility];
+		}
+		sumCurProb += thatAttackProb;
+		curAbility++;
+		thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
+		if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)
+		{
+			StartCoroutine(CrowMinion());
+			attackCurProb [curAbility] = attackProb[curAbility];
+		}
+		sumCurProb += thatAttackProb;
+		curAbility++;
 }
 
 //Não utilizado
@@ -257,7 +320,13 @@ public class FomeController : MonoBehaviour
 
 //Ativada durante a animacão
 	public void FinishAttack(){
-		state = "movement";
+		attackCount++;
+		//Debug.Log ("Finished Attack");
+		if (attackCount >= attackLimit) {
+			state = "movement";
+			Destroy (attackHitbox);
+			GetComponentInChildren<Animator>().SetTrigger("Fome_Idle");
+		}
 	}
 
 void CreateHitbox(string name){
@@ -265,13 +334,15 @@ void CreateHitbox(string name){
 	attackHitbox = (GameObject) Instantiate (hitboxprefab, transform.position, Quaternion.identity);
 }
 void DestroyHitbox(){
-	Destroy (attackHitbox);
+	if (attackHitbox != null) {
+		Destroy (attackHitbox);
+	}
 }
 
 //Ataques
     IEnumerator ClawAttack()
     {
-		Debug.Log ("Claw Attack");
+		//Debug.Log ("Claw Attack");
         GetComponentInChildren<Animator>().SetTrigger("Fome_ClawAttack");
 		while(state == "ability"){
 			yield return new WaitForSeconds(0.005f);
@@ -285,7 +356,7 @@ void DestroyHitbox(){
 
 	IEnumerator GrabAttack()
 	{
-		Debug.Log ("Grab Attack");
+		//Debug.Log ("Grab Attack");
 		GetComponentInChildren<Animator>().SetTrigger("Fome_GrabAttack");
 		while(state == "ability"){
 			yield return new WaitForSeconds(0.005f);
@@ -294,6 +365,24 @@ void DestroyHitbox(){
 				StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 			}
 			//        state = "movement";
+		}
+	}
+
+	IEnumerator GroundAttack()
+	{
+		attackLimit = 5;
+		//Debug.Log ("Ground Attack");
+		GetComponentInChildren<Animator>().SetTrigger("Fome_PrepareGroundAttack");
+		yield return new WaitForSeconds(0.75f);
+		GetComponentInChildren<Animator>().SetTrigger("Fome_GroundAttack");
+		UnityEngine.Object shockwave = Resources.Load ("Fome/Fome_Shockwave");
+		Instantiate (shockwave, new Vector3(transform.position.x-1.0f,transform.position.y-1f,0f), Quaternion.identity);
+		while(state == "ability"){
+			yield return new WaitForSeconds(0.005f);
+			if (player!=null&&canHit)
+			{
+				StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+			}
 		}
 	}
 	IEnumerator SpitAttack(){
@@ -321,7 +410,7 @@ void DestroyHitbox(){
     }
     IEnumerator CrowAttack()
     {
-        Debug.Log("Crow Attack");
+        //Debug.Log("Crow Attack");
 		GetComponent<Animator>().SetTrigger("Fome_CrowAttack");
 		transform.FindChild("Corvos").gameObject.GetComponentInChildren<Animator>().SetTrigger("CrowAttack");
         yield return new WaitForSeconds(0.5f);
@@ -343,7 +432,9 @@ void DestroyHitbox(){
 //		make rock fall into player
 		yield return new WaitForSeconds(0.25f);
 		UnityEngine.Object crowprefab = Resources.Load ("Fome/" + "SpawnableCrow");
-		spawnableCrow = (GameObject) Instantiate (crowprefab, player.transform.position, Quaternion.identity);
+		if (player != null) {
+			spawnableCrow = (GameObject)Instantiate (crowprefab, player.transform.position, Quaternion.identity);
+		}
 /*		yield return new WaitForSeconds(0.5f);
         for(int i = 0; i < 5; i++)
         {
@@ -357,7 +448,37 @@ void DestroyHitbox(){
         }
         GetComponentInChildren<Animator>().SetBool("EarthquakeAttack", false);
  */   }
-	
+
+	IEnumerator CrowMinion()
+	{
+		//Debug.Log("Crow Attack");
+		GetComponent<Animator>().SetTrigger("Fome_SpawnMinion");
+		transform.FindChild("Corvos").gameObject.GetComponentInChildren<Animator>().SetTrigger("CrowAttack");
+		yield return new WaitForSeconds(0.5f);
+		//        shakeDuration = 5f;
+		StartCoroutine(SpawnMinion());
+		while(state == "ability"){
+			yield return new WaitForSeconds(0.005f);
+//			if (player!=null&&canHit)
+//			{
+//				StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+//			}
+			//        state = "movement";
+		}
+		yield return new WaitForSeconds(0.25f);
+		state = "movement";
+	}
+
+	IEnumerator SpawnMinion()
+	{
+		//		make rock fall into player
+		yield return new WaitForSeconds (0.25f);
+		UnityEngine.Object minionprefab = Resources.Load ("Fome/" + "CrowMinion");
+		if (player != null) {
+			spawnableCrow = (GameObject)Instantiate (minionprefab, player.transform.position, Quaternion.identity);
+		}
+	}
+
 	public void ReceiveDamage(int damage){
 		StartCoroutine ("DamageTime", damage);
 	}

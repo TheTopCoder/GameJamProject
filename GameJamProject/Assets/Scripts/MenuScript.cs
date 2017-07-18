@@ -16,13 +16,14 @@ public class MenuScript : MonoBehaviour
     bool goingUp;
     void Update()
     {
-		if ((Input.GetButtonDown("Submit") || Input.anyKeyDown)&&(!Input.GetKeyDown(KeyCode.Alpha1)))
+		if ((Input.GetButtonDown("Submit") || Input.anyKeyDown)/*&&(!Input.GetKeyDown(KeyCode.Alpha1))*/)
         {
 			//StartCoroutine(LoadScene("CorridorScene"));
-			StartCoroutine(LoadScene("FomeTriangularArena"));
+			StartCoroutine(LoadScene("CorridorScene"));
         }
-		else if (Input.GetKeyDown(KeyCode.Alpha1))
-			StartCoroutine(LoadScene("FomeNewArena"));
+		else if (Input.GetKeyDown(KeyCode.Alpha1)){
+//			StartCoroutine(LoadScene("FomeNewArena"));
+		}
         BlinkText();
     }
 
@@ -33,7 +34,7 @@ public class MenuScript : MonoBehaviour
             Color aux = panel.color;
             aux.a += 0.01f;
             panel.color = aux;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.008f);
         }
         SceneManager.LoadScene(scene);
     }

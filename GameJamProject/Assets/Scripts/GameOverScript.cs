@@ -16,12 +16,13 @@ public class GameOverScript : MonoBehaviour
 	bool goingUp;
 	void Update()
 	{
-		if ((Input.GetButtonDown("Submit") || Input.anyKeyDown)&&(!Input.GetKeyDown(KeyCode.Alpha1)))
+		if ((Input.GetButtonDown("Submit") || Input.anyKeyDown)/*&&(!Input.GetKeyDown(KeyCode.Alpha1))*/)
 		{
-			StartCoroutine(LoadScene("FomeTriangularArena"));
+			StartCoroutine(LoadScene("Lobby"));
 		}
-		else if (Input.GetKeyDown(KeyCode.Alpha1))
-			StartCoroutine(LoadScene("FomeNewArena"));
+		else if (Input.GetKeyDown(KeyCode.Alpha1)){
+			//StartCoroutine(LoadScene("FomeNewArena"));
+		}
 		BlinkText();
 	}
 
@@ -32,7 +33,7 @@ public class GameOverScript : MonoBehaviour
 			Color aux = panel.color;
 			aux.a += 0.01f;
 			panel.color = aux;
-			yield return new WaitForSeconds(0.025f);
+			yield return new WaitForSeconds(0.011f);
 		}
 		SceneManager.LoadScene(scene);
 	}

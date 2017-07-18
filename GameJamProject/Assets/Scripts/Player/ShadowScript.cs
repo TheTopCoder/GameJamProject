@@ -19,7 +19,7 @@ public class ShadowScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 		for (int i = 0; i < other.contacts.GetLength(0);i++){
 			Vector2 dir = new Vector2(transform.position.x-other.contacts [i].point.x,transform.position.y-other.contacts [i].point.y);
-			Debug.Log (dir);
+			//Debug.Log (dir);
 			if (Vector2.Dot (dir, GetComponent<Rigidbody2D> ().velocity)>=0) {
 				//				GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 			}
@@ -29,7 +29,7 @@ public class ShadowScript : MonoBehaviour {
 	void OnCollisionStay2D(Collision2D other){
 		for (int i = 0; i < other.contacts.GetLength(0);i++){
 			Vector2 dir = new Vector2(transform.position.x-other.contacts [i].point.x,transform.position.y-other.contacts [i].point.y);
-			Debug.Log (dir);
+			//Debug.Log (dir);
 			if (Vector2.Dot (dir, GetComponent<Rigidbody2D> ().velocity)>=0) {
 				//				GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 			}

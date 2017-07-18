@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SpawnableCrown : MonoBehaviour {
 	GameObject boss;
+	GameObject player;
 	bool enabledHit;
+	bool hit=false;
 	// Use this for initialization
 	void Start () {
 		boss = GameObject.FindGameObjectWithTag ("Boss");
+		player = GameObject.FindGameObjectWithTag ("Player");
 		enabledHit = false;
 	}
 
@@ -19,24 +22,31 @@ public class SpawnableCrown : MonoBehaviour {
 	void EnableHit(){
 		enabledHit = true;
 	}
+	void DisableHit(){
+		enabledHit = false;
+	}
 
 	// Update is called once per frame
 	void Update () {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.tag == "PlayerBase"&&enabledHit){
-			boss.GetComponent<FomeController> ().canHit = true;
+		if (!hit&&other.tag == "PlayerBase"&&enabledHit){
+			hit = true;
+			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+//			boss.GetComponent<FomeController> ().canHit = true;
 		}
 	}
 	void OnTriggerStay2D(Collider2D other){
-		if (other.tag == "PlayerBase"&&enabledHit){
-			boss.GetComponent<FomeController> ().canHit = true;
+		if (!hit&&other.tag == "PlayerBase"&&enabledHit){
+			hit = true;
+			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+//			boss.GetComponent<FomeController> ().canHit = true;
 		}
 	}
 	void OnTriggerExit2D(Collider2D other){
 		if (other.tag == "PlayerBase"&&enabledHit){
-			boss.GetComponent<FomeController> ().canHit = false;
+//			boss.GetComponent<FomeController> ().canHit = false;
 		}
 	}
 }

@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour {
 
 	public string state;//wait,attack,attackStrong,recoverAttack
 	bool canHit;
-	bool hit;
+	ArrayList hit;
 	int attackDamage;
 	float attackTime;
 	int attackStrongDamage;
@@ -31,7 +31,7 @@ public class PlayerAttack : MonoBehaviour {
 		attackStrongTime = playerStats.attackStrongTime;
 		state = "wait";
 		canHit = false;
-		hit = false;
+		hit = new ArrayList();
 		attackCurrentTime = attackTime;
 		boss = GameObject.FindGameObjectWithTag ("Boss");
 	}
@@ -49,57 +49,84 @@ public class PlayerAttack : MonoBehaviour {
 			}
 		}
 		if (state == "attack") {
-			if (canHit&&!hit) {
-				hit = true;
-                //StartCoroutine(DamageTime());
-				boss.GetComponent<FomeController>().ReceiveDamage(attackDamage);
-            }
+			canHit = true;
+//				boss.GetComponent<FomeController>().ReceiveDamage(attackDamage);
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
 				attackCurrentTime = attackTime;
-				hit = false;
+//				hit = false;
+				canHit = false;
+				if (hit.Count > 0) {
+					hit.Clear ();
+				}
 				state = "wait";
 			}
 		}
 		//Aqui atira o tacape
 		if (state == "attackStrong") {
-            handAnim.SetBool("Estocada", true);
-            bodyAnim.SetBool("Estocada", true);
-            if (canHit&&!hit) {
-				Debug.Log ("AttackStrong");
-				hit = true;
-
-                if (boss.name.Equals("BoneBoss"))
-                {
-                    boss.GetComponent<BoneBossController>().life -= attackStrongDamage;
-                }
-                else if (boss.name.Equals("FireBoss"))
-                {
+			handAnim.SetBool ("Estocada", true);
+			bodyAnim.SetBool ("Estocada", true);
+			Debug.Log ("AttackStrong");
+			if (boss.name.Equals ("BoneBoss")) {
+				boss.GetComponent<BoneBossController> ().life -= attackStrongDamage;
+			} else if (boss.name.Equals ("FireBoss")) {
 //                    boss.GetComponent<FireBossController>().life -= attackStrongDamage;
                     
-                }
-            }
+			}
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
                 handAnim.SetBool("Estocada", false);
                 bodyAnim.SetBool("Estocada", false);
                 attackCurrentTime = attackStrongTime;
-				hit = true;
 				state = "wait";
 			}
 		}
-
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.tag == "Boss") {
-			canHit = true;
+		if (canHit&&(other.tag == "Boss"||other.tag == "Enemy")) {
+			bool alreadyHit = false;
+			for (int i = 0; i < hit.Count; i++) {
+				if ((int)hit [i] == other.gameObject.GetInstanceID ()) {
+					alreadyHit = true;
+				}
+			}
+			if (!alreadyHit) {
+				if (other.tag == "Boss") {
+					boss.GetComponent<FomeController> ().ReceiveDamage (attackDamage);
+					hit.Add (boss.GetInstanceID ());
+				} else {
+					other.gameObject.GetComponent<EnemyStats> ().ReceiveDamage (attackDamage);
+					hit.Add (other.gameObject.GetInstanceID ());
+				}
+			}
 		}
 	}
 
+	void OnTriggerStay2D(Collider2D other){
+		if (canHit&&(other.tag == "Boss"||other.tag == "Enemy")) {
+			bool alreadyHit = false;
+			for (int i = 0; i < hit.Count; i++) {
+				if ((int)hit [i] == other.gameObject.GetInstanceID ()) {
+					alreadyHit = true;
+				}
+			}
+			if (!alreadyHit) {
+				if (other.tag == "Boss") {
+					boss.GetComponent<FomeController> ().ReceiveDamage (attackDamage);
+					hit.Add (boss.GetInstanceID ());
+				} else {
+					other.gameObject.GetComponent<EnemyStats> ().ReceiveDamage (attackDamage);
+					hit.Add (other.gameObject.GetInstanceID ());
+				}
+			}
+		}
+	}
+
+
 	void OnTriggerExit2D(Collider2D other){
 		if (other.tag == "Boss") {
-			canHit = false;
+			
 		}
 	}
 /*	IEnumerator DamageTime()
