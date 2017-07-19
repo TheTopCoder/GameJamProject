@@ -101,20 +101,26 @@
     <Compile Include="Assets\Scripts\BossTransitionScript.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CameraFollow2.cs" />
+    <Compile Include="Assets\Scripts\CameraZoom.cs" />
     <Compile Include="Assets\Scripts\CreditsScript.cs" />
     <Compile Include="Assets\Scripts\DashDustScript.cs" />
     <Compile Include="Assets\Scripts\ExitGame.cs" />
     <Compile Include="Assets\Scripts\FadeBlackScript.cs" />
     <Compile Include="Assets\Scripts\FadeTransition.cs" />
     <Compile Include="Assets\Scripts\Fome\AttackHitbox.cs" />
+    <Compile Include="Assets\Scripts\Fome\CrowMinion.cs" />
+    <Compile Include="Assets\Scripts\Fome\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\Fome\FomeController.cs" />
     <Compile Include="Assets\Scripts\Fome\LifebarScript.cs" />
+    <Compile Include="Assets\Scripts\Fome\ShockwaveScript.cs" />
     <Compile Include="Assets\Scripts\Fome\SpawnableCrown.cs" />
     <Compile Include="Assets\Scripts\Fome\Vomit.cs" />
     <Compile Include="Assets\Scripts\Fome\VomitSpit.cs" />
     <Compile Include="Assets\Scripts\GameOverScript.cs" />
     <Compile Include="Assets\Scripts\HeartScript.cs" />
     <Compile Include="Assets\Scripts\LightScript.cs" />
+    <Compile Include="Assets\Scripts\LobbyDoor.cs" />
+    <Compile Include="Assets\Scripts\LobbyEye.cs" />
     <Compile Include="Assets\Scripts\MenuScript.cs" />
     <Compile Include="Assets\Scripts\PauseScript.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
@@ -126,9 +132,6 @@
     <Compile Include="Assets\Scripts\TransitionScript.cs" />
     <Compile Include="Assets\Scripts\pedraPlaceScript.cs" />
     <Compile Include="Assets\Scripts\pedraScript.cs" />
-    <Compile Include="Assets\Spriter2UnityDX\Runtime\EntityRenderer.cs" />
-    <Compile Include="Assets\Spriter2UnityDX\Runtime\SortingOrderUpdater.cs" />
-    <Compile Include="Assets\Spriter2UnityDX\Runtime\TextureController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

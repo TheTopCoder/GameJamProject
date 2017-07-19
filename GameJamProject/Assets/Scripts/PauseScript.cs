@@ -39,8 +39,6 @@ public class PauseScript : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(volumeAux);
-        Debug.Log(Input.GetAxisRaw("Horizontal"));
         if (Input.GetKey(KeyCode.Escape) || Input.GetButtonDown("XboxSelect"))
         {
             foreach (AudioSource a in audios)
