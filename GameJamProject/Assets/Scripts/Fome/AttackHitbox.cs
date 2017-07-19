@@ -18,14 +18,14 @@ public class AttackHitbox : MonoBehaviour {
 		
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		if (!hit&&other.tag == "Player") {
+		if (!hit&&other.transform.tag == "Player") {
 			hit = true;
 			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 			//boss.GetComponent<FomeController>().canHit = true;
 		}
 	}
 	void OnTriggerStay2D(Collider2D other){
-		if (!hit&&other.tag == "Player") {
+		if (!hit&&other.transform.tag == "Player") {
 			hit = true;
 			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 			//boss.GetComponent<FomeController>().canHit = true;

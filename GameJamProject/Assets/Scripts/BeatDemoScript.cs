@@ -18,7 +18,7 @@ public class BeatDemoScript : MonoBehaviour
 	{
 		if (Input.GetButtonDown("Submit") || Input.GetAxisRaw("XboxStart")>0 ||Input.GetAxisRaw("XboxA")>0 || Input.anyKeyDown)
 		{
-			StartCoroutine(LoadScene("MenuScene"));
+			StartCoroutine(LoadScene("Lobby"));
 		}
 		BlinkText();
 	}

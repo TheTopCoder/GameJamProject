@@ -186,9 +186,9 @@ public class PlayerMovement : MonoBehaviour {
 				state = "roll";
 			}
 			if ((Input.GetAxisRaw("XboxB")>0 || (Input.GetAxisRaw("XboxL1") > 0) || Input.GetKey(KeyCode.Space)|| Input.GetMouseButtonDown(2))) {
-				state = "jump";
-				jumpY = 0;
-				Jump ();
+//				state = "jump";
+//				jumpY = 0;
+//				Jump ();
 			}
 		}
 		else if (state == "jump") {
@@ -267,7 +267,7 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		}
 
-		if(canEnterDoor && (Input.GetButtonDown("XboxA") || Input.GetKeyDown(KeyCode.Q) || Input.GetMouseButtonDown(0)))
+		if(canEnterDoor && (Input.GetButtonDown("XboxX") || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)))
         {
             canvas.GetComponent<TransitionScript>().ChangeScene();
         }
