@@ -71,7 +71,7 @@ public class FomeController : MonoBehaviour
         life = maxLife;
         cooldownMovement = 0;
         cooldownAbility = 2f;
-		for (int i = 0; i <= 6; i++) {
+		for (int i = 0; i <= 7; i++) {
 			attackProb.Add (1);
 			attackProbUp.Add (1);
 			attackCurProb.Add(1);
@@ -187,7 +187,7 @@ public class FomeController : MonoBehaviour
 		attackLimit = 1;
 		//Tornar as habilidades mais provaveis a medida que nao sao usadas
 		//Dependendo da posicao/distancia do jogador, a probabilidade de cada ataque é diferente
-		if (player!=null&&Vector3.Distance (transform.position, player.transform.position) > 2.5f) {
+		if (player != null && Vector3.Distance (transform.position, player.transform.position) > 4.0f) {
 			attackProb [1] = 0;
 			attackProbUp [1] = 0;
 			attackProb [2] = 1;
@@ -214,10 +214,42 @@ public class FomeController : MonoBehaviour
 			if (abilityState != 1) {
 				abilityState = 1;
 				for (int i = 1; i <= 6; i++) {
-					attackCurProb [i] = attackProb[i];
+					attackCurProb [i] = attackProb [i];
 				}
 			}
-		} else {
+			}
+			else if (player != null && Vector3.Distance (transform.position, player.transform.position) > 2.5f) {
+				attackProb [1] = 0;
+				attackProbUp [1] = 0;
+				attackProb [2] = 1;
+				attackProbUp [2] = 1;
+				attackProb [3] = 4;
+				attackProbUp [3] = 1;
+				attackProb [4] = 0;
+				attackProbUp [4] = 0;
+				if (life <= maxLife * 1 / 2) {
+					attackProb [5] = 3;
+					attackProbUp [5] = 1;
+				} else {
+					attackProb [5] = 0;
+					attackProbUp [5] = 0;
+				}
+				if (life <= maxLife * 2 / 3) {
+					attackProb [6] = 5;
+					attackProbUp [6] = 1;
+				} else {
+					attackProb [6] = 0;
+					attackProbUp [6] = 0;
+				}
+
+				if (abilityState != 1) {
+					abilityState = 1;
+					for (int i = 1; i <= 6; i++) {
+						attackCurProb [i] = attackProb [i];
+					}
+				}
+			}
+			else {
 			attackProb [1] = 3;
 			attackProbUp [1] = 1;
 			attackProb [2] = 1;
@@ -227,7 +259,7 @@ public class FomeController : MonoBehaviour
 			attackProb [4] = 4;
 			attackProbUp [4] = 1;
 			if (life <= maxLife * 1 / 2) {
-				attackProb [5] = 2;
+				attackProb [5] = 3;
 				attackProbUp [5] = 1;
 			} else {
 				attackProb [5] = 0;
@@ -290,6 +322,7 @@ public class FomeController : MonoBehaviour
 		thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
 		if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)		{
 			StartCoroutine(GroundAttack());
+			StartCoroutine (BoneAttack());
 			attackCurProb [curAbility] = attackProb[curAbility];
 		}
 		sumCurProb += thatAttackProb;
@@ -408,6 +441,27 @@ void DestroyHitbox(){
 		yield return new WaitForSeconds(0.5f);
         state = "movement";
     }
+
+	IEnumerator BoneAttack(){
+		GetComponent<Animator> ().SetTrigger ("Fome_BoneAttack");
+		yield return new WaitForSeconds (0.3f);
+		UnityEngine.Object boneObject1 = Resources.Load ("Fome/" + "Bone1");
+		UnityEngine.Object boneObject2 = Resources.Load ("Fome/" + "Bone2");
+		UnityEngine.Object boneObject3 = Resources.Load ("Fome/" + "Bone3");
+		UnityEngine.Object boneTarget = Resources.Load ("Fome/" + "BoneTarget");
+//		GameObject boneObject = (GameObject)Instantiate (boneObject1, transform.position + new Vector3 (-0.45f, 1.4f, 0f), Quaternion.identity);
+		for (int i = 0; i < 8; i++) {
+			GameObject boneObject = (GameObject)Instantiate (boneObject1, transform.position + new Vector3 (-0.45f, 1.4f, 0f), Quaternion.identity);
+			GameObject boneTargetObject = (GameObject)Instantiate (boneTarget, new Vector3(Random.Range(spitArea[0].position.x, spitArea[1].position.x), Random.Range(spitArea[0].position.y, spitArea[1].position.y)), Quaternion.identity);
+			boneObject.transform.parent = boneTargetObject.transform;
+			//boneObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-3f,2f);
+			yield return new WaitForSeconds (0.05f);
+		}
+		//yield return new WaitForSeconds (0.5f);
+		//state = "movement";
+	}
+
+
     IEnumerator CrowAttack()
     {
         //Debug.Log("Crow Attack");

@@ -15,17 +15,19 @@ public class PauseScript : MonoBehaviour
     GameObject resumeButton;
     [SerializeField]
     GameObject eventSystem;
+	bool paused;
 
     float volumeAux;
     bool volumeSelected;
 
     void Start()
     {
+		paused = false;
         this.GetComponent<Canvas>().enabled = false;
 
         if (PlayerPrefs.GetFloat("MainVolume").Equals(null))
         {
-            PlayerPrefs.SetFloat("MainVolume", audios[1].volume);
+			PlayerPrefs.SetFloat("MainVolume", /*audios[1].volume*/0.5f);
         }
 
         volumeSlider.value = PlayerPrefs.GetFloat("MainVolume");
@@ -39,16 +41,19 @@ public class PauseScript : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape) || Input.GetButtonDown("XboxSelect"))
-        {
-            foreach (AudioSource a in audios)
-            {
-                a.Stop();
-            }
-            this.GetComponent<Canvas>().enabled = true;
-            eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(resumeButton);
-            Time.timeScale = 0;
-        }
+		if (Input.GetKeyDown (KeyCode.Escape) || Input.GetButtonDown ("XboxSelect")) {
+			if (!paused) {
+				paused = true;
+				foreach (AudioSource a in audios) {
+					a.Pause ();
+				}
+				this.GetComponent<Canvas> ().enabled = true;
+				eventSystem.GetComponent<EventSystem> ().SetSelectedGameObject (resumeButton);
+				Time.timeScale = 0;
+			} else {
+				OnResume ();
+			}
+		}
 
         if (volumeSelected)
         {
@@ -62,11 +67,13 @@ public class PauseScript : MonoBehaviour
     }
     public void OnResume()
     {
+		paused = false;
         Time.timeScale = 1;
         this.GetComponent<Canvas>().enabled = false;
         foreach (AudioSource a in audios)
         {
-            a.Play();
+//            a.Play();
+			a.UnPause();
         }
     }
 
