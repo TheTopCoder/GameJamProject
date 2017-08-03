@@ -8,7 +8,7 @@ public class DashDustScript : MonoBehaviour
     AnimationClip dashDustClip;
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(dashDust());	
+//        StartCoroutine(dashDust());
 	}
 
     IEnumerator dashDust()

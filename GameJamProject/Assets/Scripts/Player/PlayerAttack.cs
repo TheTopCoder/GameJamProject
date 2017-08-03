@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour {
 	float attackStrongTime;
 	float attackCurrentTime;
 	PlayerStats playerStats;
+	PlayerMovement playerMovement;
 	GameObject boss;
     [SerializeField]
     Animator handAnim;
@@ -25,6 +26,7 @@ public class PlayerAttack : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerStats = GetComponent<PlayerStats> ();
+		playerMovement = GetComponent<PlayerMovement> ();
 		attackDamage = playerStats.attackDamage;
 		attackTime = handAttackAnim.length * 1.05f;
 		attackStrongDamage = playerStats.attackStrongDamage;
@@ -39,22 +41,21 @@ public class PlayerAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (state == "wait") {
-			if (Input.GetAxisRaw ("XboxX")>0 || Input.GetAxisRaw("XboxR2") > 0 || Input.GetKey(KeyCode.E) || Input.GetMouseButtonDown(0)) {
+			if (Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKeyDown (KeyCode.E) || Input.GetMouseButtonDown (0)) {
 				state = "attack";
-                transform.FindChild("ShakeWeaponSound").GetComponent<AudioSource>().Play();
-                handAnim.SetTrigger("Attack");
-            }
-			else if (Input.GetAxisRaw ("XboxL2")>0) {
+				transform.FindChild ("ShakeWeaponSound").GetComponent<AudioSource> ().Play ();
+				handAnim.SetTrigger ("Attack");
+			} else if (Input.GetAxisRaw ("XboxL2") > 0) {
 //				state = "attackStrong";
+			} else if (Input.GetKeyDown (KeyCode.Space)) {
+				StartCoroutine (SkillLife());
 			}
 		}
 		if (state == "attack") {
 			canHit = true;
-//				boss.GetComponent<FomeController>().ReceiveDamage(attackDamage);
 			attackCurrentTime -= Time.deltaTime;
 			if (attackCurrentTime < 0) {
 				attackCurrentTime = attackTime;
-//				hit = false;
 				canHit = false;
 				if (hit.Count > 0) {
 					hit.Clear ();
@@ -82,6 +83,21 @@ public class PlayerAttack : MonoBehaviour {
 			}
 		}
 	}
+ 
+	IEnumerator SkillLife(){
+		Debug.Log ("GainLife");
+		if (playerStats.life < playerStats.maxLife && state == "wait" && playerMovement.state == "movement") {
+			state = "skill";
+			playerMovement.state = "skill";
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+			playerMovement.groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+			yield return new WaitForSeconds (0.4f);
+			playerStats.life++;
+			state = "wait";
+			playerMovement.state = "movement";
+		}
+		yield return new WaitForSeconds (0.02f);
+	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (canHit&&(other.tag == "Boss"||other.tag == "Enemy")) {
@@ -92,10 +108,12 @@ public class PlayerAttack : MonoBehaviour {
 				}
 			}
 			if (!alreadyHit) {
+				playerStats.GainEnergy ();
 				if (other.tag == "Boss") {
 					boss.GetComponent<FomeController> ().ReceiveDamage (attackDamage);
 					hit.Add (boss.GetInstanceID ());
 				} else {
+					Debug.Log ("Hit Crow");
 					other.gameObject.GetComponent<EnemyStats> ().ReceiveDamage (attackDamage);
 					hit.Add (other.gameObject.GetInstanceID ());
 				}
@@ -112,6 +130,7 @@ public class PlayerAttack : MonoBehaviour {
 				}
 			}
 			if (!alreadyHit) {
+				playerStats.GainEnergy ();
 				if (other.tag == "Boss") {
 					boss.GetComponent<FomeController> ().ReceiveDamage (attackDamage);
 					hit.Add (boss.GetInstanceID ());

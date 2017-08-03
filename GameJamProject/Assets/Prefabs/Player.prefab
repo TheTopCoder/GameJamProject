@@ -567,12 +567,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3668c6c153985094b8481f8e1b40809f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
-  rollSpeed: 7.5
-  rollTime: 0.18
-  rollCooldown: 0.35
+  speed: 1.6
+  rollSpeed: 7.8
+  speedYMult: 0.8
+  rollTime: 0.16
+  rollCooldown: 0.3
   maxLife: 3
   life: 3
+  energy: 0
+  maxEnergy: 100
+  energyGain: 5
   attackDamage: 5
   attackTime: 0.3
   attackStrongDamage: 10

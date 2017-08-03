@@ -9,6 +9,8 @@ public class BoneScript : MonoBehaviour {
 	float verSpd;
 	float timeToHit;
 	float grav;
+	float initialTime;
+	Vector2 scaleIncrease;
 	bool enabledHit;
 	GameObject player;
 	// Use this for initialization
@@ -16,12 +18,17 @@ public class BoneScript : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag("Player");
 		enabledHit = false;
 		target = transform.parent;
-		horSpd = 7f;
-		verSpd = 0;
+		transform.parent = null;
+		horSpd = 5.5f;
+		verSpd = 2f;
 		//Debug.Log ("X: " + transform.position.x);
 		//Debug.Log ("Y: " + transform.position.y);
-		timeToHit = (-transform.parent.position.x + transform.position.x) / horSpd;
-		grav = 2 * (-transform.parent.position.y + transform.position.y) / Mathf.Pow (timeToHit, 2);
+		timeToHit = (-target.position.x + transform.position.x) / horSpd;
+		grav = 2 * (-target.position.y + transform.position.y) / Mathf.Pow (timeToHit, 2) + 2*verSpd/timeToHit;
+		scaleIncrease.x = 2*target.localScale.x*(1f - 0.4f) / timeToHit;
+		scaleIncrease.y = 2*target.localScale.y*(1f - 0.4f) / timeToHit;
+		target.localScale = new Vector3 (target.localScale.x*0.4f,target.localScale.y*0.4f,0);
+		initialTime = Time.time;
 		//StartCoroutine (DestroyBone());
 	}
 
@@ -48,9 +55,13 @@ public class BoneScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		GetComponent<Rigidbody2D> ().velocity = new Vector2 (-horSpd, -verSpd);
-		verSpd += grav*Time.deltaTime;
-		if (transform.position.y < transform.parent.position.y) {
+		GetComponent<Rigidbody2D> ().velocity = new Vector2 (-horSpd, verSpd);
+		verSpd -= grav*Time.deltaTime;
+		if (Time.time - initialTime < timeToHit * 0.5f) {
+			target.localScale += new Vector3 (scaleIncrease.x * Time.deltaTime, scaleIncrease.y * Time.deltaTime, 0);
+		}
+	
+		if (transform.position.y < target.position.y) {
 			grav = 0;
 			verSpd = 0;
 			horSpd = 0;
@@ -62,6 +73,7 @@ public class BoneScript : MonoBehaviour {
 
 	IEnumerator DestroyBone(){
 		yield return new WaitForSeconds (0.05f);
+		Destroy (target.gameObject);
 		Destroy (gameObject);
 	}
 }

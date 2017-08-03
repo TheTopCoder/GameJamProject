@@ -22,15 +22,15 @@ AnimationClip:
       value: {fileID: 21300000, guid: aab6665d560755f488b199334b6dfadb, type: 3}
     - time: 0.083333336
       value: {fileID: 21300000, guid: e048dad0b8a07154eac57a7b582e24c2, type: 3}
-    - time: 0.35
+    - time: 0.4
       value: {fileID: 21300000, guid: 04728f0a6f9bf464485eab497789fb15, type: 3}
-    - time: 0.43333334
+    - time: 0.48333332
       value: {fileID: 21300000, guid: 0bf5f744b9320fc449eb2c043cf44d1c, type: 3}
-    - time: 0.51666665
+    - time: 0.56666666
       value: {fileID: 21300000, guid: 3ef58ef4b4fc68845ad80701f2f03063, type: 3}
-    - time: 0.6
+    - time: 0.65
       value: {fileID: 21300000, guid: 17144c74b43b1954eabb9462cf0ec0e0, type: 3}
-    - time: 0.6666667
+    - time: 0.71666664
       value: {fileID: 21300000, guid: 17144c74b43b1954eabb9462cf0ec0e0, type: 3}
     attribute: m_Sprite
     path: 
@@ -63,7 +63,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.68333334
+    m_StopTime: 0.7333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -84,35 +84,35 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.35
-    functionName: CreateHitbox
-    data: CrowMinion_Hitbox
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.35
+  - time: 0.4
     functionName: EnableHit
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.51666665
-    functionName: DisableHit
-    data: 
+  - time: 0.4
+    functionName: CreateHitbox
+    data: CrowMinion_Hitbox
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.51666665
+  - time: 0.56666666
     functionName: DestroyHitbox
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.6666667
+  - time: 0.56666666
+    functionName: DisableHit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.71666664
     functionName: FinishAttack
     data: 
     objectReferenceParameter: {fileID: 0}

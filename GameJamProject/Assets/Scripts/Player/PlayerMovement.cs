@@ -14,11 +14,12 @@ public class PlayerMovement : MonoBehaviour {
 	float lookDirY;
 	float rollDirX;
 	float rollDirY;
-	string state;
+	public string state;
 	float speed;
 	float pushSpeed;
 	float rollSpeed;
 	float rollTime=0.19f;
+	float speedYMult;
 	float rollCurrentTime;
 	float rollCooldown=0.4f;
 	float rollCurrentCooldown;
@@ -37,7 +38,7 @@ public class PlayerMovement : MonoBehaviour {
 	float lastShadowX;
 	float lastShadowY;
 //	float playerRelPos = 0;
-	GameObject groundReference;
+	public GameObject groundReference;
 
 	[SerializeField]
 	GameObject groundShadow;
@@ -75,6 +76,7 @@ public class PlayerMovement : MonoBehaviour {
 		playerStats = GetComponent<PlayerStats> ();
 		speed = playerStats.speed;
 		rollSpeed = playerStats.rollSpeed;
+		speedYMult = playerStats.speedYMult;
 		rollTime = playerStats.rollTime;
 		rollCooldown = playerStats.rollCooldown;
 		state = "movement";
@@ -115,7 +117,7 @@ public class PlayerMovement : MonoBehaviour {
 			dirY = dirY / dirAbs;
 		}
 		speedX = dirX * speed;
-		speedY = dirY * speed;
+		speedY = dirY * speed * speedYMult;
 		groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (speedX, speedY);
 
 		//Push
@@ -154,8 +156,7 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate () {
 		if (playerAttack.state == "attackStrong") {
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
-		}
-		else if (state == "movement") {
+		} else if (state == "movement") {
 			GetComponent<Collider2D> ().enabled = true;
 			Move ();
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (groundReference.transform.position.x - lastShadowX, groundReference.transform.position.y - lastShadowY) / Time.deltaTime;
@@ -182,16 +183,15 @@ public class PlayerMovement : MonoBehaviour {
 			//			groundReference.transform.position = transform.position+new Vector3(0,-shadowYOffset,0);
 
 
-			if ((Input.GetAxisRaw("XboxA")>0 || (Input.GetAxisRaw("XboxR1") > 0) || Input.GetKey(KeyCode.Q)|| Input.GetMouseButtonDown(1))&& rollCurrentCooldown < 0 && dirAbs!=0) {
+			if ((Input.GetAxisRaw ("XboxA") > 0 || (Input.GetAxisRaw ("XboxR1") > 0) || Input.GetKey (KeyCode.Q) || Input.GetMouseButtonDown (1)) && rollCurrentCooldown < 0 && dirAbs != 0) {
 				state = "roll";
 			}
-			if ((Input.GetAxisRaw("XboxB")>0 || (Input.GetAxisRaw("XboxL1") > 0) || Input.GetKey(KeyCode.Space)|| Input.GetMouseButtonDown(2))) {
+			if ((Input.GetAxisRaw ("XboxB") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Space) || Input.GetMouseButtonDown (2))) {
 //				state = "jump";
 //				jumpY = 0;
 //				Jump ();
 			}
-		}
-		else if (state == "jump") {
+		} else if (state == "jump") {
 			GetComponent<Collider2D> ().enabled = false;
 
 			Move ();
@@ -200,22 +200,9 @@ public class PlayerMovement : MonoBehaviour {
 			lastShadowY = groundReference.transform.position.y;
 
 			//groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
-/*			GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
-			if (GetComponent<Rigidbody2D> ().velocity.y > 0&&transform.position.y - groundReference.transform.position.y > jumpY+shadowYOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(GetComponent<Rigidbody2D> ().velocity.x,0);
-			}
-			else if (GetComponent<Rigidbody2D> ().velocity.y < 0&&transform.position.y - groundReference.transform.position.y < jumpY+shadowYOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(GetComponent<Rigidbody2D> ().velocity.x,0);
-			}
-			if (GetComponent<Rigidbody2D> ().velocity.x < 0&&transform.position.x - groundReference.transform.position.x < shadowXOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(0,GetComponent<Rigidbody2D> ().velocity.y);
-			}
-			else if (GetComponent<Rigidbody2D> ().velocity.x > 0&&transform.position.x - groundReference.transform.position.x > shadowXOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(0,GetComponent<Rigidbody2D> ().velocity.y);
-			}
-*/			//GetComponent<Rigidbody2D> ().velocity += new Vector2 (0,jumpSpeedCur);
+			//GetComponent<Rigidbody2D> ().velocity += new Vector2 (0,jumpSpeedCur);
 			//transform.position = new Vector3 (groundReference.transform.position.x,groundReference.transform.position.y+jumpY+shadowYOffset,transform.position.z);
-			GetComponent<Rigidbody2D> ().velocity += new Vector2 (0,jumpSpeedCur);
+			GetComponent<Rigidbody2D> ().velocity += new Vector2 (0, jumpSpeedCur);
 			jumpY += jumpSpeedCur * Time.deltaTime;
 			jumpSpeedCur -= jumpGravity;
 			if (jumpY <= 0) {
@@ -223,48 +210,40 @@ public class PlayerMovement : MonoBehaviour {
 				state = "movement";
 				jumpY = 0;
 			}
-		}
-		else if (state == "roll") {
+		} else if (state == "roll") {
 			//groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
 			//transform.position = new Vector3 (groundReference.transform.position.x,groundReference.transform.position.y+shadowYOffset,transform.position.z);
-            if (spawnedTop)
-            {
-                Instantiate(dashDust, dashDustPosition.transform.position, new Quaternion(0f, 0f, 0f, 0f), gameObject.transform);
-                spawnedTop = false;
-            }
-            handAnim.SetBool("Dash", true);
-            bodyAnim.SetBool("Dash", true);
+			if (spawnedTop) {
+				Instantiate (dashDust, dashDustPosition.transform.position, new Quaternion (0f, 0f, 0f, 0f), gameObject.transform);
+				spawnedTop = false;
+			}
+			handAnim.SetBool ("Dash", true);
+			bodyAnim.SetBool ("Dash", true);
 			speedX = rollDirX * rollSpeed;
-			speedY = rollDirY * rollSpeed;
+			speedY = rollDirY * rollSpeed * speedYMult;
 
 			groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (speedX, speedY);
+			groundReference.GetComponent<Rigidbody2D> ().velocity -= new Vector2 (pushSpeed, 0);
+			if (pushSpeed > 0) {
+				pushSpeed -= Time.deltaTime * 3.5f;
+				if (pushSpeed < 0)
+					pushSpeed = 0;
+			}
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (groundReference.transform.position.x - lastShadowX, groundReference.transform.position.y - lastShadowY) / Time.deltaTime;
 			lastShadowX = groundReference.transform.position.x;
 			lastShadowY = groundReference.transform.position.y;
-
-/*			GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
-			if (GetComponent<Rigidbody2D> ().velocity.y > 0&&transform.position.y - groundReference.transform.position.y > shadowYOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(GetComponent<Rigidbody2D> ().velocity.x,0);
-			}
-			else if (GetComponent<Rigidbody2D> ().velocity.y < 0&&transform.position.y - groundReference.transform.position.y < shadowYOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(GetComponent<Rigidbody2D> ().velocity.x,0);
-			}
-			if (GetComponent<Rigidbody2D> ().velocity.x < 0&&transform.position.x - groundReference.transform.position.x < shadowXOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(0,GetComponent<Rigidbody2D> ().velocity.y);
-			}
-			else if (GetComponent<Rigidbody2D> ().velocity.x > 0&&transform.position.x - groundReference.transform.position.x > shadowXOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(0,GetComponent<Rigidbody2D> ().velocity.y);
-			}
-*/
 			rollCurrentTime -= Time.deltaTime;
-			if (rollCurrentTime < 0){
-                handAnim.SetBool("Dash", false);
-                bodyAnim.SetBool("Dash", false);
-                spawnedTop = true;
-                rollCurrentTime = rollTime;
+			if (rollCurrentTime < 0) {
+				handAnim.SetBool ("Dash", false);
+				bodyAnim.SetBool ("Dash", false);
+				Destroy (GameObject.FindGameObjectWithTag ("DashDust"));
+				spawnedTop = true;
+				rollCurrentTime = rollTime;
 				rollCurrentCooldown = rollCooldown;
 				state = "movement";
 			}
+		} else if (state == "skill") {
+			
 		}
 
 		if(canEnterDoor && (Input.GetButtonDown("XboxX") || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)))

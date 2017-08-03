@@ -11,6 +11,8 @@ TagManager:
   - Lifebar
   - Enemy
   - TransitionCanvas
+  - BoneTarget
+  - DashDust
   layers:
   - Default
   - TransparentFX

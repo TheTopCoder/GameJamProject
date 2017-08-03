@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour {
 	public float speed = 1f;
 	public float rollSpeed=6.5f;
+	public float speedYMult = 0.8f;
 	public float rollTime=1.9f;
 	public float rollCooldown = 0.4f;
 	public int maxLife = 20;
 	public int life;
+	public int energy = 0;
+	public int maxEnergy = 100;
+	public int energyGain = 5;
 	public int attackDamage = 5;
 	public float attackTime = 0.3f;
 	public int attackStrongDamage = 10;
@@ -60,6 +64,13 @@ public class PlayerStats : MonoBehaviour {
 			fade.GetComponent<FadeTransition>().nextScene = "GameOver";
 			Destroy (GameObject.FindGameObjectWithTag ("PlayerBase"));
 			Destroy(gameObject);
+		}
+	}
+
+	public void GainEnergy(){
+		energy += energyGain;
+		if (energy > maxEnergy) {
+			energy = maxEnergy;
 		}
 	}
 

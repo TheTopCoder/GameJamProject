@@ -150,7 +150,7 @@ public class FomeController : MonoBehaviour
             {
 				//Debug.Log ("cooldownAbility < 0");
                 state = "ChooseAbility";
-                cooldownAbility = Random.Range(1.75f, 3.0f);
+                cooldownAbility = Random.Range(1.6f, 2.4f);
             }
            /* else if (cooldownMovement <= 0)
             {
@@ -444,6 +444,8 @@ void DestroyHitbox(){
 
 	IEnumerator BoneAttack(){
 		GetComponent<Animator> ().SetTrigger ("Fome_BoneAttack");
+		yield return new WaitForSeconds (0.5f);
+		transform.FindChild("Corvos").gameObject.GetComponentInChildren<Animator>().SetTrigger("Crow_BoneAttack");
 		yield return new WaitForSeconds (0.3f);
 		UnityEngine.Object boneObject1 = Resources.Load ("Fome/" + "Bone1");
 		UnityEngine.Object boneObject2 = Resources.Load ("Fome/" + "Bone2");
@@ -451,7 +453,17 @@ void DestroyHitbox(){
 		UnityEngine.Object boneTarget = Resources.Load ("Fome/" + "BoneTarget");
 //		GameObject boneObject = (GameObject)Instantiate (boneObject1, transform.position + new Vector3 (-0.45f, 1.4f, 0f), Quaternion.identity);
 		for (int i = 0; i < 8; i++) {
-			GameObject boneObject = (GameObject)Instantiate (boneObject1, transform.position + new Vector3 (-0.45f, 1.4f, 0f), Quaternion.identity);
+			GameObject boneObject;
+			if (i % 3 == 0) {
+				boneObject = (GameObject)Instantiate (boneObject1, transform.position + new Vector3 (-0.45f, 1.4f, 0f), Quaternion.identity);
+			}
+			else if (i % 3 == 1) {
+				boneObject = (GameObject)Instantiate (boneObject2, transform.position + new Vector3 (-0.45f, 1.4f, 0f), Quaternion.identity);
+			}
+			else {
+				boneObject = (GameObject)Instantiate (boneObject3, transform.position + new Vector3 (-0.45f, 1.4f, 0f), Quaternion.identity);
+			}
+
 			GameObject boneTargetObject = (GameObject)Instantiate (boneTarget, new Vector3(Random.Range(spitArea[0].position.x, spitArea[1].position.x), Random.Range(spitArea[0].position.y, spitArea[1].position.y)), Quaternion.identity);
 			boneObject.transform.parent = boneTargetObject.transform;
 			//boneObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-3f,2f);
