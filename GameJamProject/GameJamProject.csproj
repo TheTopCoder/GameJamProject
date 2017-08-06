@@ -93,6 +93,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BackgroundMusicScript.cs" />
     <Compile Include="Assets\Scripts\BeatDemoScript.cs" />
     <Compile Include="Assets\Scripts\BoneBoss\BoneBossController.cs" />
     <Compile Include="Assets\Scripts\BoneBoss\GroundAttackScript.cs" />
@@ -108,10 +109,12 @@
     <Compile Include="Assets\Scripts\FadeBlackScript.cs" />
     <Compile Include="Assets\Scripts\FadeTransition.cs" />
     <Compile Include="Assets\Scripts\Fome\AttackHitbox.cs" />
+    <Compile Include="Assets\Scripts\Fome\BoneScript.cs" />
     <Compile Include="Assets\Scripts\Fome\CrowMinion.cs" />
     <Compile Include="Assets\Scripts\Fome\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\Fome\FomeController.cs" />
     <Compile Include="Assets\Scripts\Fome\LifebarScript.cs" />
+    <Compile Include="Assets\Scripts\Fome\ScepterScript.cs" />
     <Compile Include="Assets\Scripts\Fome\ShockwaveScript.cs" />
     <Compile Include="Assets\Scripts\Fome\SpawnableCrown.cs" />
     <Compile Include="Assets\Scripts\Fome\Vomit.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="Assets\Scripts\LobbyEye.cs" />
     <Compile Include="Assets\Scripts\MenuScript.cs" />
     <Compile Include="Assets\Scripts\PauseScript.cs" />
+    <Compile Include="Assets\Scripts\Player\EnergyBarScript.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />

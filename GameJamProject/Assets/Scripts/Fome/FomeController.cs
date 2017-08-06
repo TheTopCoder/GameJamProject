@@ -182,7 +182,6 @@ public class FomeController : MonoBehaviour
 
     void ChooseAbility()
     {
-		Debug.Log ("Choose Ability");
 		attackCount = 0;
 		attackLimit = 1;
 		//Tornar as habilidades mais provaveis a medida que nao sao usadas
