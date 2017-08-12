@@ -48,7 +48,9 @@ public class PlayerAttack : MonoBehaviour {
 			} else if (Input.GetAxisRaw ("XboxL2") > 0) {
 //				state = "attackStrong";
 			} else if (Input.GetKeyDown (KeyCode.Space)) {
-				StartCoroutine (SkillLife());
+				if (playerStats.energy > playerStats.maxEnergy / 2) {
+					StartCoroutine (SkillLife ());
+				}
 			}
 		}
 		if (state == "attack") {
@@ -86,6 +88,7 @@ public class PlayerAttack : MonoBehaviour {
  
 	IEnumerator SkillLife(){
 		Debug.Log ("GainLife");
+		playerStats.energy -= playerStats.maxEnergy/2;
 		if (playerStats.life < playerStats.maxLife && state == "wait" && playerMovement.state == "movement") {
 			state = "skill";
 			playerMovement.state = "skill";
@@ -135,6 +138,7 @@ public class PlayerAttack : MonoBehaviour {
 					boss.GetComponent<FomeController> ().ReceiveDamage (attackDamage);
 					hit.Add (boss.GetInstanceID ());
 				} else {
+					Debug.Log ("Hit Crow");
 					other.gameObject.GetComponent<EnemyStats> ().ReceiveDamage (attackDamage);
 					hit.Add (other.gameObject.GetInstanceID ());
 				}

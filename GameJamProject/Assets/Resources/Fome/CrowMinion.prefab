@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4131161552259952}
   - component: {fileID: 212599247510952888}
   - component: {fileID: 95984985810195146}
-  - component: {fileID: 114932451441409462}
   - component: {fileID: 50505758933392174}
   - component: {fileID: 61929870713898786}
   - component: {fileID: 114028356659342042}
+  - component: {fileID: 114932451441409462}
   m_Layer: 0
   m_Name: CrowMinion
   m_TagString: Enemy
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427611081677018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.077606, y: -4.514432, z: 0.7890625}
+  m_LocalPosition: {x: -1.5758731, y: -4.134084, z: 0.7890625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df77d12ec08c5e4498061d409a0f634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 0
 --- !u!114 &114932451441409462
 MonoBehaviour:
   m_ObjectHideFlags: 1

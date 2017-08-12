@@ -27,10 +27,6 @@ public class CrowMinion : MonoBehaviour {
 		state = "movement";
 	}
 
-	public void DestroyCrow(){
-		Destroy (gameObject);
-	}
-
 	public void Die(){
 		state = "die";
 	}

@@ -2517,7 +2517,7 @@ Prefab:
     - target: {fileID: 114489396574080208, guid: a317d4986710f1f4388698476eae53c5,
         type: 2}
       propertyPath: maxLife
-      value: 30
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a317d4986710f1f4388698476eae53c5, type: 2}

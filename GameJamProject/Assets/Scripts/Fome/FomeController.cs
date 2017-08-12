@@ -257,14 +257,14 @@ public class FomeController : MonoBehaviour
 			attackProbUp [3] = 1;
 			attackProb [4] = 4;
 			attackProbUp [4] = 1;
-			if (life <= maxLife * 1 / 2) {
+			if (life <= maxLife * 0.5f) {
 				attackProb [5] = 3;
 				attackProbUp [5] = 1;
 			} else {
 				attackProb [5] = 0;
 				attackProbUp [5] = 0;
 			}
-			if (life <= maxLife * 2 / 3) {
+			if (life <= maxLife * 0.75f) {
 				attackProb [6] = 3;
 				attackProbUp [6] = 1;
 			} else {

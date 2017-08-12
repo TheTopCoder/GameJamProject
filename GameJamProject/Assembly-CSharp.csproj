@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BackgroundMusicScript.cs" />
      <Compile Include="Assets\Scripts\BeatDemoScript.cs" />
      <Compile Include="Assets\Scripts\BoneBoss\BoneBossController.cs" />
      <Compile Include="Assets\Scripts\BoneBoss\GroundAttackScript.cs" />
@@ -88,9 +89,6 @@
      <Compile Include="Assets\Scripts\TransitionScript.cs" />
      <Compile Include="Assets\Scripts\pedraPlaceScript.cs" />
      <Compile Include="Assets\Scripts\pedraScript.cs" />
- <Reference Include="Facebook.Unity.Settings">
- <HintPath>C:/Users/Leonardo/Documents/GameJamProject/GameJamProject/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
