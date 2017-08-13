@@ -16,17 +16,20 @@ public class EnemyStats : MonoBehaviour {
 	void Update () {
 		if (life <= 0&&!die) {
 			GetComponent<Animator> ().SetTrigger ("Die");
-			Destroy (GetComponent<CrowMinion> ());
 			die = true;
-			GetComponent<CrowMinion> ().Die ();
+			Destroy (GetComponent<CrowMinion> ());
+			//GetComponent<CrowMinion> ().Die ();
 		}
 	}
+
 
 	public void DestroyEnemy(){
 		Destroy (gameObject);
 	}
 
 	public void ReceiveDamage(int damage){
-		life -= damage;
+		if (GetComponent<CrowMinion>() != null && GetComponent<CrowMinion>().state != "spawn"){
+			life -= damage;
+		}
 	}
 }

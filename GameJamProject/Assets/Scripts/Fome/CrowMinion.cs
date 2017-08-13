@@ -8,7 +8,7 @@ public class CrowMinion : MonoBehaviour {
 	GameObject attackHitbox;
 	float speed;
 	float attackDist;
-	string state;
+	public string state;
 	bool canHit;
 	float attackCooldownMax;
 	float attackCooldown;

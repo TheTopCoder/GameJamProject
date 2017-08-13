@@ -48,7 +48,7 @@ public class PlayerAttack : MonoBehaviour {
 			} else if (Input.GetAxisRaw ("XboxL2") > 0) {
 //				state = "attackStrong";
 			} else if (Input.GetKeyDown (KeyCode.Space)) {
-				if (playerStats.energy > playerStats.maxEnergy / 2) {
+				if (playerStats.energy >= playerStats.maxEnergy / 2) {
 					StartCoroutine (SkillLife ());
 				}
 			}
@@ -88,8 +88,8 @@ public class PlayerAttack : MonoBehaviour {
  
 	IEnumerator SkillLife(){
 		Debug.Log ("GainLife");
-		playerStats.energy -= playerStats.maxEnergy/2;
 		if (playerStats.life < playerStats.maxLife && state == "wait" && playerMovement.state == "movement") {
+			playerStats.energy -= playerStats.maxEnergy/2;
 			state = "skill";
 			playerMovement.state = "skill";
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
