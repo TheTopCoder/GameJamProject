@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Fome\EnemyStats.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Fome\FomeController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\PlayerAttack.cs" Line="92" Column="50" />
+      <File FileName="Assets\Scripts\Player\PlayerAttack.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\PlayerMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\PlayerStats.cs" Line="70" Column="27" />
+      <File FileName="Assets\Scripts\Player\PlayerStats.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MenuScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\pedraPlaceScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\pedraScript.cs" Line="1" Column="1" />
@@ -13,7 +13,7 @@
       <File FileName="Assets\Scripts\FadeBlackScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\TransitionScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FadeTransition.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Fome\FomeController.cs" Line="274" Column="28" />
+      <File FileName="Assets\Scripts\Fome\FomeController.cs" Line="137" Column="10" />
       <File FileName="Assets\Scripts\Fome\LifebarScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\SpawnableCrown.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\VomitSpit.cs" Line="1" Column="1" />
@@ -21,8 +21,8 @@
       <File FileName="Assets\Scripts\CameraZoom.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\ShockwaveScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\ShadowScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Fome\CrowMinion.cs" Line="8" Column="26" />
-      <File FileName="Assets\Scripts\Fome\EnemyStats.cs" Line="31" Column="54" />
+      <File FileName="Assets\Scripts\Fome\CrowMinion.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Fome\EnemyStats.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PauseScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\BoneScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\DashDustScript.cs" Line="1" Column="1" />

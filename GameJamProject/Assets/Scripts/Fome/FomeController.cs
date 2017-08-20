@@ -135,6 +135,9 @@ public class FomeController : MonoBehaviour
 */
         if (state == "movement")
         {
+			if (attackHitbox != null) {
+				DestroyHitbox ();
+			}
 			//Chefe morrer
             if (life <= 0)
             {
