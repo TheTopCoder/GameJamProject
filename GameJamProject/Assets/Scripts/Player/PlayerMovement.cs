@@ -46,7 +46,9 @@ public class PlayerMovement : MonoBehaviour {
 	PlayerAttack playerAttack;
 	PlayerStats playerStats;
     [SerializeField]
-    Animator bodyAnim;
+	Animator bodyAnim;
+	[SerializeField]
+	Animator bodyLightAnim;
     [SerializeField]
     Animator handAnim;
 //  [SerializeField]
@@ -103,12 +105,14 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			handAnim.SetBool("Walking", false);
 			bodyAnim.SetBool("Walking", false);
+			bodyLightAnim.SetBool("Walking", false);
 			walkingAudio.Pause();
 		}
 		else
 		{
 			handAnim.SetBool("Walking", true);
 			bodyAnim.SetBool("Walking", true);
+			bodyLightAnim.SetBool("Walking", true);
 			walkingAudio.UnPause();
 		}
 		dirAbs = Mathf.Sqrt (dirX * dirX + dirY * dirY);
@@ -219,6 +223,7 @@ public class PlayerMovement : MonoBehaviour {
 			}
 			handAnim.SetBool ("Dash", true);
 			bodyAnim.SetBool ("Dash", true);
+			bodyLightAnim.SetBool ("Dash", true);
 			speedX = rollDirX * rollSpeed;
 			speedY = rollDirY * rollSpeed * speedYMult;
 
@@ -236,6 +241,7 @@ public class PlayerMovement : MonoBehaviour {
 			if (rollCurrentTime < 0) {
 				handAnim.SetBool ("Dash", false);
 				bodyAnim.SetBool ("Dash", false);
+				bodyLightAnim.SetBool ("Dash", false);
 				Destroy (GameObject.FindGameObjectWithTag ("DashDust"));
 				spawnedTop = true;
 				rollCurrentTime = rollTime;
@@ -265,8 +271,12 @@ public class PlayerMovement : MonoBehaviour {
     public IEnumerator ReceiveDamage()
     {
 			//Debug.Log (invulnerable);
+//			handAnim.SetTrigger("FinishAttack");
+			playerAttack.FinishAttack();
+			playerAttack.state = "hit";
             handAnim.SetBool("Flint", true);
-            bodyAnim.SetBool("Flint", true);
+			bodyAnim.SetBool("Flint", true);
+			bodyLightAnim.SetBool("Flint", true);
 			GetComponent<PlayerStats> ().DamagePlayer ();
             Color auxColor = new Color(bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.r, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.g, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 0);
             StartCoroutine(KnockBack());
@@ -309,7 +319,9 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         handAnim.SetBool("Flint", false);
-        bodyAnim.SetBool("Flint", false);
+		bodyAnim.SetBool("Flint", false);
+		bodyLightAnim.SetBool("Flint", false);
+		playerAttack.state = "wait";
         //invulnerable = false;
     }
     void Flip()

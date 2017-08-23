@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour {
 
-	public int life;
+	public float life;
 	bool die = false;
 	// Use this for initialization
 	void Start () {
@@ -27,7 +27,7 @@ public class EnemyStats : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
-	public void ReceiveDamage(int damage){
+	public void ReceiveDamage(float damage){
 		if (GetComponent<CrowMinion>() != null && GetComponent<CrowMinion>().state != "spawn"){
 			life -= damage;
 		}

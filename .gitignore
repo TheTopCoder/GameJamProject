@@ -54,6 +54,11 @@ Temporary Items
 /GameJamProject/[Bb]uild/
 /GameJamProject/[Bb]uilds/
 /GameJamProject/Assets/AssetStoreTools*
+/GameJamProject/Maloom_Colorido_Data/
+/GameJamProject/Maloom_Colorido.exe
+/GameJamProject/Maloom_Colorido.zip
+
+
 
 # Visual Studio 2015 cache directory
 /GameJamProject/.vs/

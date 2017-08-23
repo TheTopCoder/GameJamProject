@@ -41,7 +41,7 @@ public class PauseScript : MonoBehaviour
     }
     void Update()
     {
-		if (Input.GetKeyDown (KeyCode.Escape) || Input.GetButtonDown ("XboxSelect")) {
+		if (Input.GetKeyDown (KeyCode.P) || Input.GetButtonDown ("XboxSelect")) {
 			if (!paused) {
 				paused = true;
 				foreach (AudioSource a in audios) {

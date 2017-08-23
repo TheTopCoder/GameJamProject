@@ -11,8 +11,8 @@ public class FomeController : MonoBehaviour
 
 	public GameObject waveAttack;
 	public GameObject groundAttack;
-    public int life;
-    public int maxLife = 300;
+	public float life;
+	public float maxLife = 300;
 	int dashAttackDamage = 10;
 	float dashSpeed = 1.5f;
 	GameObject fade;
@@ -118,7 +118,8 @@ public class FomeController : MonoBehaviour
         }
         else
         {
-            GetComponentInChildren<SpriteRenderer>().sortingOrder = 3;
+			GetComponentInChildren<SpriteRenderer>().sortingOrder = -3;
+//            GetComponentInChildren<SpriteRenderer>().sortingOrder = 3;
         }
 
 //Fazer o chefe virar
@@ -153,7 +154,7 @@ public class FomeController : MonoBehaviour
             {
 				//Debug.Log ("cooldownAbility < 0");
                 state = "ChooseAbility";
-                cooldownAbility = Random.Range(1.6f, 2.4f);
+                cooldownAbility = Random.Range(1.2f, 1.8f);
             }
            /* else if (cooldownMovement <= 0)
             {
@@ -252,8 +253,10 @@ public class FomeController : MonoBehaviour
 				}
 			}
 			else {
-			attackProb [1] = 3;
-			attackProbUp [1] = 1;
+//			attackProb [1] = 3;
+//			attackProbUp [1] = 1;
+			attackProb [1] = 0;
+			attackProbUp [1] = 0;
 			attackProb [2] = 1;
 			attackProbUp [2] = 0;
 			attackProb [3] = 2;
@@ -547,7 +550,7 @@ void DestroyHitbox(){
 		}
 	}
 
-	public void ReceiveDamage(int damage){
+	public void ReceiveDamage(float damage){
 		StartCoroutine ("DamageTime", damage);
 	}
 
@@ -570,11 +573,11 @@ void DestroyHitbox(){
 			//canHit = false;
 		}
 	}
-	IEnumerator DamageTime(int attackDamage)
+	IEnumerator DamageTime(float attackDamage)
 	{
 		yield return new WaitForSeconds(0.05f);
 		if (name.Equals ("BoneBoss")) {
-			GetComponentInChildren<BoneBossController> ().life -= attackDamage;
+			//GetComponentInChildren<BoneBossController> ().life -= attackDamage;
 			GetComponentInChildren<SpriteRenderer> ().color = Color.red;
 			yield return new WaitForSeconds (0.05f);
 			GetComponentInChildren<SpriteRenderer> ().color = Color.white;
