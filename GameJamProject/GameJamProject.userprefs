@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CameraFollow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PlayerAttack.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\PlayerAttack.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\PlayerMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\PlayerAttack.cs" Line="142" Column="18" />
       <File FileName="Assets\Scripts\Player\PlayerStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\PlayerMovement.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\PlayerColliderAttack.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MenuScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\pedraPlaceScript.cs" Line="1" Column="1" />
@@ -14,7 +14,7 @@
       <File FileName="Assets\Scripts\FadeBlackScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\TransitionScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FadeTransition.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Fome\FomeController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Fome\FomeController.cs" Line="523" Column="24" />
       <File FileName="Assets\Scripts\Fome\LifebarScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\SpawnableCrown.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\VomitSpit.cs" Line="1" Column="1" />
@@ -22,9 +22,9 @@
       <File FileName="Assets\Scripts\CameraZoom.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\ShockwaveScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\ShadowScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Fome\CrowMinion.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Fome\EnemyStats.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PauseScript.cs" Line="90" Column="1" />
+      <File FileName="Assets\Scripts\Fome\CrowMinion.cs" Line="55" Column="37" />
+      <File FileName="Assets\Scripts\Fome\EnemyStats.cs" Line="20" Column="28" />
+      <File FileName="Assets\Scripts\PauseScript.cs" Line="61" Column="1" />
       <File FileName="Assets\Scripts\Fome\BoneScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\DashDustScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\EnergyBarScript.cs" Line="1" Column="1" />
@@ -32,7 +32,9 @@
       <File FileName="Assets\Scripts\BackgroundMusicScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\AttackHitbox.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\HandScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CameraFollow.cs" Line="15" Column="24" />
+      <File FileName="Assets\Scripts\CameraFollow.cs" Line="9" Column="1" />
+      <File FileName="Assets\Scripts\BoneBoss\BoneBossController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CorridorTrigger.cs" Line="23" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

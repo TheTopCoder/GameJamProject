@@ -17,6 +17,7 @@ public class EnemyStats : MonoBehaviour {
 		if (life <= 0&&!die) {
 			GetComponent<Animator> ().SetTrigger ("Die");
 			die = true;
+			transform.tag = "Dying";
 			Destroy (GetComponent<CrowMinion> ());
 			//GetComponent<CrowMinion> ().Die ();
 		}

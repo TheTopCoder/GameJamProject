@@ -25,10 +25,14 @@ public class PauseScript : MonoBehaviour
 		paused = false;
         this.GetComponent<Canvas>().enabled = false;
 
-        if (PlayerPrefs.GetFloat("MainVolume").Equals(null))
-        {
+		if (PlayerPrefs.GetFloat("MainVolume").Equals(null))
+		{
 			PlayerPrefs.SetFloat("MainVolume", /*audios[1].volume*/0.5f);
-        }
+		}
+		else if (PlayerPrefs.GetFloat("MainVolume").Equals(0))
+		{
+			PlayerPrefs.SetFloat("MainVolume", /*audios[1].volume*/0.5f);
+		}
 
         volumeSlider.value = PlayerPrefs.GetFloat("MainVolume");
 

@@ -44,7 +44,7 @@ public class CrowMinion : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.transform.tag == "PlayerBase") {
+		if (other.transform.tag == "Player") {
 			if (canHit) {
 				canHit = false;
 				StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
@@ -52,7 +52,7 @@ public class CrowMinion : MonoBehaviour {
 		}
 	}
 	void OnTriggerStay2D(Collider2D other){
-		if (other.transform.tag == "PlayerBase") {
+		if (other.transform.tag == "Player") {
 			if (canHit) {
 				canHit = false;
 				StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());

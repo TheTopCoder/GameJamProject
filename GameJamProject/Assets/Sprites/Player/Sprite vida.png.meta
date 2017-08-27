@@ -1,0 +1,496 @@
+fileFormatVersion: 2
+guid: 7142e12e71042754b8752953b5429e9c
+timeCreated: 1503844814
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Sprite vida_0
+    21300002: Sprite vida_1
+    21300004: Sprite vida_2
+    21300006: Sprite vida_3
+    21300008: Sprite vida_4
+    21300010: Sprite vida_5
+    21300012: Sprite vida_6
+    21300014: Sprite vida_7
+    21300016: Sprite vida_8
+    21300018: Sprite vida_9
+    21300020: Sprite vida_10
+    21300022: Sprite vida_11
+    21300024: Sprite vida_12
+    21300026: Sprite vida_13
+    21300028: Sprite vida_14
+    21300030: Sprite vida_15
+    21300032: Sprite vida_16
+    21300034: Sprite vida_17
+    21300036: Sprite vida_18
+    21300038: Sprite vida_19
+    21300040: Sprite vida_20
+    21300042: Sprite vida_21
+    21300044: Sprite vida_22
+    21300046: Sprite vida_23
+    21300048: Sprite vida_24
+    21300050: Sprite vida_25
+    21300052: Sprite vida_26
+    21300054: Sprite vida_27
+    21300056: Sprite vida_28
+    21300058: Sprite vida_29
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sprite vida_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4128
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_1
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 4128
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_2
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 4128
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_3
+      rect:
+        serializedVersion: 2
+        x: 2286
+        y: 4128
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_4
+      rect:
+        serializedVersion: 2
+        x: 3048
+        y: 4128
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_5
+      rect:
+        serializedVersion: 2
+        x: 3810
+        y: 4128
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3096
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_7
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 3096
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_8
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 3096
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_9
+      rect:
+        serializedVersion: 2
+        x: 2286
+        y: 3096
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_10
+      rect:
+        serializedVersion: 2
+        x: 3048
+        y: 3096
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_11
+      rect:
+        serializedVersion: 2
+        x: 3810
+        y: 3096
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2064
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_13
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 2064
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_14
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 2064
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_15
+      rect:
+        serializedVersion: 2
+        x: 2286
+        y: 2064
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_16
+      rect:
+        serializedVersion: 2
+        x: 3048
+        y: 2064
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_17
+      rect:
+        serializedVersion: 2
+        x: 3810
+        y: 2064
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1032
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_19
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 1032
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_20
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 1032
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_21
+      rect:
+        serializedVersion: 2
+        x: 2286
+        y: 1032
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_22
+      rect:
+        serializedVersion: 2
+        x: 3048
+        y: 1032
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_23
+      rect:
+        serializedVersion: 2
+        x: 3810
+        y: 1032
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_25
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 0
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_26
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 0
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_27
+      rect:
+        serializedVersion: 2
+        x: 2286
+        y: 0
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_28
+      rect:
+        serializedVersion: 2
+        x: 3048
+        y: 0
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprite vida_29
+      rect:
+        serializedVersion: 2
+        x: 3810
+        y: 0
+        width: 762
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

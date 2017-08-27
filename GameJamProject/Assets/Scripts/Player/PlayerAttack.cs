@@ -181,15 +181,22 @@ public class PlayerAttack : MonoBehaviour {
 	IEnumerator SkillLife(){
 		Debug.Log ("GainLife");
 		if (playerStats.life < playerStats.maxLife && state == "wait" && playerMovement.state == "movement") {
+			bodyAnim.SetTrigger ("SkillLife");
+			handAnim.SetTrigger ("SkillLife");
+			GameObject.FindGameObjectWithTag ("Light").GetComponent<Animator> ().Play(0);
+			GameObject.FindGameObjectWithTag ("Light").GetComponent<SpriteRenderer> ().enabled = true;
 			playerStats.energy -= playerStats.maxEnergy/2;
 			state = "skill";
 			playerMovement.state = "skill";
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 			playerMovement.groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
-			yield return new WaitForSeconds (0.4f);
+			yield return new WaitForSeconds (0.425f);
 			playerStats.life++;
 			state = "wait";
 			playerMovement.state = "movement";
+			bodyAnim.SetTrigger ("Idle");
+			handAnim.SetTrigger ("Idle");
+			GameObject.FindGameObjectWithTag ("Light").GetComponent<SpriteRenderer> ().enabled = false;
 		}
 		yield return new WaitForSeconds (0.02f);
 	}

@@ -13,6 +13,8 @@ TagManager:
   - TransitionCanvas
   - BoneTarget
   - DashDust
+  - Dying
+  - Light
   layers:
   - Default
   - TransparentFX

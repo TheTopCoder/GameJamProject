@@ -448,7 +448,7 @@ void DestroyHitbox(){
     }
 
 	IEnumerator BoneAttack(){
-		GetComponent<Animator> ().SetTrigger ("Fome_BoneAttack");
+		//GetComponent<Animator> ().SetTrigger ("Fome_BoneAttack");
 		yield return new WaitForSeconds (0.5f);
 		transform.FindChild("Corvos").gameObject.GetComponentInChildren<Animator>().SetTrigger("Crow_BoneAttack");
 		yield return new WaitForSeconds (0.3f);
