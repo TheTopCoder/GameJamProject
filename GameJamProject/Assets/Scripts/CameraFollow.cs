@@ -9,7 +9,9 @@ public class CameraFollow : MonoBehaviour
     public GameObject[] borders = new GameObject[2];
     
 	void Update () {
-        UpdateCamPos();
+		if (playerPosition != null) {
+			UpdateCamPos ();
+		}
 	}
 
     void UpdateCamPos()

@@ -483,7 +483,7 @@ void DestroyHitbox(){
     {
         //Debug.Log("Crow Attack");
 		GetComponent<Animator>().SetTrigger("Fome_CrowAttack");
-		transform.FindChild("Corvos").gameObject.GetComponentInChildren<Animator>().SetTrigger("CrowAttack");
+		//transform.FindChild("Corvos").gameObject.GetComponentInChildren<Animator>().SetTrigger("CrowAttack");
         yield return new WaitForSeconds(0.5f);
 //        shakeDuration = 5f;
         StartCoroutine(SpawnCrow());
@@ -501,7 +501,7 @@ void DestroyHitbox(){
     IEnumerator SpawnCrow()
     {
 //		make rock fall into player
-		yield return new WaitForSeconds(0.25f);
+		yield return new WaitForSeconds(0.2f);
 		UnityEngine.Object crowprefab = Resources.Load ("Fome/" + "SpawnableCrow");
 		if (player != null) {
 			spawnableCrow = (GameObject)Instantiate (crowprefab, player.transform.position, Quaternion.identity);

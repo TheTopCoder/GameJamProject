@@ -14,8 +14,14 @@ public class LifebarScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (boss != null)
-			GetComponent<Image> ().fillAmount = (float)boss.GetComponent<FomeController> ().life / boss.GetComponent<FomeController> ().maxLife;
+		if (boss != null) {
+			if (boss.name == "Fome") {
+				GetComponent<Image> ().fillAmount = (float)boss.GetComponent<FomeController> ().life / boss.GetComponent<FomeController> ().maxLife;
+			}
+			else if (boss.name == "Tempestade") {
+				GetComponent<Image> ().fillAmount = (float)boss.GetComponent<TempestadeController> ().life / boss.GetComponent<TempestadeController> ().maxLife;
+			}
+		}
 		else
 			GetComponent<Image> ().fillAmount = 0;
 	}

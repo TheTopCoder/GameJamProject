@@ -14,14 +14,16 @@ public class PlayerColliderAttack : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		playerAttack.Attack (other);
+		if ((playerAttack.curAttack == 1 && transform.name == "AttackCollider1")||(playerAttack.curAttack == 2 && transform.name == "AttackCollider2"))
+			playerAttack.Attack (other);
 	}
 	void OnTriggerStay2D(Collider2D other){
-		playerAttack.Attack (other);
+		if ((playerAttack.curAttack == 1 && transform.name == "AttackCollider1")||(playerAttack.curAttack == 2 && transform.name == "AttackCollider2"))
+			playerAttack.Attack (other);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 }

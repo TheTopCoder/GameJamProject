@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224496908667705914}
   - component: {fileID: 222268294533405728}
   - component: {fileID: 114891250569312438}
-  - component: {fileID: 95434180592102874}
+  - component: {fileID: 95203932078957574}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -234,7 +234,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &95434180592102874
+--- !u!95 &95203932078957574
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -432,6 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audios:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

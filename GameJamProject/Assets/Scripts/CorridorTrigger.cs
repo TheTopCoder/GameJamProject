@@ -17,8 +17,10 @@ public class CorridorTrigger : MonoBehaviour {
 		if (other.tag == "Player") {
 			int i = 0;
 			GameObject newSpawn;
+//			UnityEngine.Object minionprefab = Resources.Load ("Fome/" + "CrowMinion");
 			foreach (GameObject spawn in spawns) {
-				newSpawn = (GameObject)Instantiate (spawn, locations [i].position, Quaternion.identity);
+								Instantiate (spawn, locations [i].position, Quaternion.identity);
+				//				Instantiate (minionprefab, locations [i].position, Quaternion.identity);
 				i++;
 			}
 			Destroy (gameObject);

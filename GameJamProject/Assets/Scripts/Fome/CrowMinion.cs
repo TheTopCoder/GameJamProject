@@ -14,7 +14,7 @@ public class CrowMinion : MonoBehaviour {
 	float attackCooldown;
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");	
+		player = GameObject.Find("Player");	
 		speed = 1.4f;
 		state = "spawn";
 		attackDist = 1.0f;
@@ -85,7 +85,8 @@ public class CrowMinion : MonoBehaviour {
 			}
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (dir.x, dir.y) * speed;
 			attackCooldown -= Time.deltaTime;
-			if ((transform.position - player.transform.position).magnitude <= attackDist&&attackCooldown<=0){
+			if ((transform.position - player.transform.position).magnitude <= attackDist && attackCooldown <= 0) {
+				//Careful with the Z axis
 				state = "begin_attack";
 			}
 		} else if (state == "begin_attack") {

@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour {
 
 	public string state;//wait,attack,attackStrong,recoverAttack
 	bool canHit;
-	int curAttack;
+	public int curAttack;
 	ArrayList hit;
 	int attackDamage;
 	bool blinked;
@@ -213,9 +213,19 @@ public class PlayerAttack : MonoBehaviour {
 				playerStats.GainEnergy ();
 				if (other.tag == "Boss") {
 					if (chargedAttack) {
-						boss.GetComponent<FomeController> ().ReceiveDamage (3.0f*attackDamage);
+						if (other.name == "Fome") {
+							boss.GetComponent<FomeController> ().ReceiveDamage (3.0f*attackDamage);
+						}
+						if (other.name == "Tempestade") {
+							boss.GetComponent<TempestadeController> ().ReceiveDamage (3.0f*attackDamage);
+						}
 					} else {
-						boss.GetComponent<FomeController> ().ReceiveDamage (attackDamage);
+						if (other.name == "Fome") {
+							boss.GetComponent<FomeController> ().ReceiveDamage (attackDamage);
+						}
+						if (other.name == "Tempestade") {
+							boss.GetComponent<TempestadeController> ().ReceiveDamage (attackDamage);
+						}
 					}
 					hit.Add (boss.GetInstanceID ());
 				} else {

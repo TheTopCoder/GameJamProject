@@ -24,23 +24,23 @@ public class PauseScript : MonoBehaviour
     {
 		paused = false;
         this.GetComponent<Canvas>().enabled = false;
-
+		if (SceneManager.GetActiveScene().name == "MenuScene"){
+			Debug.Log ("MenuSceneSound");
+			PlayerPrefs.SetFloat("MainVolume", 0.5f);
+		}
 		if (PlayerPrefs.GetFloat("MainVolume").Equals(null))
 		{
-			PlayerPrefs.SetFloat("MainVolume", /*audios[1].volume*/0.5f);
+			Debug.Log ("MainVolume null");
+			PlayerPrefs.SetFloat("MainVolume", 0.5f);
 		}
-		else if (PlayerPrefs.GetFloat("MainVolume").Equals(0))
-		{
-			PlayerPrefs.SetFloat("MainVolume", /*audios[1].volume*/0.5f);
-		}
-
+		PlayerPrefs.Save ();
         volumeSlider.value = PlayerPrefs.GetFloat("MainVolume");
 
         foreach (AudioSource a in audios)
         {
             a.volume = volumeSlider.value;
         }
-
+		 
         volumeAux = volumeSlider.value;
     }
     void Update()
@@ -74,6 +74,9 @@ public class PauseScript : MonoBehaviour
 		paused = false;
         Time.timeScale = 1;
         this.GetComponent<Canvas>().enabled = false;
+		PlayerPrefs.SetFloat ("MainVolume",volumeSlider.value);
+		PlayerPrefs.Save ();
+		Debug.Log (PlayerPrefs.GetFloat ("MainVolume"));
         foreach (AudioSource a in audios)
         {
 //            a.Play();
