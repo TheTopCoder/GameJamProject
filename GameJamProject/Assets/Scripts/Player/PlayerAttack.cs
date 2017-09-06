@@ -214,10 +214,10 @@ public class PlayerAttack : MonoBehaviour {
 				if (other.tag == "Boss") {
 					if (chargedAttack) {
 						if (other.name == "Fome") {
-							boss.GetComponent<FomeController> ().ReceiveDamage (3.0f*attackDamage);
+							boss.GetComponent<FomeController> ().ReceiveDamage (4.0f*attackDamage);
 						}
 						if (other.name == "Tempestade") {
-							boss.GetComponent<TempestadeController> ().ReceiveDamage (3.0f*attackDamage);
+							boss.GetComponent<TempestadeController> ().ReceiveDamage (4.0f*attackDamage);
 						}
 					} else {
 						if (other.name == "Fome") {

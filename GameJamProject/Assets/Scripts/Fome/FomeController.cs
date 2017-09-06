@@ -483,7 +483,7 @@ void DestroyHitbox(){
     {
         //Debug.Log("Crow Attack");
 		GetComponent<Animator>().SetTrigger("Fome_CrowAttack");
-		//transform.FindChild("Corvos").gameObject.GetComponentInChildren<Animator>().SetTrigger("CrowAttack");
+		transform.FindChild("Corvos").gameObject.GetComponentInChildren<Animator>().SetTrigger("CrowAttack");
         yield return new WaitForSeconds(0.5f);
 //        shakeDuration = 5f;
         StartCoroutine(SpawnCrow());

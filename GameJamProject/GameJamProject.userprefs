@@ -1,6 +1,6 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Fome\SpawnableCrown.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tempestade\TempestadeController.cs">
     <Files>
       <File FileName="Assets\Scripts\Player\PlayerAttack.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\PlayerStats.cs" Line="1" Column="1" />
@@ -16,7 +16,7 @@
       <File FileName="Assets\Scripts\FadeTransition.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\FomeController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\LifebarScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Fome\SpawnableCrown.cs" Line="31" Column="60" />
+      <File FileName="Assets\Scripts\Fome\SpawnableCrown.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\VomitSpit.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeatDemoScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CameraZoom.cs" Line="1" Column="1" />
@@ -24,17 +24,18 @@
       <File FileName="Assets\Scripts\Player\ShadowScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\CrowMinion.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\EnemyStats.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PauseScript.cs" Line="99" Column="6" />
+      <File FileName="Assets\Scripts\PauseScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\BoneScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\DashDustScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\EnergyBarScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\ScepterScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BackgroundMusicScript.cs" Line="13" Column="12" />
+      <File FileName="Assets\Scripts\BackgroundMusicScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fome\AttackHitbox.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\HandScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CameraFollow.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BoneBoss\BoneBossController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CorridorTrigger.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Tempestade\TempestadeController.cs" Line="420" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -74,6 +74,7 @@
      <Compile Include="Assets\Scripts\Fome\SpawnableCrown.cs" />
      <Compile Include="Assets\Scripts\Fome\Vomit.cs" />
      <Compile Include="Assets\Scripts\Fome\VomitSpit.cs" />
+     <Compile Include="Assets\Scripts\FomeCorridorEnd.cs" />
      <Compile Include="Assets\Scripts\GameOverScript.cs" />
      <Compile Include="Assets\Scripts\HeartScript.cs" />
      <Compile Include="Assets\Scripts\LightScript.cs" />
@@ -89,6 +90,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\Player\ShadowScript.cs" />
      <Compile Include="Assets\Scripts\PlayerShadow.cs" />
+     <Compile Include="Assets\Scripts\Tempestade\TempestadeAttackTrigger.cs" />
      <Compile Include="Assets\Scripts\Tempestade\TempestadeController.cs" />
      <Compile Include="Assets\Scripts\TestScript.cs" />
      <Compile Include="Assets\Scripts\TransitionScript.cs" />

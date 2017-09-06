@@ -16,7 +16,7 @@ public class LifebarScript : MonoBehaviour {
 	void Update () {
 		if (boss != null) {
 			if (boss.name == "Fome") {
-				GetComponent<Image> ().fillAmount = (float)boss.GetComponent<FomeController> ().life / boss.GetComponent<FomeController> ().maxLife;
+				GetComponent<Image> ().fillAmount = (float)boss.GetComponent<FomeController> ().life / boss.GetComponent<FomeController> ().maxLife*0.95f+0.05f;
 			}
 			else if (boss.name == "Tempestade") {
 				GetComponent<Image> ().fillAmount = (float)boss.GetComponent<TempestadeController> ().life / boss.GetComponent<TempestadeController> ().maxLife;
