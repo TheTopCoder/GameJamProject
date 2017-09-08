@@ -4,21 +4,40 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class PauseScript : MonoBehaviour
 {
-    [SerializeField]
-    AudioSource[] audios;
-    [SerializeField]
-    Slider volumeSlider;
-    [SerializeField]
-    GameObject resumeButton;
-    [SerializeField]
-    GameObject eventSystem;
-	bool paused;
+    #region Variables
+        [SerializeField]
+        AudioSource[] audios;
+        [SerializeField]
+        Slider volumeSlider;
+        [SerializeField]
+        GameObject resumeButton;
+        [SerializeField]
+        GameObject eventSystem;
+        [SerializeField]
+        GameObject optionsPanel;
+        [SerializeField]
+        GameObject mainPanel;
+        [SerializeField]
+        Dropdown resolutionDropdown;
+        [SerializeField]
+        Dropdown qualityDropdown;
+        [SerializeField]
+        Toggle vSyncToggle;
+        [SerializeField]
+        Toggle antiAlisingToggle;
+        [SerializeField]
+        Toggle windowedToggle;
+   
+
+    bool paused;
 
     float volumeAux;
     bool volumeSelected;
+    #endregion
 
     void Start()
     {
@@ -43,9 +62,10 @@ public class PauseScript : MonoBehaviour
 		 
         volumeAux = volumeSlider.value;
     }
+
     void Update()
     {
-		if (Input.GetKeyDown (KeyCode.P) || Input.GetButtonDown ("XboxSelect")) {
+		if (Input.GetKeyDown (KeyCode.Escape) || Input.GetButtonDown ("XboxSelect")) {
 			if (!paused) {
 				paused = true;
 				foreach (AudioSource a in audios) {
@@ -68,7 +88,41 @@ public class PauseScript : MonoBehaviour
             volumeSlider.value = volumeAux;
         }
 
+        qualityDropdown.value = QualitySettings.GetQualityLevel();
+        vSyncToggle.isOn = Convert.ToBoolean(QualitySettings.vSyncCount);
+        antiAlisingToggle.isOn = Convert.ToBoolean(QualitySettings.antiAliasing);
+        windowedToggle.isOn = !Screen.fullScreen;
+        if (Screen.width == 1920 && Screen.height == 1080)
+        {
+            resolutionDropdown.value = 0;
+        }
+        else if (Screen.width == 1680 && Screen.height == 1050)
+        {
+            resolutionDropdown.value = 1;
+        }
+        else if (Screen.width == 1600 && Screen.height == 900)
+        {
+            resolutionDropdown.value = 2;
+        }
+        else if (Screen.width == 1440 && Screen.height == 900)
+        {
+            resolutionDropdown.value = 3;
+        }
+        else if (Screen.width == 1366 && Screen.height == 768)
+        {
+            resolutionDropdown.value = 4;
+        }
+        else if (Screen.width == 1280 && Screen.height == 1024)
+        {
+            resolutionDropdown.value = 5;
+        }
+        else if (Screen.width == 1024 && Screen.height == 768)
+        {
+            resolutionDropdown.value = 6;
+        }
+
     }
+
     public void OnResume()
     {
 		paused = false;
@@ -76,7 +130,6 @@ public class PauseScript : MonoBehaviour
         this.GetComponent<Canvas>().enabled = false;
 		PlayerPrefs.SetFloat ("MainVolume",volumeSlider.value);
 		PlayerPrefs.Save ();
-		Debug.Log (PlayerPrefs.GetFloat ("MainVolume"));
         foreach (AudioSource a in audios)
         {
 //            a.Play();
@@ -97,6 +150,7 @@ public class PauseScript : MonoBehaviour
             a.volume = volumeSlider.value;
         }
     }
+
     public void OnVolumeSelected()
     {
         volumeSelected = true;
@@ -105,5 +159,65 @@ public class PauseScript : MonoBehaviour
     public void OnVolumeDeselected()
     {
         volumeSelected = false;
+    }
+
+    public void OnOptionsSelected()
+    {
+        mainPanel.SetActive(false);
+        optionsPanel.SetActive(true);
+    }
+
+    public void OnBackToPauseSelected()
+    {
+        mainPanel.SetActive(true);
+        optionsPanel.SetActive(false);
+    }
+
+    public void OnToggleValueChanged(Toggle toggle)
+    {
+        Screen.fullScreen = !Screen.fullScreen;
+    }
+
+    public void OnVSyncToggleValueChanged(Toggle toggle)
+    {
+        QualitySettings.vSyncCount = Convert.ToInt32(toggle.isOn);
+    }
+
+    public void OnAntiAlisingToggleChanged(Toggle toggle)
+    {
+        QualitySettings.antiAliasing = Convert.ToInt32(toggle.isOn);
+    }
+
+    public void OnDropdownValueChanged(Dropdown dropdown)
+    {
+        switch (dropdown.value)
+        {
+            case 0:
+                Screen.SetResolution(1920, 1080, Screen.fullScreen);
+                break;
+            case 1:
+                Screen.SetResolution(1680, 1050, Screen.fullScreen);
+                break;
+            case 2:
+                Screen.SetResolution(1600, 900, Screen.fullScreen);
+                break;
+            case 3:
+                Screen.SetResolution(1440, 900, Screen.fullScreen);
+                break;
+            case 4:
+                Screen.SetResolution(1366, 768, Screen.fullScreen);
+                break;
+            case 5:
+                Screen.SetResolution(1280, 1024, Screen.fullScreen);
+                break;
+            case 6:
+                Screen.SetResolution(1024, 768, Screen.fullScreen);
+                break;
+        }
+    }
+
+    public void OnQualityDropdownValueChanged(Dropdown dropdown)
+    {
+        QualitySettings.SetQualityLevel(dropdown.value);
     }
 }

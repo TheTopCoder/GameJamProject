@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 69b01587ca3368941a77b846d3ec1ef7
+timeCreated: 1504864556
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Lemon/Milk
+  fontNames:
+  - Lemon/Milk
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
