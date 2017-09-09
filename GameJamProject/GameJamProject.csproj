@@ -103,6 +103,7 @@
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CameraFollow2.cs" />
     <Compile Include="Assets\Scripts\CameraZoom.cs" />
+    <Compile Include="Assets\Scripts\ControlsPauseScript.cs" />
     <Compile Include="Assets\Scripts\CorridorAnimationTrigger.cs" />
     <Compile Include="Assets\Scripts\CorridorTrigger.cs" />
     <Compile Include="Assets\Scripts\CreditsScript.cs" />
