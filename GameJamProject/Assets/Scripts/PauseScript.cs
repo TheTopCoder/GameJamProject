@@ -18,6 +18,8 @@ public class PauseScript : MonoBehaviour
         [SerializeField]
         GameObject eventSystem;
         [SerializeField]
+        GameObject controlsPanel;
+        [SerializeField]
         GameObject optionsPanel;
         [SerializeField]
         GameObject mainPanel;
@@ -167,10 +169,16 @@ public class PauseScript : MonoBehaviour
         optionsPanel.SetActive(true);
     }
 
-    public void OnBackToPauseSelected()
+    public void OnControlsSelected()
+    {
+        mainPanel.SetActive(false);
+        controlsPanel.SetActive(true);
+    }
+
+    public void OnBackToPauseSelected(GameObject panel)
     {
         mainPanel.SetActive(true);
-        optionsPanel.SetActive(false);
+        panel.SetActive(false);
     }
 
     public void OnToggleValueChanged(Toggle toggle)

@@ -14,7 +14,7 @@ public class HeartScript : MonoBehaviour {
 		initialScale = transform.localScale.x;
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
 		if (destroyed) {
 			if (goingUp) {

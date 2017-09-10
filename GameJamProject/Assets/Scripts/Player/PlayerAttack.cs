@@ -179,7 +179,6 @@ public class PlayerAttack : MonoBehaviour {
 	}
 
 	IEnumerator SkillLife(){
-		Debug.Log ("GainLife");
 		if (playerStats.life < playerStats.maxLife && state == "wait" && playerMovement.state == "movement") {
 			bodyAnim.SetTrigger ("SkillLife");
 			handAnim.SetTrigger ("SkillLife");

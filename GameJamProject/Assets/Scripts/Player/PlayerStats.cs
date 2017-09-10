@@ -39,28 +39,28 @@ public class PlayerStats : MonoBehaviour {
 			
 		}
 		else if (life == 3) {
-			Heart1.SetActive (true);
-			Heart2.SetActive (true);
-			Heart3.SetActive (true);
-		}
+			Heart1.GetComponent<Animator>().SetBool("Up", true);
+            Heart2.GetComponent<Animator>().SetBool("Up", true);
+            Heart3.GetComponent<Animator>().SetBool("Up", true);
+        }
 		else if (life == 2) {
-//			Heart3.GetComponent<HeartScript> ().DestroyHeart ();
-			Heart1.SetActive (true);
-			Heart2.SetActive (true);
-			Heart3.SetActive (false);
-		}
+            //			Heart3.GetComponent<HeartScript> ().DestroyHeart ();
+            Heart1.GetComponent<Animator>().SetBool("Up", true);
+            Heart2.GetComponent<Animator>().SetBool("Up", true);
+            Heart3.GetComponent<Animator>().SetBool("Up", false);
+        }
 		else if (life == 1) {
-//			Heart2.GetComponent<HeartScript> ().DestroyHeart ();
-			Heart1.SetActive (true);
-			Heart2.SetActive (false);
-			Heart3.SetActive (false);
-		}
+            //			Heart2.GetComponent<HeartScript> ().DestroyHeart ();
+            Heart1.GetComponent<Animator>().SetBool("Up", true);
+            Heart2.GetComponent<Animator>().SetBool("Up", false);
+            Heart3.GetComponent<Animator>().SetBool("Up", false);
+        }
 		else if (life <= 0) {
-//			Heart1.GetComponent<HeartScript> ().DestroyHeart ();
-			Heart1.SetActive (false);
-			Heart2.SetActive (false);
-			Heart3.SetActive (false);
-			fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
+            //			Heart1.GetComponent<HeartScript> ().DestroyHeart ();
+            Heart1.GetComponent<Animator>().SetBool("Up", false);
+            Heart2.GetComponent<Animator>().SetBool("Up", false);
+            Heart3.GetComponent<Animator>().SetBool("Up", false);
+            fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
 			fade.GetComponent<FadeTransition>().nextScene = "GameOver";
 			Destroy (GameObject.FindGameObjectWithTag ("PlayerBase"));
 			Destroy(gameObject);
