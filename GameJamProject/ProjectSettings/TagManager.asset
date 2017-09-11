@@ -17,6 +17,9 @@ TagManager:
   - Light
   - Cenario
   - Tambor
+  - TempestadeTamborCollider
+  - TamborTrigger
+  - Raio
   layers:
   - Default
   - TransparentFX

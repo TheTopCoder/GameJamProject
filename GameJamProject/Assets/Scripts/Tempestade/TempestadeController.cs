@@ -11,6 +11,9 @@ public class TempestadeController : MonoBehaviour
 
 	public GameObject waveAttack;
 	public GameObject groundAttack;
+	public GameObject circleCollider;
+	public GameObject hurricaneCollider;
+
 	public float life;
 	public float maxLife = 300;
 	int dashAttackDamage = 10;
@@ -91,7 +94,7 @@ public class TempestadeController : MonoBehaviour
 		cooldownMovement = 0;
 		cooldownAbility = 3f;
 		ability = "none";
-		numAbilities = 2;
+		numAbilities = 4;
 		for (int i = 0; i <= numAbilities; i++) {
 			attackProb.Add (1);
 			attackProbUp.Add (0);
@@ -117,7 +120,7 @@ public class TempestadeController : MonoBehaviour
 
 	void Update()
 	{
-		Debug.Log ("State: " + state);
+		//Debug.Log ("State: " + state);
 		camPosition = mainCamera.position;
 
 		//Shake
@@ -169,7 +172,9 @@ public class TempestadeController : MonoBehaviour
 				Destroy(gameObject);
 			}
 
-			MoveInDirection (DecideDirection (),walkSpeed);
+			if (player != null) {
+				MoveInDirection (DecideDirection (), walkSpeed);
+			}
 
 			cooldownMovement -= Time.deltaTime;
 			cooldownAbility -= Time.deltaTime;
@@ -178,17 +183,8 @@ public class TempestadeController : MonoBehaviour
 			//Atacar
 			if (cooldownAbility <= 0)
 			{
-				Debug.Log ("Ability");
-				if (canAttackGround) {
-					StartCoroutine (GroundAttack ());
-					ability = "groundAttack";
-					state = "ability";
-					cooldownAbility = 1.5f;
-				} else {
-					//Debug.Log ("cooldownAbility < 0");
 					state = "ChooseAbility";
 					cooldownAbility = Random.Range (1.2f, 1.8f);
-				}
 			}
 			/* else if (cooldownMovement <= 0)
             {
@@ -234,13 +230,13 @@ Vector3 DecideDirection(){
 			return new Vector3 (0, 0, 0);
 		} else if (playerDistance < 0.2f && lastDirection.magnitude == 0) {
 			return new Vector3 (0, 0, 0);
-		} else if (distance >= tambor.GetComponent<CircleCollider2D> ().radius + GetComponent<CircleCollider2D> ().radius) {
+		} else if (distance >= tambor.GetComponent<CircleCollider2D> ().radius + circleCollider.GetComponent<CircleCollider2D> ().radius) {
 			return direction;
 		} else {
 			bool tamborInTheMiddle = false;
 			//Debug.Log ("PlayerDistanceRay: " + (ray.GetPoint (playerDistance) - tambor.transform.position).magnitude);
 			for (float i = 1; i <= 100; i++) {
-			if ((ray.GetPoint (i / 100 * playerDistance) - tambor.transform.position).magnitude <= tambor.GetComponent<CircleCollider2D> ().radius + GetComponent<CircleCollider2D> ().radius) {
+			if ((ray.GetPoint (i / 100 * playerDistance) - tambor.transform.position).magnitude <= tambor.GetComponent<CircleCollider2D> ().radius + circleCollider.GetComponent<CircleCollider2D> ().radius) {
 					tamborInTheMiddle = true;
 				}
 			}
@@ -255,7 +251,7 @@ Vector3 DecideDirection(){
 					direction = Quaternion.Euler (0, 0, 0.1f) * direction;
 					ray = new Ray (startingPoint, direction);
 					distance = Vector3.Cross (ray.direction, tambor.transform.position - ray.origin).magnitude;
-				} while((distance < tambor.GetComponent<CircleCollider2D> ().radius + GetComponent<CircleCollider2D> ().radius || Vector3.Dot (direction, originalDirection) < 0) && count < 1800);
+				} while((distance < tambor.GetComponent<CircleCollider2D> ().radius + circleCollider.GetComponent<CircleCollider2D> ().radius || Vector3.Dot (direction, originalDirection) < 0) && count < 1800);
 				direction1 = direction;
 				direction2 = originalDirection;
 				count = 0;
@@ -264,7 +260,7 @@ Vector3 DecideDirection(){
 					direction2 = Quaternion.Euler (0, 0, -0.1f) * direction2;
 					ray = new Ray (startingPoint, direction2);
 					distance = Vector3.Cross (ray.direction, tambor.transform.position - ray.origin).magnitude;
-				} while((distance < tambor.GetComponent<CircleCollider2D> ().radius + GetComponent<CircleCollider2D> ().radius || Vector3.Dot (direction2, originalDirection) < 0) && count < 1800);
+				} while((distance < tambor.GetComponent<CircleCollider2D> ().radius + circleCollider.GetComponent<CircleCollider2D> ().radius || Vector3.Dot (direction2, originalDirection) < 0) && count < 1800);
 				if (Vector3.Angle (originalDirection, direction1) < Vector3.Angle (originalDirection, direction2)) {
 					//Debug.Log (direction);
 					//Debug.Log (count);
@@ -287,14 +283,22 @@ void ChooseAbility()
 	//Tornar as habilidades mais provaveis a medida que nao sao usadas
 	//Dependendo da posicao/distancia do jogador, a probabilidade de cada ataque é diferente
 	if (true/*player != null && Vector3.Distance (transform.position, player.transform.position) > 4.0f*/) {
-		attackProb [1] = 3;
-		attackProbUp [1] = 0;
+
 		attackProb [2] = 1;
 		attackProbUp [2] = 0;
-//		attackProb [3] = 4;
-//		attackProbUp [3] = 1;
-//		attackProb [4] = 0;
-//		attackProbUp [4] = 0;
+		attackProb [3] = 1;
+		attackProbUp [3] = 0;
+		if (canAttackGround) {
+			attackProb [1] = 1;
+			attackProbUp [1] = 0;
+			attackProb [4] = 3;
+			attackProbUp [4] = 0;
+		} else {
+			attackProb [1] = 3;
+			attackProbUp [1] = 0;
+			attackProb [4] = 0;
+			attackProbUp [4] = 0;
+		}
 		if (life <= maxLife * 1 / 2) {
 //			attackProb [5] = 2;
 //			attackProbUp [5] = 1;
@@ -324,6 +328,7 @@ void ChooseAbility()
 	}
 	//Debug.Log (sumProb);
 	float abilityNumber = Random.Range(0, sumProb);
+	//Debug.Log ("Ability Number: " + abilityNumber);
 	for (int i = 1; i <= numAbilities; i++) {
 		attackCurProb [i]+= attackProbUp[i];
 	}
@@ -339,6 +344,7 @@ void ChooseAbility()
 		attackCurProb [curAbility] = attackProb[curAbility];
 	}
 	sumCurProb += thatAttackProb;
+	curAbility++;
 
 	//Pinball
 	thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
@@ -350,18 +356,29 @@ void ChooseAbility()
 		attackCurProb [curAbility] = attackProb[curAbility];
 	}
 	sumCurProb += thatAttackProb;
-
-
-/*
-	//SpitAttack
 	curAbility++;
+
+	//JumpAttack
 	thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
 	if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)		{
-		StartCoroutine(SpitAttack());
+		state = "ability";
+		StartCoroutine(JumpAttack());
 		attackCurProb [curAbility] = attackProb[curAbility];
 	}
 	sumCurProb += thatAttackProb;
+	curAbility++;
 
+	//GroundAttack
+	thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
+	if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)		{
+		state = "ability";
+		StartCoroutine(GroundAttack());
+		attackCurProb [curAbility] = attackProb[curAbility];
+	}
+	sumCurProb += thatAttackProb;
+	curAbility++;
+
+/*
 	curAbility++;
 	thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
 	if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)		{
@@ -433,9 +450,9 @@ void ChangeDirection(GameObject wall){
 	}
 	if (wall.name == "Tambor"){
 		Vector3 wallPos = wall.transform.position;
-		Vector3 collisionPos = new Vector3 (wallPos.x+(transform.position.x-wallPos.x)*wall.GetComponent<CircleCollider2D>().radius/(wall.GetComponent<CircleCollider2D>().radius+GetComponent<CircleCollider2D>().radius),wallPos.y+(transform.position.y-wallPos.y)*wall.GetComponent<CircleCollider2D>().radius/(wall.GetComponent<CircleCollider2D>().radius+GetComponent<CircleCollider2D>().radius),0);
+		Vector3 collisionPos = new Vector3 (wallPos.x+(transform.position.x-wallPos.x)*wall.GetComponent<CircleCollider2D>().radius/(wall.GetComponent<CircleCollider2D>().radius+ circleCollider.GetComponent<CircleCollider2D>().radius),wallPos.y+(transform.position.y-wallPos.y)*wall.GetComponent<CircleCollider2D>().radius/(wall.GetComponent<CircleCollider2D>().radius+circleCollider.GetComponent<CircleCollider2D>().radius),0);
 		Vector3 posVector= wallPos - transform.position;
-
+		tambor.GetComponent<TamborScript> ().Raio (posVector.normalized);
 		Vector3 newVelocity = new Vector3(GetComponent<Rigidbody2D> ().velocity.x,GetComponent<Rigidbody2D> ().velocity.y,0);
 		newVelocity = Vector3.Reflect (newVelocity, -posVector);
 //		float angle = Vector3.Angle (GetComponent<Rigidbody2D>().velocity,posVector);
@@ -470,11 +487,13 @@ IEnumerator PinballAttack()
 
 	GetComponent<Rigidbody2D>().velocity = newVelocity;
 //	GetComponentInChildren<Animator>().SetTrigger("Fome_ClawAttack");
+	bool hit = false;
 	while(state == "ability"){
 		//strikes--;
-		yield return new WaitForSeconds (0.05f);
-		if (player!=null&&canHit)
+		yield return new WaitForSeconds (Time.deltaTime);
+		if (!hit&&player!=null&&hurricaneCollider.GetComponent<HurricaneHitbox>().canHit)
 		{
+			hit = true;
 			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 		}
 		if (strikes <= 0) {
@@ -485,6 +504,44 @@ IEnumerator PinballAttack()
 	Stunned ();
 }
 	
+IEnumerator JumpAttack(){
+	Debug.Log ("Jump");
+	ability = "jump";
+	GetComponentInChildren<Animator>().SetTrigger("Prepare_Attack_Jump");
+	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
+	yield return new WaitForSeconds (0.5f);
+	GetComponentInChildren<Animator>().SetTrigger("Attack_Jump");
+	Vector3 originalPos = transform.position;
+	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,9f);
+	yield return new WaitForSeconds (1.25f);
+	Vector2 newDir;
+	Vector2 target;
+	if (player!=null&&Random.Range (0, 2) == 1) {
+		
+		newDir = player.transform.position - originalPos;
+	} else {
+		newDir = tambor.transform.position - originalPos;
+	}
+	if (newDir.magnitude >= 3.0f) {
+		newDir = newDir.normalized;
+		GetComponent<Rigidbody2D> ().velocity = new Vector2 (newDir.x,newDir.y)*4.8f;
+	}
+	else if (newDir.magnitude < 1.0f) {
+		newDir = newDir.normalized;
+		GetComponent<Rigidbody2D> ().velocity = new Vector2 (newDir.x,newDir.y)*2.4f;
+	}
+	else {
+		newDir = newDir.normalized;
+		GetComponent<Rigidbody2D> ().velocity = new Vector2 (newDir.x,newDir.y)*(2.4f+2.4f*(newDir.magnitude-1f)/(3f-1f));
+	}
+	yield return new WaitForSeconds (1f);
+	GetComponentInChildren<Animator>().SetTrigger("Attack_Jump_Fall");
+	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,-9f);
+	yield return new WaitForSeconds (1.25f);
+	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
+	GetComponentInChildren<Animator>().SetTrigger("Attack_Jump_Hit");
+}
+
 IEnumerator GrabAttack()
 {
 	//Debug.Log ("Grab Attack");
@@ -501,15 +558,12 @@ IEnumerator GrabAttack()
 
 IEnumerator GroundAttack()
 {
+	ability = "groundAttack";
 	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 	GetComponentInChildren<Animator>().SetTrigger("Attack_Ground");
 //	GetComponentInChildren<Animator>().SetTrigger("Fome_GroundAttack");
 	while(state == "ability"){
 		yield return new WaitForSeconds(0.005f);
-		if (player!=null&&canHit)
-		{
-			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
-		}
 	}
 }
 IEnumerator SpitAttack(){

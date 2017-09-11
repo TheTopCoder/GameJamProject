@@ -5,11 +5,12 @@ using UnityEngine;
 public class AttackHitbox : MonoBehaviour {
 
 	GameObject player;
+	GameObject boss;
 	bool hit;
 
 	// Use this for initialization
 	void Start () {
-		//boss = GameObject.FindGameObjectWithTag ("Boss");
+		boss = GameObject.FindGameObjectWithTag ("Boss");
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 	
@@ -23,12 +24,24 @@ public class AttackHitbox : MonoBehaviour {
 			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 			//boss.GetComponent<FomeController>().canHit = true;
 		}
+		if (!hit && transform.name!="RaioHitbox(Clone)" && other.transform.tag == "TamborTrigger") {
+			Debug.Log (transform.name);
+			hit = true;
+			Debug.Log ("Raio");
+			GameObject.FindGameObjectWithTag("Tambor").GetComponent<TamborScript> ().Raio (other.transform.position-boss.transform.position);
+		}
 	}
 	void OnTriggerStay2D(Collider2D other){
-		if (!hit&&other.transform.tag == "Player") {
+		if (!hit&& other.transform.tag == "Player") {
 			hit = true;
 			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 			//boss.GetComponent<FomeController>().canHit = true;
+		}
+		if (!hit&&transform.name!="RaioHitbox(Clone)"&&other.transform.tag == "TamborTrigger") {
+			Debug.Log (transform.name);
+			hit = true;
+			Debug.Log ("Raio");
+			GameObject.FindGameObjectWithTag("Tambor").GetComponent<TamborScript> ().Raio (other.transform.position-boss.transform.position);
 		}
 	}
 

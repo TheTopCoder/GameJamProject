@@ -28,7 +28,7 @@ public class SpawnableCrown : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (player.transform.position.y > transform.position.y) {
+		if (player!=null&&player.transform.position.y > transform.position.y) {
 			GetComponent<SpriteRenderer> ().sortingOrder = 2;
 		} else {
 			GetComponent<SpriteRenderer> ().sortingOrder = -2;

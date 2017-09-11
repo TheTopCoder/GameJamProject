@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour {
 	float jumpGravity = 0.3f;
 	float previousSpeedY = 0;
 	float dirAbs = 0;
-	float shadowYOffset = 0.35f;
+	float shadowYOffset = 0.475f;
 	float shadowXOffset = 0f;
 	float lastShadowX;
 	float lastShadowY;
