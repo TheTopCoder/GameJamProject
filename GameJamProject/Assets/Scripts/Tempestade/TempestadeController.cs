@@ -71,6 +71,7 @@ public class TempestadeController : MonoBehaviour
 	private Vector3 camPosition;
 	private bool canShock;
 	public bool faceRight = false;
+
 	[SerializeField]
 	GameObject tambor;
 
@@ -84,6 +85,9 @@ public class TempestadeController : MonoBehaviour
 	float walkSpeed = 1.6f;
 	public bool canAttackGround;
 	Vector3 lastDirection = new Vector3(0,0,0);
+	float ArenaA = 11f/2,ArenaB = 6.2f / 2;
+	Vector2 ArenaCenter;
+	bool canStrikeAgain = true;
 
 	#endregion
 
@@ -115,11 +119,22 @@ public class TempestadeController : MonoBehaviour
 		shakeDuration = 0f;
 		shakeAmount = 0.1f;
 		decreaseFactor = 1;
+		ArenaCenter.x = 0.6f;
+		ArenaCenter.y = -3.3f;
 	}
 
 
 	void Update()
 	{
+		//Chefe morrer
+		if (life <= 0)
+		{
+			fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
+			fade.GetComponent<FadeTransition>().nextScene = "BeatDemo";
+			Destroy(gameObject);
+		}
+
+
 		//Debug.Log ("State: " + state);
 		camPosition = mainCamera.position;
 
@@ -164,13 +179,6 @@ public class TempestadeController : MonoBehaviour
 			if (attackHitbox != null) {
 				DestroyHitbox ();
 			}
-			//Chefe morrer
-			if (life <= 0)
-			{
-				fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
-				fade.GetComponent<FadeTransition>().nextScene = "BeatDemo";
-				Destroy(gameObject);
-			}
 
 			if (player != null) {
 				MoveInDirection (DecideDirection (), walkSpeed);
@@ -210,6 +218,15 @@ public class TempestadeController : MonoBehaviour
 	{
 		//state = "ability";
 		ChooseAbility();
+	}
+
+	if (canStrikeAgain&&Mathf.Pow ((transform.position.x + GetComponent<Rigidbody2D>().velocity.x * Time.deltaTime- ArenaCenter.x), 2)/Mathf.Pow(ArenaA,2)+Mathf.Pow ((transform.position.y + GetComponent<Rigidbody2D>().velocity.y * Time.deltaTime - ArenaCenter.y), 2)/Mathf.Pow(ArenaB,2)>=1&&ability=="pinball") {
+		ChangeDirection (GameObject.Find("Cenario"));
+		strikes--;
+		canStrikeAgain = false;
+	}
+	if (Mathf.Pow ((transform.position.x - tambor.transform.position.x), 2) / Mathf.Pow (ArenaA, 2) + Mathf.Pow ((transform.position.y - tambor.transform.position.y), 2) / Mathf.Pow (ArenaB, 2) < 1) {
+		canStrikeAgain = true;
 	}
 }
 
@@ -284,7 +301,7 @@ void ChooseAbility()
 	//Dependendo da posicao/distancia do jogador, a probabilidade de cada ataque é diferente
 	if (true/*player != null && Vector3.Distance (transform.position, player.transform.position) > 4.0f*/) {
 
-		attackProb [2] = 1;
+		attackProb [2] = 10;
 		attackProbUp [2] = 0;
 		attackProb [3] = 1;
 		attackProbUp [3] = 0;
@@ -339,7 +356,7 @@ void ChooseAbility()
 	thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
 	if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)
 	{	
-		Debug.Log ("Chose to move");
+		//Debug.Log ("Chose to move");
 		state = "movement";
 		ability = "none";
 		cooldownAbility = 0.5f;
@@ -353,7 +370,7 @@ void ChooseAbility()
 	if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)
 	{
 		state = "ability";
-		Debug.Log ("Pinball");
+		//Debug.Log ("Pinball");
 		StartCoroutine(PinballAttack());
 		attackCurProb [curAbility] = attackProb[curAbility];
 	}
@@ -433,6 +450,7 @@ public void FinishAttack(){
 		Destroy (attackHitbox);
 		GetComponentInChildren<Animator>().SetTrigger("Fome_Idle");
 	}
+	canStrikeAgain = true;
 }
 
 void CreateHitbox(string name){
@@ -448,17 +466,19 @@ void DestroyHitbox(){
 //Ataques
 
 void ChangeDirection(GameObject wall){
-	if (wall.name == "ColliderUp") {
-		GetComponent<Rigidbody2D> ().velocity = new Vector3 (GetComponent<Rigidbody2D>().velocity.x,-GetComponent<Rigidbody2D>().velocity.y,0);
-	}
-	if (wall.name == "ColliderDown") {
-		GetComponent<Rigidbody2D> ().velocity = new Vector3 (GetComponent<Rigidbody2D>().velocity.x,-GetComponent<Rigidbody2D>().velocity.y,0);
-	}
-	if (wall.name == "ColliderRight") {
-		GetComponent<Rigidbody2D> ().velocity = new Vector3 (-GetComponent<Rigidbody2D>().velocity.x,GetComponent<Rigidbody2D>().velocity.y,0);
-	}
-	if (wall.name == "ColliderLeft") {
-		GetComponent<Rigidbody2D> ().velocity = new Vector3 (-GetComponent<Rigidbody2D>().velocity.x,GetComponent<Rigidbody2D>().velocity.y,0);
+	if (wall.name == "Cenario") {
+		//Debug.Log ("Hit Cenario");
+		Vector2 pos = new Vector2 (transform.position.x, transform.position.y)-ArenaCenter;
+		pos = new Vector2 (pos.x, pos.y * ArenaA / ArenaB);
+		pos = pos + ArenaCenter;
+		Vector2 normal = ArenaCenter - pos;
+		Vector2 v = GetComponent<Rigidbody2D> ().velocity;
+		v = new Vector2 (v.x, v.y * ArenaA / ArenaB);
+		v = Vector2.Reflect (v,normal);
+		v = new Vector2 (v.x, v.y * ArenaB / ArenaA);
+		v = v.normalized;
+		v = v * slideSpeed;
+		GetComponent<Rigidbody2D> ().velocity = v;
 	}
 	if (wall.name == "Tambor"){
 		Vector3 wallPos = wall.transform.position;
@@ -503,7 +523,7 @@ IEnumerator PinballAttack()
 	while(state == "ability"){
 		//strikes--;
 		yield return new WaitForSeconds (Time.deltaTime);
-		if (!hit&&player!=null&&hurricaneCollider.GetComponent<HurricaneHitbox>().canHit)
+		if (/*!hit&&*/player!=null&&hurricaneCollider.GetComponent<HurricaneHitbox>().canHit)
 		{
 			hit = true;
 			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
@@ -513,11 +533,11 @@ IEnumerator PinballAttack()
 		}
 	}
 	StartCoroutine ("Stunned");
-	Stunned ();
+	//Stunned ();
 }
 	
 IEnumerator JumpAttack(){
-	Debug.Log ("Jump");
+	//Debug.Log ("Jump");
 	ability = "jump";
 	GetComponentInChildren<Animator>().SetTrigger("Prepare_Attack_Jump");
 	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
@@ -739,7 +759,9 @@ void Flip()
 
 void OnTriggerEnter2D(Collider2D other){
 	//Debug.Log (other.transform.tag);
-	if ((other.transform.tag == "Cenario"||other.name == "Tambor")&&ability=="pinball"){
+	if ((/*other.transform.tag == "Cenario"||*/other.name == "Tambor")&&ability=="pinball"){
+		Debug.Log ("PinballHit");
+		canStrikeAgain = false;
 		if (other.name != "Tambor") {
 			strikes--;
 		}
@@ -751,6 +773,9 @@ void OnTriggerEnter2D(Collider2D other){
 	}
 }
 void OnTriggerExit2D(Collider2D other){
+	if ((other.transform.tag == "Cenario" || other.name == "Tambor") && ability == "pinball") {
+		canStrikeAgain = true;
+	}
 	if (other.transform.tag == "Player") {
 		//canHit = false;
 	}

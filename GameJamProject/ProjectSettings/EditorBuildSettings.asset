@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CorridorScene.unity
     guid: 131e9e638e476364a8e253f6a04b18f5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lobby.unity
     guid: 90f006c15e863e3438eff94cc4b77d58
   - enabled: 1
@@ -22,4 +22,13 @@ EditorBuildSettings:
     guid: 27dc0191a5e2c0941b45e444800cdd7c
   - enabled: 1
     path: Assets/Scenes/BeatDemo.unity
+    guid: 4718c866f8f6d7649bf56f4ae1be899f
+  - enabled: 1
+    path: Assets/Scenes/Lobby New.unity
+    guid: b7e85f0d7a6c0674ea2d21c5b5559b20
+  - enabled: 1
+    path: Assets/Scenes/Tempestade.unity
+    guid: cf35b0e81a3199b469b6bf75cd687a2a
+  - enabled: 1
+    path: Assets/Scenes/FomeCorridor.unity
     guid: 00000000000000000000000000000000

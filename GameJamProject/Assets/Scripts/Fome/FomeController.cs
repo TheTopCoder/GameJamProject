@@ -97,6 +97,13 @@ public class FomeController : MonoBehaviour
     }
     void Update()
     {
+		if (life <= 0)
+		{
+			fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
+			fade.GetComponent<FadeTransition>().nextScene = "BeatDemo";
+			Destroy(gameObject);
+		}
+
         camPosition = mainCamera.position;
 
 //Shake
@@ -140,13 +147,6 @@ public class FomeController : MonoBehaviour
 				DestroyHitbox ();
 			}
 			//Chefe morrer
-            if (life <= 0)
-            {
-				fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
-				fade.GetComponent<FadeTransition>().nextScene = "BeatDemo";
-                Destroy(gameObject);
-            }
-
             cooldownMovement -= Time.deltaTime;
             cooldownAbility -= Time.deltaTime;
 			//Atacar

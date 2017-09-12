@@ -18,7 +18,7 @@ public class GameOverScript : MonoBehaviour
 	{
 		if ((Input.GetButtonDown("Submit") || Input.anyKeyDown)/*&&(!Input.GetKeyDown(KeyCode.Alpha1))*/)
 		{
-			StartCoroutine(LoadScene("Lobby"));
+			StartCoroutine(LoadScene("Lobby New"));
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha1)){
 			//StartCoroutine(LoadScene("FomeNewArena"));

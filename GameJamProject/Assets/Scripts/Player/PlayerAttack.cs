@@ -152,6 +152,9 @@ public class PlayerAttack : MonoBehaviour {
 				
 			//}
 		}
+//		if (Input.GetAxisRaw ("XboxX") == 0 && Input.GetAxisRaw ("XboxR2") == 0 && !Input.GetKeyDown (KeyCode.E) && !Input.GetMouseButtonDown (0) &&state=="prepareAttack"){
+//			state = "wait";
+//		}
 		//Aqui atira o tacape
 /*		if (state == "attackStrong") {
 			handAnim.SetBool ("Estocada", true);

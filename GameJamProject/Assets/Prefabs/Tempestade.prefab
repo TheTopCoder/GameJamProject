@@ -87,8 +87,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4178662835468244}
-  - component: {fileID: 58204082123473224}
   - component: {fileID: 114753500434624676}
+  - component: {fileID: 60999558362327368}
   m_Layer: 0
   m_Name: Hurricane Collider
   m_TagString: Untagged
@@ -182,24 +182,9 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &58204082123473224
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1974394619158574}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.0975051}
-  serializedVersion: 2
-  m_Radius: 0.89909357
 --- !u!58 &58247293953616592
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -229,7 +214,35 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.01181414, y: -0.09469641}
   serializedVersion: 2
-  m_Radius: 0.5870484
+  m_Radius: 1
+--- !u!60 &60999558362327368
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1974394619158574}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.8895523, y: -0.019001069}
+      - {x: -0.4647775, y: -2.1005907}
+      - {x: -0.006748851, y: -2.1825943}
+      - {x: 0.68454105, y: -0.019001069}
 --- !u!61 &61041275723080486
 BoxCollider2D:
   m_ObjectHideFlags: 1

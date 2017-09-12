@@ -15,19 +15,28 @@ public class TamborScript : MonoBehaviour {
 	}
 
 	IEnumerator CreateRaio(Vector3 dir){
+		Debug.Log (dir.normalized);
 		GameObject raio;
+		GameObject raioShadow;
 		UnityEngine.Object raioprefab = Resources.Load ("Tempestade/Raio");
-		//Spawn Just the location
-		yield return new WaitForSeconds (0.3f);
-		raio = (GameObject) Instantiate (raioprefab, transform.position, Quaternion.identity);
+		UnityEngine.Object raioShadowPrefab = Resources.Load ("Tempestade/Shadow");
+
+		yield return new WaitForSeconds (0.1f);
+		raioShadow = (GameObject) Instantiate (raioShadowPrefab, transform.position, Quaternion.identity);
 
 		float rotAngle = Random.Range (-15f, 15f);
 		dir = Quaternion.Euler (0, 0, rotAngle)*dir;
 		dir = dir.normalized;
-		float distSqr = Random.Range (1f, 9f);
+		float distSqr = Random.Range (2.25f, 14f);
 		distSqr = Mathf.Sqrt (distSqr);
 
-		raio.transform.position = new Vector3 (transform.position.x +dir.x * distSqr,transform.position.y +dir.y * distSqr * 0.6f /*Elipse b/a*/,0);
+		raioShadow.transform.position = new Vector3 (transform.position.x +dir.x * distSqr,transform.position.y +dir.y * distSqr * 6.2f/11f /*Elipse b/a*/,0);
+		yield return new WaitForSeconds (0.4f);
+		Destroy (raioShadow);
+		raio = (GameObject) Instantiate (raioprefab, transform.position, Quaternion.identity);
+
+
+		raio.transform.position = new Vector3 (transform.position.x +dir.x * distSqr,transform.position.y +dir.y * distSqr * 6.2f/11f /*Elipse b/a*/,0);
 	}
 
 	IEnumerator RaioBoss(Vector3 dir){

@@ -16,7 +16,12 @@ public class LobbyDoor : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.transform.tag == "PlayerBase") {
-			GameObject.FindGameObjectWithTag ("TransitionCanvas").GetComponent<TransitionScript> ().ChangeScene();
+			if (name == "PortaFome") {
+				GameObject.FindGameObjectWithTag ("TransitionCanvas").GetComponent<TransitionScript> ().nome = "FomeCorridor";
+			} else {
+				GameObject.FindGameObjectWithTag ("TransitionCanvas").GetComponent<TransitionScript> ().nome = "Tempestade";
+			}
+			GameObject.FindGameObjectWithTag ("TransitionCanvas").GetComponent<TransitionScript> ().ChangeScene ();
 		}
 	}
 }

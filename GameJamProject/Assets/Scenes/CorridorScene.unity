@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 515568678}
-  nome: Lobby
+  nome: Lobby New
 --- !u!1 &584011652
 GameObject:
   m_ObjectHideFlags: 0
