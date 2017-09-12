@@ -201,7 +201,7 @@ public class PlayerAttack : MonoBehaviour {
 	}
 
 	public void Attack(Collider2D other){
-		if (canHit&&(other.tag == "Boss"||other.tag == "Enemy")) {
+		if (canHit&&(other.tag == "Boss"||other.tag == "Enemy"||other.tag == "TamborTrigger")) {
 			bool alreadyHit = false;
 			for (int i = 0; i < hit.Count; i++) {
 				if ((int)hit [i] == other.gameObject.GetInstanceID ()) {
@@ -209,14 +209,15 @@ public class PlayerAttack : MonoBehaviour {
 				}
 			}
 			if (!alreadyHit) {
-				playerStats.GainEnergy ();
+//				Debug.Log (other.tag);
 				if (other.tag == "Boss") {
+					playerStats.GainEnergy ();
 					if (chargedAttack) {
 						if (other.name == "Fome") {
-							boss.GetComponent<FomeController> ().ReceiveDamage (4.0f*attackDamage);
+							boss.GetComponent<FomeController> ().ReceiveDamage (4.0f * attackDamage);
 						}
 						if (other.name == "Tempestade") {
-							boss.GetComponent<TempestadeController> ().ReceiveDamage (4.0f*attackDamage);
+							boss.GetComponent<TempestadeController> ().ReceiveDamage (4.0f * attackDamage);
 						}
 					} else {
 						if (other.name == "Fome") {
@@ -227,13 +228,20 @@ public class PlayerAttack : MonoBehaviour {
 						}
 					}
 					hit.Add (boss.GetInstanceID ());
-				} else {
+				} else if (other.tag == "Enemy") {
+					playerStats.GainEnergy ();
 					Debug.Log ("Hit Crow");
 					if (chargedAttack) {
-						other.gameObject.GetComponent<EnemyStats> ().ReceiveDamage (3.0f*attackDamage);
+						other.gameObject.GetComponent<EnemyStats> ().ReceiveDamage (3.0f * attackDamage);
 					} else {
 						other.gameObject.GetComponent<EnemyStats> ().ReceiveDamage (attackDamage);
 					}
+					hit.Add (other.gameObject.GetInstanceID ());
+				} else if (other.tag == "TamborTrigger") {
+					if (chargedAttack) {
+						other.transform.parent.GetComponent<TamborScript> ().RaioSimples (other.transform.position - transform.position);		
+					}
+					Debug.Log (other.gameObject.GetInstanceID ());
 					hit.Add (other.gameObject.GetInstanceID ());
 				}
 			}

@@ -300,7 +300,7 @@ MonoBehaviour:
   hurricaneCollider: {fileID: 1974394619158574}
   life: 0
   maxLife: 300
-  FadeOut: {fileID: 0}
+  FadeOut: {fileID: 1518292290722822, guid: 69121602aaa6ab94c8ef037b74c26b28, type: 2}
   animClipUp: {fileID: 0}
   animClipDown: {fileID: 0}
   animClip: {fileID: 0}

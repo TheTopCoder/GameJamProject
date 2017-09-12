@@ -94,7 +94,7 @@ public class TempestadeController : MonoBehaviour
 		cooldownMovement = 0;
 		cooldownAbility = 3f;
 		ability = "none";
-		numAbilities = 4;
+		numAbilities = 5;
 		for (int i = 0; i <= numAbilities; i++) {
 			attackProb.Add (1);
 			attackProbUp.Add (0);
@@ -299,6 +299,8 @@ void ChooseAbility()
 			attackProb [4] = 0;
 			attackProbUp [4] = 0;
 		}
+		attackProb [5] = 1;
+		attackProbUp [5] = 0;
 		if (life <= maxLife * 1 / 2) {
 //			attackProb [5] = 2;
 //			attackProbUp [5] = 1;
@@ -373,6 +375,16 @@ void ChooseAbility()
 	if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)		{
 		state = "ability";
 		StartCoroutine(GroundAttack());
+		attackCurProb [curAbility] = attackProb[curAbility];
+	}
+	sumCurProb += thatAttackProb;
+	curAbility++;
+
+	//WaterAttack
+	thatAttackProb = attackCurProb [curAbility] - attackProbUp[curAbility];
+	if (abilityNumber >= sumCurProb && abilityNumber < sumCurProb + thatAttackProb)		{
+		state = "ability";
+		StartCoroutine(WaterAttack());
 		attackCurProb [curAbility] = attackProb[curAbility];
 	}
 	sumCurProb += thatAttackProb;
@@ -514,15 +526,19 @@ IEnumerator JumpAttack(){
 	Vector3 originalPos = transform.position;
 	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,9f);
 	yield return new WaitForSeconds (1.25f);
+	Vector2 newPos = transform.position;
 	Vector2 newDir;
 	Vector2 target;
 	if (player!=null&&Random.Range (0, 2) == 1) {
-		
-		newDir = player.transform.position - originalPos;
+		target = player.transform.position - originalPos;
+		//target = target * ((target.magnitude)/target.magnitude);
+		newDir = target.normalized;
 	} else {
-		newDir = tambor.transform.position - originalPos;
+		target = tambor.transform.position - originalPos;
+		target = target * ((target.magnitude+0.5f)/target.magnitude);
+		newDir = target.normalized;
 	}
-	if (newDir.magnitude >= 3.0f) {
+/*		if (newDir.magnitude >= 3.0f) {
 		newDir = newDir.normalized;
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (newDir.x,newDir.y)*4.8f;
 	}
@@ -534,7 +550,11 @@ IEnumerator JumpAttack(){
 		newDir = newDir.normalized;
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (newDir.x,newDir.y)*(2.4f+2.4f*(newDir.magnitude-1f)/(3f-1f));
 	}
-	yield return new WaitForSeconds (1f);
+*/
+	GetComponent<Rigidbody2D> ().velocity = new Vector2 (newDir.x,newDir.y)*4.8f;
+	while ((new Vector2(transform.position.x,transform.position.y) - newPos).magnitude <= target.magnitude) {
+		yield return new WaitForSeconds (Time.deltaTime);
+	}
 	GetComponentInChildren<Animator>().SetTrigger("Attack_Jump_Fall");
 	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,-9f);
 	yield return new WaitForSeconds (1.25f);
@@ -561,11 +581,21 @@ IEnumerator GroundAttack()
 	ability = "groundAttack";
 	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 	GetComponentInChildren<Animator>().SetTrigger("Attack_Ground");
-//	GetComponentInChildren<Animator>().SetTrigger("Fome_GroundAttack");
+	//	GetComponentInChildren<Animator>().SetTrigger("Fome_GroundAttack");
 	while(state == "ability"){
 		yield return new WaitForSeconds(0.005f);
 	}
 }
+
+IEnumerator WaterAttack()
+{
+	ability = "waterAttack";
+	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+	yield return new WaitForSeconds(0.25f);
+	GetComponentInChildren<Animator>().SetTrigger("Attack_Water");
+	//	GetComponentInChildren<Animator>().SetTrigger("Fome_GroundAttack");
+}
+
 IEnumerator SpitAttack(){
 	if (player!=null&&canHit)
 	{

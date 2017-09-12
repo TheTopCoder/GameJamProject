@@ -14,9 +14,11 @@ public class TamborScript : MonoBehaviour {
 		
 	}
 
-	public void Raio(Vector3 dir){
+	IEnumerator CreateRaio(Vector3 dir){
 		GameObject raio;
 		UnityEngine.Object raioprefab = Resources.Load ("Tempestade/Raio");
+		//Spawn Just the location
+		yield return new WaitForSeconds (0.3f);
 		raio = (GameObject) Instantiate (raioprefab, transform.position, Quaternion.identity);
 
 		float rotAngle = Random.Range (-15f, 15f);
@@ -26,7 +28,22 @@ public class TamborScript : MonoBehaviour {
 		distSqr = Mathf.Sqrt (distSqr);
 
 		raio.transform.position = new Vector3 (transform.position.x +dir.x * distSqr,transform.position.y +dir.y * distSqr * 0.6f /*Elipse b/a*/,0);
+	}
 
+	IEnumerator RaioBoss(Vector3 dir){
+		StartCoroutine(CreateRaio (dir));
+		yield return new WaitForSeconds (0.2f);
+		StartCoroutine(CreateRaio (dir));
+		yield return new WaitForSeconds (0.2f);
+		StartCoroutine(CreateRaio (dir));
+	}
+
+	public void Raio(Vector3 dir){
+		StartCoroutine(RaioBoss(dir));
+	}
+
+	public void RaioSimples(Vector3 dir){
+		StartCoroutine(CreateRaio (dir));
 	}
 
 }
