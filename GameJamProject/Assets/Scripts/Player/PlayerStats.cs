@@ -27,6 +27,8 @@ public class PlayerStats : MonoBehaviour {
 	GameObject Heart3;
 	[SerializeField]
 	GameObject FadeOut;
+	GameObject globalController;
+
 
 	void Start ()
     {

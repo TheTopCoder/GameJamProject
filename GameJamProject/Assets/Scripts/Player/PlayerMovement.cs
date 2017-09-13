@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
 	float rollCurrentTime;
 	float rollCooldown=0.4f;
 	float rollCurrentCooldown;
-    bool faceRight;
+	bool faceRight = true;
     bool canEnterDoor = false;
     bool invulnerable;
     bool spawnedTop = true;

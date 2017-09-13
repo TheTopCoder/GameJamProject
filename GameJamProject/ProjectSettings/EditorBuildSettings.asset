@@ -31,4 +31,7 @@ EditorBuildSettings:
     guid: cf35b0e81a3199b469b6bf75cd687a2a
   - enabled: 1
     path: Assets/Scenes/FomeCorridor.unity
+    guid: 314f344da3ecef24683035c0ad384795
+  - enabled: 1
+    path: Assets/Scenes/TempestadeCorridor.unity
     guid: 00000000000000000000000000000000

@@ -235,13 +235,15 @@ public class PlayerAttack : MonoBehaviour {
 					playerStats.GainEnergy ();
 					Debug.Log ("Hit Crow");
 					if (chargedAttack) {
-						other.gameObject.GetComponent<EnemyStats> ().ReceiveDamage (3.0f * attackDamage);
+						other.gameObject.GetComponent<EnemyStats> ().ReceiveDamage (4.0f * attackDamage);
 					} else {
 						other.gameObject.GetComponent<EnemyStats> ().ReceiveDamage (attackDamage);
 					}
 					hit.Add (other.gameObject.GetInstanceID ());
 				} else if (other.tag == "TamborTrigger") {
 					if (chargedAttack) {
+						other.transform.parent.GetComponent<TamborScript> ().Raio (other.transform.position - transform.position);		
+					} else {
 						other.transform.parent.GetComponent<TamborScript> ().RaioSimples (other.transform.position - transform.position);		
 					}
 					Debug.Log (other.gameObject.GetInstanceID ());

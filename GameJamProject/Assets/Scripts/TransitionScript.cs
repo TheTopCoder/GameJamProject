@@ -9,6 +9,7 @@ public class TransitionScript : MonoBehaviour
     [SerializeField]
     Image panel;
     public string nome;
+	GameObject globalController;
 
     public void ChangeScene()
     {
@@ -24,6 +25,23 @@ public class TransitionScript : MonoBehaviour
             panel.color = aux;
             yield return new WaitForSeconds(0.01f);
         }
+		globalController = GameObject.Find ("Global Controller");
+		string currentScene;
+		currentScene = SceneManager.GetActiveScene ().name;
+		globalController.GetComponent<GlobalController> ().lastScene = currentScene;
+		if (currentScene == "FomeCorridor") {
+			globalController.GetComponent<GlobalController> ().completedFomeCorridor = true;
+			Debug.Log ("Completed Fome Corridor");
+		}
+		if (currentScene == "TempestadeCorridor") {
+			globalController.GetComponent<GlobalController> ().completedTempestadeCorridor = true;
+		}
+		if (currentScene == "Fome") {
+			globalController.GetComponent<GlobalController> ().defeatedFome = true;
+		}
+		if (currentScene == "Tempestade") {
+			globalController.GetComponent<GlobalController> ().defeatedTempestade = true;
+		}
         SceneManager.LoadScene(scene);
     }
 }

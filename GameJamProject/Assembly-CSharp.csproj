@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BackToLobby.cs" />
      <Compile Include="Assets\Scripts\BackgroundMusicScript.cs" />
      <Compile Include="Assets\Scripts\BeatDemoScript.cs" />
      <Compile Include="Assets\Scripts\BoneBoss\BoneBossController.cs" />
@@ -77,6 +78,7 @@
      <Compile Include="Assets\Scripts\Fome\VomitSpit.cs" />
      <Compile Include="Assets\Scripts\FomeCorridorEnd.cs" />
      <Compile Include="Assets\Scripts\GameOverScript.cs" />
+     <Compile Include="Assets\Scripts\GlobalController.cs" />
      <Compile Include="Assets\Scripts\HeartScript.cs" />
      <Compile Include="Assets\Scripts\LightScript.cs" />
      <Compile Include="Assets\Scripts\LobbyDoor.cs" />
@@ -96,6 +98,8 @@
      <Compile Include="Assets\Scripts\Tempestade\TamborScript.cs" />
      <Compile Include="Assets\Scripts\Tempestade\TempestadeAttackTrigger.cs" />
      <Compile Include="Assets\Scripts\Tempestade\TempestadeController.cs" />
+     <Compile Include="Assets\Scripts\Tempestade\TempestadeCorridorEnd.cs" />
+     <Compile Include="Assets\Scripts\Tempestade\TempestadeCorridorTrigger.cs" />
      <Compile Include="Assets\Scripts\TestScript.cs" />
      <Compile Include="Assets\Scripts\TransitionScript.cs" />
      <Compile Include="Assets\Scripts\pedraPlaceScript.cs" />

@@ -19,7 +19,7 @@ public class LobbyDoor : MonoBehaviour {
 			if (name == "PortaFome") {
 				GameObject.FindGameObjectWithTag ("TransitionCanvas").GetComponent<TransitionScript> ().nome = "FomeCorridor";
 			} else {
-				GameObject.FindGameObjectWithTag ("TransitionCanvas").GetComponent<TransitionScript> ().nome = "Tempestade";
+				GameObject.FindGameObjectWithTag ("TransitionCanvas").GetComponent<TransitionScript> ().nome = "TempestadeCorridor";
 			}
 			GameObject.FindGameObjectWithTag ("TransitionCanvas").GetComponent<TransitionScript> ().ChangeScene ();
 		}

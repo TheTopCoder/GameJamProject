@@ -301,23 +301,23 @@ void ChooseAbility()
 	//Dependendo da posicao/distancia do jogador, a probabilidade de cada ataque é diferente
 	if (true/*player != null && Vector3.Distance (transform.position, player.transform.position) > 4.0f*/) {
 
-		attackProb [2] = 10;
-		attackProbUp [2] = 0;
+		attackProb [2] = 1;
+		attackProbUp [2] = 1;
 		attackProb [3] = 1;
-		attackProbUp [3] = 0;
+		attackProbUp [3] = 1;
 		if (canAttackGround) {
 			attackProb [1] = 1;
-			attackProbUp [1] = 0;
+			attackProbUp [1] = 1;
 			attackProb [4] = 3;
 			attackProbUp [4] = 0;
 		} else {
 			attackProb [1] = 3;
-			attackProbUp [1] = 0;
+			attackProbUp [1] = 1;
 			attackProb [4] = 0;
 			attackProbUp [4] = 0;
 		}
 		attackProb [5] = 1;
-		attackProbUp [5] = 0;
+		attackProbUp [5] = 1;
 		if (life <= maxLife * 1 / 2) {
 //			attackProb [5] = 2;
 //			attackProbUp [5] = 1;
