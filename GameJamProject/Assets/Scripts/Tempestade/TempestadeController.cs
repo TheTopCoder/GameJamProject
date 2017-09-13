@@ -88,6 +88,7 @@ public class TempestadeController : MonoBehaviour
 	float ArenaA = 11f/2,ArenaB = 6.2f / 2;
 	Vector2 ArenaCenter;
 	bool canStrikeAgain = true;
+	bool continuePinball;
 
 	#endregion
 
@@ -129,8 +130,10 @@ public class TempestadeController : MonoBehaviour
 		//Chefe morrer
 		if (life <= 0)
 		{
-			fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
-			fade.GetComponent<FadeTransition>().nextScene = "BeatDemo";
+//			fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
+//			fade.GetComponent<FadeTransition>().nextScene = "BeatDemo";
+			GameObject.Find ("Global Controller").GetComponent<GlobalController>().defeatedTempestade = true;
+			GameObject.Find("TransitionCanvas").GetComponent<TransitionScript>().ChangeScene();
 			Destroy(gameObject);
 		}
 
@@ -180,9 +183,18 @@ public class TempestadeController : MonoBehaviour
 				DestroyHitbox ();
 			}
 
+			float lastSpeed = GetComponent<Rigidbody2D> ().velocity.magnitude;
+
 			if (player != null) {
 				MoveInDirection (DecideDirection (), walkSpeed);
 			}
+
+			if (GetComponent<Rigidbody2D> ().velocity.magnitude > 0 && lastSpeed == 0) {
+				GetComponent<Animator> ().SetTrigger ("Walk");
+			} else if (GetComponent<Rigidbody2D> ().velocity.magnitude == 0 && lastSpeed > 0){
+				GetComponent<Animator> ().SetTrigger ("Idle");
+			}
+				
 
 			cooldownMovement -= Time.deltaTime;
 			cooldownAbility -= Time.deltaTime;
@@ -223,6 +235,9 @@ public class TempestadeController : MonoBehaviour
 	if (canStrikeAgain&&Mathf.Pow ((transform.position.x + GetComponent<Rigidbody2D>().velocity.x * Time.deltaTime- ArenaCenter.x), 2)/Mathf.Pow(ArenaA,2)+Mathf.Pow ((transform.position.y + GetComponent<Rigidbody2D>().velocity.y * Time.deltaTime - ArenaCenter.y), 2)/Mathf.Pow(ArenaB,2)>=1&&ability=="pinball") {
 		ChangeDirection (GameObject.Find("Cenario"));
 		strikes--;
+		if (strikes == 1) {
+			GetComponent<Animator> ().SetTrigger ("Attack_Hurricane_Last");
+		}
 		canStrikeAgain = false;
 	}
 	if (Mathf.Pow ((transform.position.x - tambor.transform.position.x), 2) / Mathf.Pow (ArenaA, 2) + Mathf.Pow ((transform.position.y - tambor.transform.position.y), 2) / Mathf.Pow (ArenaB, 2) < 1) {
@@ -498,19 +513,29 @@ void ChangeDirection(GameObject wall){
 }
 
 IEnumerator Stunned(){
+	GetComponent<Animator> ().SetTrigger ("Attack_Hurricane_Out");
 	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
-	yield return new WaitForSeconds (2.5f);
-	FinishAttack ();
+	yield return new WaitForSeconds (0);
+//	FinishAttack ();
+}
+
+public void ContinuePinball(){
+	continuePinball = true;
 }
 
 IEnumerator PinballAttack()
 {
 	//slideSpeed = 8f;
+	continuePinball=false;
 	ability = "pinball";
 //	Debug.Log ("Pinball");
 	GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
-	yield return new WaitForSeconds (0.5f);
-	GetComponent<Animator> ().SetTrigger ("Attack_Hurricane");
+	GetComponent<Animator> ().SetTrigger ("Prepare_Attack_Hurricane");
+	while (!continuePinball) {
+		yield return new WaitForSeconds (Time.deltaTime);
+	}
+	continuePinball = false;
+//	GetComponent<Animator> ().SetTrigger ("Attack_Hurricane");
 	Vector3 playerPos = player.transform.position;
 	Vector3 newVelocity = new Vector3(playerPos.x-transform.position.x,playerPos.y-transform.position.y,0);
 	newVelocity = slideSpeed*newVelocity/newVelocity.magnitude;

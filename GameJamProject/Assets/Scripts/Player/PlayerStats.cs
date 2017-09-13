@@ -62,8 +62,10 @@ public class PlayerStats : MonoBehaviour {
             Heart1.GetComponent<Animator>().SetBool("Up", false);
             Heart2.GetComponent<Animator>().SetBool("Up", false);
             Heart3.GetComponent<Animator>().SetBool("Up", false);
-            fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
-			fade.GetComponent<FadeTransition>().nextScene = "GameOver";
+//          fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
+//			fade.GetComponent<FadeTransition>().nextScene = "GameOver";
+			GameObject.Find("TransitionCanvas").GetComponent<TransitionScript>().nome = "GameOver";
+			GameObject.Find("TransitionCanvas").GetComponent<TransitionScript>().ChangeScene();
 			Destroy (GameObject.FindGameObjectWithTag ("PlayerBase"));
 			Destroy(gameObject);
 		}

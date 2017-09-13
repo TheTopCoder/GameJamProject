@@ -11,13 +11,16 @@ public class GlobalController : MonoBehaviour {
 	public bool completedFomeCorridor = false;
 	public bool completedTempestadeCorridor = false;
 	public string lastScene="Noone";
+	public float volume=0.5f;
 
 	void Start(){
-		if (completedFomeCorridor && SceneManager.GetActiveScene ().name == "FomeCorridor") {
+		volume = 0.5f;
+		lastScene = SceneManager.GetActiveScene ().name;
+		if ((completedFomeCorridor && SceneManager.GetActiveScene ().name == "FomeCorridor")||(completedTempestadeCorridor && SceneManager.GetActiveScene ().name == "TempestadeCorridor")) {
 			GameObject.FindGameObjectWithTag ("Portal").GetComponent<SpriteRenderer> ().enabled = true;
 			GameObject portal = GameObject.FindGameObjectWithTag ("Portal");
 			portal.GetComponentInChildren <BackToLobby>().enabled = true;
-			GameObject.Find ("Player").transform.position = new Vector3 (GameObject.Find ("Portal 2").transform.position.x + 3f, GameObject.Find ("Player").transform.position.y, 0);
+			GameObject.Find ("Player").transform.position = new Vector3 (GameObject.Find ("Portal 2").transform.position.x + 1.5f, GameObject.Find ("Player").transform.position.y, 0);
 		}
 	}
 
@@ -32,11 +35,27 @@ public class GlobalController : MonoBehaviour {
 
 	// Use this for initialization
 	void OnLevelWasLoaded() {
-		if (completedFomeCorridor && SceneManager.GetActiveScene ().name == "FomeCorridor") {
+		string newScene = SceneManager.GetActiveScene ().name;
+		if ((completedFomeCorridor && newScene == "FomeCorridor")||(completedTempestadeCorridor && newScene == "TempestadeCorridor")) {
 			GameObject.FindGameObjectWithTag ("Portal").GetComponent<SpriteRenderer> ().enabled = true;
 			GameObject portal = GameObject.FindGameObjectWithTag ("Portal");
 			portal.GetComponentInChildren <BackToLobby>().enabled = true;
 			GameObject.Find ("Player").transform.position = new Vector3 (GameObject.Find ("Portal 2").transform.position.x + 2f, GameObject.Find ("Player").transform.position.y, 0);
+		}
+		if ((completedFomeCorridor || completedTempestadeCorridor) && (newScene == "FomeCorridor" || newScene == "TempestadeCorridor")) {
+			GameObject.Find ("Tutorial Vida").SetActive(false);
+		}
+		if (newScene == "FomeCorridor"||newScene == "TempestadeCorridor") {
+		}
+		if (newScene == "Lobby New") {
+			if (defeatedFome) {
+				GameObject.Find ("PortaFome").GetComponent<Collider2D> ().enabled = false;
+				GameObject.Find ("PortaFomeFechada").GetComponent<SpriteRenderer> ().enabled = true;
+			}
+			if (defeatedTempestade) {
+				GameObject.Find ("PortaTempestade").GetComponent<Collider2D> ().enabled = false;
+				GameObject.Find ("PortaTempestadeFechada").GetComponent<SpriteRenderer> ().enabled = true;
+			}
 		}
 	}
 	

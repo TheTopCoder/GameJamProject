@@ -48,10 +48,12 @@ public class TamborScript : MonoBehaviour {
 	}
 
 	public void Raio(Vector3 dir){
+		GetComponent<Animator> ().SetTrigger ("Hit");
 		StartCoroutine(RaioBoss(dir));
 	}
 
 	public void RaioSimples(Vector3 dir){
+		GetComponent<Animator> ().SetTrigger ("HitLight");
 		StartCoroutine(CreateRaio (dir));
 	}
 

@@ -65,6 +65,7 @@ public class FomeController : MonoBehaviour
     [SerializeField]
 	GameObject spawnableCrow;
 	GameObject attackHitbox;
+	bool canGetSoul=false;
     #endregion
     void Start()
     {
@@ -95,13 +96,34 @@ public class FomeController : MonoBehaviour
         shakeAmount = 0.1f;
         decreaseFactor = 1;
     }
+		
+	IEnumerator FomeDie(){
+		transform.FindChild ("Corvos").gameObject.GetComponentInChildren<Animator> ().SetTrigger ("Crow_Die");
+		yield return new WaitForSeconds (0.7f);
+		GetComponent<Animator> ().SetTrigger ("Fome_Die");
+		Destroy (transform.FindChild ("Collider").GetComponent<Collider2D> ());
+		Destroy (GetComponent<Collider2D> ());
+		while (GameObject.Find ("Soul")!=null) {
+			yield return new WaitForSeconds (Time.deltaTime);
+		}
+
+//		GameObject.Find ("Global Controller").GetComponent<GlobalController>().defeatedFome = true;
+		yield return new WaitForSeconds (0.75f);
+		GameObject.Find("TransitionCanvas").GetComponent<TransitionScript>().ChangeScene();
+		Destroy(gameObject);
+	}
+
     void Update()
     {
-		if (life <= 0)
+		if (life <= 0&&state!="die")
 		{
-			fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
-			fade.GetComponent<FadeTransition>().nextScene = "BeatDemo";
-			Destroy(gameObject);
+//			fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
+//			fade.GetComponent<FadeTransition>().nextScene = "BeatDemo";
+			if (attackHitbox!=null)
+				Destroy (attackHitbox);
+			GetComponentInChildren<Animator>().SetTrigger("Fome_Idle");
+			state = "die";
+			StartCoroutine(FomeDie());
 		}
 
         camPosition = mainCamera.position;

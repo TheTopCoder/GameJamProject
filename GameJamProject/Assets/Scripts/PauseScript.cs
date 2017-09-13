@@ -34,6 +34,7 @@ public class PauseScript : MonoBehaviour
         [SerializeField]
         Toggle windowedToggle;
    
+		GameObject GlobalController;
 
     bool paused;
 
@@ -43,6 +44,7 @@ public class PauseScript : MonoBehaviour
 
     void Start()
     {
+		GlobalController = GameObject.Find ("Global Controller");
 		paused = false;
         this.GetComponent<Canvas>().enabled = false;
 		if (SceneManager.GetActiveScene().name == "MenuScene"){
@@ -55,7 +57,7 @@ public class PauseScript : MonoBehaviour
 			PlayerPrefs.SetFloat("MainVolume", 0.5f);
 		}
 		PlayerPrefs.Save ();
-        volumeSlider.value = PlayerPrefs.GetFloat("MainVolume");
+		volumeSlider.value = GlobalController.GetComponent<GlobalController> ().volume;
 
         foreach (AudioSource a in audios)
         {
@@ -70,6 +72,7 @@ public class PauseScript : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Escape) || Input.GetButtonDown ("XboxSelect")) {
 			if (!paused) {
 				paused = true;
+				mainPanel.SetActive (true);
 				foreach (AudioSource a in audios) {
 					a.Pause ();
 				}
@@ -128,8 +131,12 @@ public class PauseScript : MonoBehaviour
     public void OnResume()
     {
 		paused = false;
+		optionsPanel.SetActive (false);
+		controlsPanel.SetActive (false);
+		mainPanel.SetActive (false);
         Time.timeScale = 1;
         this.GetComponent<Canvas>().enabled = false;
+		GlobalController.GetComponent<GlobalController> ().volume = volumeSlider.value;
 		PlayerPrefs.SetFloat ("MainVolume",volumeSlider.value);
 		PlayerPrefs.Save ();
         foreach (AudioSource a in audios)
@@ -178,7 +185,9 @@ public class PauseScript : MonoBehaviour
     public void OnBackToPauseSelected(GameObject panel)
     {
         mainPanel.SetActive(true);
-        panel.SetActive(false);
+        //panel.SetActive(false);
+		controlsPanel.SetActive (false);
+		optionsPanel.SetActive (false);
     }
 
     public void OnToggleValueChanged(Toggle toggle)

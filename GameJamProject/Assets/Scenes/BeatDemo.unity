@@ -108,6 +108,70 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &57976405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 57976407}
+  - component: {fileID: 57976406}
+  m_Layer: 0
+  m_Name: Global Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &57976406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 57976405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2a2e639ae5f894aaf16c319ef1fc69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defeatedFome: 0
+  defeatedTempestade: 0
+  completedFomeCorridor: 0
+  completedTempestadeCorridor: 0
+  lastScene: Noone
+  volume: 0
+--- !u!4 &57976407
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 57976405}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.120206, y: -4.2478642, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &60364032 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1930016333841912, guid: 46f901dd47d6f5d4e86c03b63f8d8986,
+    type: 2}
+  m_PrefabInternal: {fileID: 1259909267}
+--- !u!114 &60364033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 60364032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864ac90211c854c48adba3774e092cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 519496632}
+  nome: 
 --- !u!1 &91500942
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 519496632}
   texto: {fileID: 168589112}
+  transitionCanvas: {fileID: 60364032}
 --- !u!114 &540407883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,6 +1050,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930016333841912, guid: 46f901dd47d6f5d4e86c03b63f8d8986, type: 2}
+      propertyPath: m_Name
+      value: TransitionCanvas
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114471203114524438, guid: 46f901dd47d6f5d4e86c03b63f8d8986, type: 2}

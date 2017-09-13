@@ -12,6 +12,8 @@ public class GameOverScript : MonoBehaviour
 	[SerializeField]
 	Text texto;
 
+	public GameObject transitionCanvas;
+
 	float time;
 	bool goingUp;
 	void Update()
@@ -28,6 +30,7 @@ public class GameOverScript : MonoBehaviour
 
 	IEnumerator LoadScene(string scene)
 	{
+		/*
 		for (int i = 0; i <= 100; i++)
 		{
 			Color aux = panel.color;
@@ -36,6 +39,9 @@ public class GameOverScript : MonoBehaviour
 			yield return new WaitForSeconds(0.011f);
 		}
 		SceneManager.LoadScene(scene);
+		*/
+		yield return new WaitForSeconds (Time.deltaTime);
+		transitionCanvas.GetComponent<TransitionScript> ().ChangeScene ();
 	}
 	void BlinkText()
 	{

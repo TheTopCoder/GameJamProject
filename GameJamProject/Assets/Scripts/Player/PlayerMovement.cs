@@ -343,6 +343,21 @@ public class PlayerMovement : MonoBehaviour {
 */
     void OnTriggerEnter2D(Collider2D col)
     {
+		if (col.name == "Soul") {
+			Destroy (col.gameObject);
+			bodyAnim.SetTrigger ("SkillLife");
+			handAnim.SetTrigger ("SkillLife");
+			state = "victory";
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
+			groundShadow.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
+			Destroy (GameObject.Find ("Soul_Pulse"));
+			if (SceneManager.GetActiveScene ().name == "FomeTriangularArena") {
+				GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedFome = true;
+			}
+			if (SceneManager.GetActiveScene ().name == "Tempestade") {
+				GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedTempestade = true;
+			}
+		}
         if (col.name.Equals("Corredor Intro 5"))
         {
             canEnterDoor = true;

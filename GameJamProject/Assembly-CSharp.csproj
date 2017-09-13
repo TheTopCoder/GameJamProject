@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\Fome\CrowMinion.cs" />
      <Compile Include="Assets\Scripts\Fome\EnemyStats.cs" />
      <Compile Include="Assets\Scripts\Fome\FomeController.cs" />
+     <Compile Include="Assets\Scripts\Fome\FomeSoul.cs" />
      <Compile Include="Assets\Scripts\Fome\LifebarScript.cs" />
      <Compile Include="Assets\Scripts\Fome\ScepterScript.cs" />
      <Compile Include="Assets\Scripts\Fome\ShockwaveScript.cs" />

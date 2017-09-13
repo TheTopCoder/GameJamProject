@@ -43,6 +43,8 @@ public class BoneScript : MonoBehaviour {
 		}
 		if (other.tag == "BoneTarget") {
 //			StartCoroutine (DestroyBone ());
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+			GetComponent<Animator>().SetTrigger("Break");
 			EnableHit ();
 		}
 	}
@@ -53,27 +55,29 @@ public class BoneScript : MonoBehaviour {
 		}
 	}
 
+	public void DestroyBone(){
+		Destroy (target.gameObject);
+		Destroy (gameObject);
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () {
-		GetComponent<Rigidbody2D> ().velocity = new Vector2 (-horSpd, verSpd);
+		if (!enabledHit) {
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (-horSpd, verSpd);
+		}
 		verSpd -= grav*Time.deltaTime;
 		if (Time.time - initialTime < timeToHit * 0.5f) {
 			target.localScale += new Vector3 (scaleIncrease.x * Time.deltaTime, scaleIncrease.y * Time.deltaTime, 0);
 		}
-	
-		if (transform.position.y < target.position.y) {
+		
+/*		if (transform.position.y < target.position.y) {
 			grav = 0;
 			verSpd = 0;
 			horSpd = 0;
 			StartCoroutine (DestroyBone ());
 //			GetComponent<Animator> ().SetTrigger ("Vomit_Hit");
 		}
+*/
 	}
-
-
-	IEnumerator DestroyBone(){
-		yield return new WaitForSeconds (0.05f);
-		Destroy (target.gameObject);
-		Destroy (gameObject);
-	}
+		
 }

@@ -54,7 +54,6 @@ public class PlayerAttack : MonoBehaviour {
 		color.a = 0;
 		bodyLight.GetComponent<SpriteRenderer> ().color = color;
 		blinked = false;
-
 		canHit = false;
 		//handAnim.SetTrigger ("FinishAttack");
 		if (hit.Count > 0) {
