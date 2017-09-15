@@ -343,7 +343,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 */
 	IEnumerator ChangeScene(){
-		yield return new WaitForSeconds (0.5f);
+		yield return new WaitForSeconds (0.75f);
 		GameObject.Find ("TransitionCanvas").GetComponent<TransitionScript> ().ChangeScene ();
 	}
 
@@ -363,11 +363,11 @@ public class PlayerMovement : MonoBehaviour {
 				Destroy (GameObject.Find ("Soul_Pulse"));
 			}
 			if (SceneManager.GetActiveScene ().name == "FomeTriangularArena") {
-				handAnim.SetTrigger ("SkillCorvo");
+				handAnim.SetTrigger ("GetSkillCorvo");
 				GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedFome = true;
 			}
 			if (SceneManager.GetActiveScene ().name == "Tempestade") {
-				handAnim.SetTrigger ("SkillRaio");
+				handAnim.SetTrigger ("GetSkillRaio");
 				GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedTempestade = true;
 			}
 			StartCoroutine (ChangeScene ());

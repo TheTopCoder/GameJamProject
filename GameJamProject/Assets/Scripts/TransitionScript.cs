@@ -23,7 +23,7 @@ public class TransitionScript : MonoBehaviour
             Color aux = panel.color;
             aux.a += 0.01f;
             panel.color = aux;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.0075f);
         }
 		globalController = GameObject.Find ("Global Controller");
 		string currentScene;
@@ -46,7 +46,7 @@ public class TransitionScript : MonoBehaviour
 		}
 		if (currentScene == "GameOver") {
 			Debug.Log (globalController.GetComponent<GlobalController> ().lastScene);
-			if (globalController.GetComponent<GlobalController> ().lastScene == "FomeTriangularArena") {
+			if (globalController.GetComponent<GlobalController> ().lastScene == "FomeTriangularArena"||globalController.GetComponent<GlobalController> ().lastScene == "FomeCorridor") {
 				scene = "FomeCorridor";
 			} else {
 				scene = "TempestadeCorridor";

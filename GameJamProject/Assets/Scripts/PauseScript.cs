@@ -96,7 +96,7 @@ public class PauseScript : MonoBehaviour
         qualityDropdown.value = QualitySettings.GetQualityLevel();
         vSyncToggle.isOn = Convert.ToBoolean(QualitySettings.vSyncCount);
         antiAlisingToggle.isOn = Convert.ToBoolean(QualitySettings.antiAliasing);
-        windowedToggle.isOn = !Screen.fullScreen;
+        //windowedToggle.isOn = !Screen.fullScreen;
         if (Screen.width == 1920 && Screen.height == 1080)
         {
             resolutionDropdown.value = 0;

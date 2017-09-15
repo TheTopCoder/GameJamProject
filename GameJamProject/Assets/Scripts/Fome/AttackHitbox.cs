@@ -21,10 +21,14 @@ public class AttackHitbox : MonoBehaviour {
 	}
 
 	void ResolveTrigger(Collider2D other){
-		if (!hit&&other.transform.tag == "Player") {
+		if (!hit&&other.transform.tag == "Player"&&!(transform.name == "RaioHitbox(Clone)"||transform.name == "Tempestade_JumpAttack_Hitbox(Clone)"||transform.name == "Tempestade_GroundAttack_Hitbox(Clone)")) {
 			hit = true;
 			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 			//boss.GetComponent<FomeController>().canHit = true;
+		}
+		if (!hit && other.transform.tag == "PlayerBase" && (transform.name == "RaioHitbox(Clone)"||transform.name == "Tempestade_JumpAttack_Hitbox(Clone)"||transform.name == "Tempestade_GroundAttack_Hitbox(Clone)")) {
+			hit = true;
+			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
 		}
 		if (!hitBoss&&other.transform.tag == "Boss"&&transform.name=="RaioHitbox(Clone)") {
 			hitBoss = true;

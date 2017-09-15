@@ -32,8 +32,8 @@ public class TempestadeCorridorTrigger : MonoBehaviour {
 		newPos.y = Random.Range (borders [0].y, borders [1].y);
 		newPos.x = Random.Range (borders [0].x, borders [2].x) + (borders [1].x - borders [0].x)*(newPos.y-borders[0].y)/(borders[1].y-borders[0].y);
 
-		raioShadow.transform.position = new Vector3 (newPos.x,newPos.y,0);
-		yield return new WaitForSeconds (0.4f);
+		raioShadow.transform.position = new Vector3 (newPos.x,newPos.y-0.25f,0);
+		yield return new WaitForSeconds (0.6f);
 		Destroy (raioShadow);
 		raio = (GameObject) Instantiate (raioprefab, transform.position, Quaternion.identity);
 
@@ -45,7 +45,7 @@ public class TempestadeCorridorTrigger : MonoBehaviour {
 		yield return new WaitForSeconds (0.1f);
 		do {
 			StartCoroutine(CreateRaio ());
-			yield return new WaitForSeconds (0.5f);
+			yield return new WaitForSeconds (0.325f);
 		} while (player!=null&&player.transform.position.x < (borders [3].x + borders [2].x) / 2 + 0.8f);
 	}
 

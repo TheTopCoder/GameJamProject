@@ -127,6 +127,7 @@ public class TempestadeController : MonoBehaviour
 
 	IEnumerator TempestadeDie(){
 		GetComponent<Animator> ().SetTrigger ("Tempestade_Die");
+		state = "die";
 //		Destroy (transform.FindChild ("Collider").GetComponent<Collider2D> ());
 //		Destroy (GetComponent<Collider2D> ());
 
@@ -151,7 +152,6 @@ public class TempestadeController : MonoBehaviour
 
 	void Update()
 	{
-
 		//Chefe morrer
 		if (life <= 0&&state!="die")
 		{
@@ -183,17 +183,12 @@ public class TempestadeController : MonoBehaviour
 			mainCamera.position = camPosition;
 		}
 
-		//Definir se o boss ou o player vao aparecer na frente
-		if (player!=null && player.transform.position.y < transform.FindChild("point").transform.position.y)
-		{
-			GetComponentInChildren<SpriteRenderer>().sortingOrder = -3;
+		if (player != null && player.transform.position.y < transform.position.y + 0.375f) {
+			GetComponentInChildren<SpriteRenderer> ().sortingOrder = -3;
+		} else {
+			GetComponentInChildren<SpriteRenderer>().sortingOrder = 3;
 		}
-		else
-		{
-			GetComponentInChildren<SpriteRenderer>().sortingOrder = -3;
-			//            GetComponentInChildren<SpriteRenderer>().sortingOrder = 3;
-		}
-
+			
 		//Fazer o chefe virar
 /*		if (player.transform.position.x < transform.FindChild("point").transform.position.x && faceRight)
         {
@@ -611,7 +606,7 @@ IEnumerator JumpAttack(){
 	yield return new WaitForSeconds (0.5f);
 	GetComponentInChildren<Animator>().SetTrigger("Attack_Jump");
 	Vector3 originalPos = transform.position;
-	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,9f);
+	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,12f);
 	yield return new WaitForSeconds (1.25f);
 	Vector2 newPos = transform.position;
 	Vector2 newDir;
@@ -644,7 +639,7 @@ IEnumerator JumpAttack(){
 	}
 	GetComponentInChildren<Animator>().SetTrigger("Attack_Jump_Fall");
 	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,-9f);
-	yield return new WaitForSeconds (1.25f);
+	yield return new WaitForSeconds (1.25f*1.33f);
 	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
 	GetComponentInChildren<Animator>().SetTrigger("Attack_Jump_Hit");
 }

@@ -24,6 +24,10 @@ public class SkillRaio : MonoBehaviour {
 		
 	}
 
+	public void DestroyRaio(){
+		Destroy (gameObject);
+	}
+
 	void OnTriggerEnter2D(Collider2D other){
 		float damage=15f;
 		if (other.tag == "Enemy") {

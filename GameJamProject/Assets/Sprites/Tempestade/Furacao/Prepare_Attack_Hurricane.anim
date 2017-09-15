@@ -22,13 +22,13 @@ AnimationClip:
       value: {fileID: 21300000, guid: a589cd272ebafcf408fca8d0360a6f59, type: 3}
     - time: 0.1
       value: {fileID: 21300000, guid: 691f5649038a83343ba1ea215888d630, type: 3}
-    - time: 0.3
+    - time: 0.34
       value: {fileID: 21300000, guid: cee0bbde6b0efb145ba4669abe5346f7, type: 3}
-    - time: 0.4
+    - time: 0.44
       value: {fileID: 21300000, guid: 206c1fb25ea3f5a4d90bb707be6f4fc4, type: 3}
-    - time: 0.5
+    - time: 0.54
       value: {fileID: 21300000, guid: e40ff9c5bff522146bc0d061b76f2ee0, type: 3}
-    - time: 0.6
+    - time: 0.64
       value: {fileID: 21300000, guid: 84342d758bb5c8247aa62221e7f344ad, type: 3}
     attribute: m_Sprite
     path: 
@@ -60,7 +60,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.62
+    m_StopTime: 0.65999997
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -81,7 +81,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.5
+  - time: 0.54
     functionName: ContinuePinball
     data: 
     objectReferenceParameter: {fileID: 0}
