@@ -187,7 +187,7 @@ public class PlayerMovement : MonoBehaviour {
 			//			groundReference.transform.position = transform.position+new Vector3(0,-shadowYOffset,0);
 
 
-			if ((Input.GetAxisRaw ("XboxA") > 0 || (Input.GetAxisRaw ("XboxR1") > 0) || Input.GetKey (KeyCode.Q) || Input.GetMouseButtonDown (1)) && rollCurrentCooldown < 0 && dirAbs != 0) {
+			if ((Input.GetAxisRaw ("XboxA") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Q) || Input.GetMouseButtonDown (1)) && rollCurrentCooldown < 0 && dirAbs != 0) {
 				state = "roll";
 			}
 			if ((Input.GetAxisRaw ("XboxB") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Space) || Input.GetMouseButtonDown (2))) {
@@ -215,6 +215,7 @@ public class PlayerMovement : MonoBehaviour {
 				jumpY = 0;
 			}
 		} else if (state == "roll") {
+			transform.FindChild ("DashSound").GetComponent<AudioSource> ().Play();
 			//groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
 			//transform.position = new Vector3 (groundReference.transform.position.x,groundReference.transform.position.y+shadowYOffset,transform.position.z);
 			if (spawnedTop) {
@@ -252,7 +253,7 @@ public class PlayerMovement : MonoBehaviour {
 			
 		}
 
-		if(canEnterDoor && (Input.GetButtonDown("XboxX") || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)))
+		if(canEnterDoor /*&& (Input.GetButtonDown("XboxX") || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))*/)
         {
             canvas.GetComponent<TransitionScript>().ChangeScene();
         }
@@ -341,22 +342,35 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 */
+	IEnumerator ChangeScene(){
+		yield return new WaitForSeconds (0.5f);
+		GameObject.Find ("TransitionCanvas").GetComponent<TransitionScript> ().ChangeScene ();
+	}
+
     void OnTriggerEnter2D(Collider2D col)
     {
 		if (col.name == "Soul") {
 			Destroy (col.gameObject);
-			bodyAnim.SetTrigger ("SkillLife");
-			handAnim.SetTrigger ("SkillLife");
+			handAnim.SetBool("Walking",false);
+			bodyAnim.SetBool ("Walking", false);
+			bodyLightAnim.SetBool ("Walking", false);
+			bodyAnim.SetTrigger ("Idle");
+			bodyLightAnim.SetTrigger("Idle");
 			state = "victory";
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
-			groundShadow.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
-			Destroy (GameObject.Find ("Soul_Pulse"));
+			groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
+			if (GameObject.Find ("Soul_Pulse")) {
+				Destroy (GameObject.Find ("Soul_Pulse"));
+			}
 			if (SceneManager.GetActiveScene ().name == "FomeTriangularArena") {
+				handAnim.SetTrigger ("SkillCorvo");
 				GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedFome = true;
 			}
 			if (SceneManager.GetActiveScene ().name == "Tempestade") {
+				handAnim.SetTrigger ("SkillRaio");
 				GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedTempestade = true;
 			}
+			StartCoroutine (ChangeScene ());
 		}
         if (col.name.Equals("Corredor Intro 5"))
         {

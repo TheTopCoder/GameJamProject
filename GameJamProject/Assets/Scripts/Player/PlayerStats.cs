@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour {
 	public float rollTime=1.9f;
 	public float rollCooldown = 0.4f;
 	public int maxLife = 20;
-	public int life;
+	public int life=0;
 	public int energy = 0;
 	public int maxEnergy = 100;
 	public int energyGain = 5;
@@ -32,7 +32,49 @@ public class PlayerStats : MonoBehaviour {
 
 	void Start ()
     {
-		life = maxLife;
+		globalController = GameObject.Find ("Global Controller");
+
+		if ((SceneManager.GetActiveScene ().name == "FomeTriangularArena" || SceneManager.GetActiveScene ().name == "Tempestade")&&globalController.GetComponent<GlobalController> ().playerLife!=0) {
+			life = globalController.GetComponent<GlobalController> ().playerLife;
+			energy = globalController.GetComponent<GlobalController> ().playerEnergy;
+		}
+		else {
+			life = maxLife;
+		}
+
+		if (SceneManager.GetActiveScene().name == "CorridorScene"||SceneManager.GetActiveScene().name == "Lobby"){
+
+		}
+		else if (life == 3) {
+			Heart1.GetComponent<Animator>().SetBool("Up", true);
+			Heart2.GetComponent<Animator>().SetBool("Up", true);
+			Heart3.GetComponent<Animator>().SetBool("Up", true);
+		}
+		else if (life == 2) {
+			//			Heart3.GetComponent<HeartScript> ().DestroyHeart ();
+			Heart1.GetComponent<Animator>().SetBool("Up", true);
+			Heart2.GetComponent<Animator>().SetBool("Up", true);
+			Heart3.GetComponent<Animator>().SetBool("Up", false);
+		}
+		else if (life == 1) {
+			//			Heart2.GetComponent<HeartScript> ().DestroyHeart ();
+			Heart1.GetComponent<Animator>().SetBool("Up", true);
+			Heart2.GetComponent<Animator>().SetBool("Up", false);
+			Heart3.GetComponent<Animator>().SetBool("Up", false);
+		}
+		else if (life <= 0) {
+			//			Heart1.GetComponent<HeartScript> ().DestroyHeart ();
+			Heart1.GetComponent<Animator>().SetBool("Up", false);
+			Heart2.GetComponent<Animator>().SetBool("Up", false);
+			Heart3.GetComponent<Animator>().SetBool("Up", false);
+			//          fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
+			//			fade.GetComponent<FadeTransition>().nextScene = "GameOver";
+			GameObject.Find("TransitionCanvas").GetComponent<TransitionScript>().nome = "GameOver";
+			GameObject.Find("TransitionCanvas").GetComponent<TransitionScript>().ChangeScene();
+			Destroy (GameObject.FindGameObjectWithTag ("PlayerBase"));
+			Destroy(gameObject);
+		}
+
 	}
 	
 	void Update ()
@@ -79,7 +121,7 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	public void DamagePlayer(){
+		transform.FindChild ("HitSound").GetComponent<AudioSource>().Play();
 		life --;
-
 	}
 }

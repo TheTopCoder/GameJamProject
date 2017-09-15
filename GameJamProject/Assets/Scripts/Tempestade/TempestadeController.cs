@@ -125,16 +125,46 @@ public class TempestadeController : MonoBehaviour
 	}
 
 
+	IEnumerator TempestadeDie(){
+		GetComponent<Animator> ().SetTrigger ("Tempestade_Die");
+//		Destroy (transform.FindChild ("Collider").GetComponent<Collider2D> ());
+//		Destroy (GetComponent<Collider2D> ());
+
+		//WIP -> Animator Editor create things 
+
+		while (GameObject.Find ("Soul")!=null) {
+			if (GameObject.Find ("Soul") == null)
+				break;
+			yield return new WaitForSeconds (Time.deltaTime);
+		}
+		Debug.Log ("Game Over");
+
+		//		GameObject.Find ("Global Controller").GetComponent<GlobalController>().defeatedFome = true;
+//		yield return new WaitForSeconds (0.75f);
+//		GameObject.Find ("Global Controller").GetComponent<GlobalController>().defeatedTempestade = true;
+//		GameObject.Find("TransitionCanvas").GetComponent<TransitionScript>().nome = "Lobby New";
+		GameObject.Find("TransitionCanvas").GetComponent<TransitionScript>().ChangeScene();
+		Destroy (gameObject);
+		//			GameObject.Find("TransitionCanvas").GetComponent<TransitionScript>().ChangeScene();
+		//			Destroy(gameObject);
+	}
+
 	void Update()
 	{
+
 		//Chefe morrer
-		if (life <= 0)
+		if (life <= 0&&state!="die")
 		{
 //			fade = (GameObject) Instantiate (FadeOut, transform.position, new Quaternion(0f,0f,0f,0f));
 //			fade.GetComponent<FadeTransition>().nextScene = "BeatDemo";
-			GameObject.Find ("Global Controller").GetComponent<GlobalController>().defeatedTempestade = true;
-			GameObject.Find("TransitionCanvas").GetComponent<TransitionScript>().ChangeScene();
-			Destroy(gameObject);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+			StartCoroutine(TempestadeDie());
+			if (attackHitbox!=null)
+				Destroy (attackHitbox);
+			state = "die";
+//			GameObject.Find ("Global Controller").GetComponent<GlobalController>().defeatedTempestade = true;
+//			GameObject.Find("TransitionCanvas").GetComponent<TransitionScript>().ChangeScene();
+//			Destroy(gameObject);
 		}
 
 
@@ -178,6 +208,14 @@ public class TempestadeController : MonoBehaviour
 */
 		if (state == "movement")
 		{
+			if (player != null) {
+				if (Mathf.Abs (player.transform.position.x - transform.position.x) < 0.05f) {
+				} else if (transform.position.x < player.transform.position.x) {
+					transform.localScale = new Vector3 (-Mathf.Abs (transform.localScale.x), transform.localScale.y, transform.localScale.z);
+				} else if (transform.position.x > player.transform.position.x) {
+					transform.localScale = new Vector3 (Mathf.Abs (transform.localScale.x), transform.localScale.y, transform.localScale.z);
+				}
+			}
 			ability = "none";
 			if (attackHitbox != null) {
 				DestroyHitbox ();
@@ -331,8 +369,8 @@ void ChooseAbility()
 			attackProb [4] = 0;
 			attackProbUp [4] = 0;
 		}
-		attackProb [5] = 1;
-		attackProbUp [5] = 1;
+		attackProb [5] = 0;
+		attackProbUp [5] = 0;
 		if (life <= maxLife * 1 / 2) {
 //			attackProb [5] = 2;
 //			attackProbUp [5] = 1;
@@ -471,6 +509,7 @@ public void FinishAttack(){
 void CreateHitbox(string name){
 	UnityEngine.Object hitboxprefab = Resources.Load ("Tempestade/" + name);
 	attackHitbox = (GameObject) Instantiate (hitboxprefab, transform.position, Quaternion.identity);
+	attackHitbox.transform.localScale = new Vector3 (Mathf.Abs(attackHitbox.transform.localScale.x)*Mathf.Sign(transform.localScale.x),attackHitbox.transform.localScale.y,attackHitbox.transform.localScale.z);
 }
 void DestroyHitbox(){
 	if (attackHitbox != null) {
@@ -536,28 +575,31 @@ IEnumerator PinballAttack()
 	}
 	continuePinball = false;
 //	GetComponent<Animator> ().SetTrigger ("Attack_Hurricane");
-	Vector3 playerPos = player.transform.position;
-	Vector3 newVelocity = new Vector3(playerPos.x-transform.position.x,playerPos.y-transform.position.y,0);
-	newVelocity = slideSpeed*newVelocity/newVelocity.magnitude;
+	Vector3 playerPos;
+		if (player != null) {
+			playerPos = player.transform.position;
+			Vector3 newVelocity = new Vector3 (playerPos.x - transform.position.x, playerPos.y - transform.position.y, 0);
+			newVelocity = slideSpeed * newVelocity / newVelocity.magnitude;
+			strikes = 5;
 
-	strikes = 5;
-
-	GetComponent<Rigidbody2D>().velocity = newVelocity;
-//	GetComponentInChildren<Animator>().SetTrigger("Fome_ClawAttack");
-	bool hit = false;
-	while(state == "ability"){
-		//strikes--;
-		yield return new WaitForSeconds (Time.deltaTime);
-		if (/*!hit&&*/player!=null&&hurricaneCollider.GetComponent<HurricaneHitbox>().canHit)
-		{
-			hit = true;
-			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+			GetComponent<Rigidbody2D> ().velocity = newVelocity;
+			//	GetComponentInChildren<Animator>().SetTrigger("Fome_ClawAttack");
+			bool hit = false;
+			while (state == "ability") {
+				//strikes--;
+				yield return new WaitForSeconds (Time.deltaTime);
+				if (/*!hit&&*/player != null && hurricaneCollider.GetComponent<HurricaneHitbox> ().canHit) {
+					hit = true;
+					StartCoroutine (player.GetComponent<PlayerMovement> ().DamagedPlayer ());
+				}
+				if (strikes <= 0) {
+					break;
+				}
+			}
+			StartCoroutine ("Stunned");
+		} else {
+			FinishAttack ();
 		}
-		if (strikes <= 0) {
-			break;
-		}
-	}
-	StartCoroutine ("Stunned");
 	//Stunned ();
 }
 	
@@ -770,6 +812,7 @@ IEnumerator SpawnMinion()
 
 public void ReceiveDamage(float damage){
 //	Debug.Log ("Ouch");
+
 	StartCoroutine ("DamageTime", damage);
 }
 

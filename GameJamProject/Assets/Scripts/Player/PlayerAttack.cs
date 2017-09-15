@@ -77,7 +77,7 @@ public class PlayerAttack : MonoBehaviour {
 		}
 		if (state == "wait"||state == "prepareAttack") {
 			if (state=="wait"&&(Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKeyDown (KeyCode.E) || Input.GetMouseButtonDown (0))) {
-				Debug.Log ("Preparing...");
+				//Debug.Log ("Preparing...");
 				beganChargeTime = Time.time;
 				state = "prepareAttack";
 				if (curAttack == 1) {
@@ -109,11 +109,22 @@ public class PlayerAttack : MonoBehaviour {
 				}
 			} else if (Input.GetAxisRaw ("XboxL2") > 0) {
 //				state = "attackStrong";
-			} else if (Input.GetKeyDown (KeyCode.Space)) {
+			} else if (Input.GetKeyDown (KeyCode.Space)||Input.GetAxisRaw("XboxY")>0|| Input.GetAxisRaw ("XboxL2") > 0) {
 				if (playerStats.energy >= playerStats.maxEnergy / 2) {
 					StartCoroutine (SkillLife ());
 				}
-			} else if ((state == "wait" || state == "prepareAttack") && !(Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKey (KeyCode.E) || Input.GetMouseButton (0))) {
+			} else if (Input.GetKeyDown (KeyCode.F)||Input.GetMouseButtonDown(2)||Input.GetAxisRaw("XboxB")>0|| Input.GetAxisRaw ("XboxR1") > 0) {
+				if (GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedTempestade) {
+					if (playerStats.energy >= playerStats.maxEnergy / 4) {
+						StartCoroutine (SkillRaio ());
+					}
+				} else {
+					if (playerStats.energy >= playerStats.maxEnergy / 4) {
+						StartCoroutine (SkillCorvo ());
+					}
+				}
+			} 
+			else if ((state == "wait" || state == "prepareAttack") && !(Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKey (KeyCode.E) || Input.GetMouseButton (0))) {
 				FinishAttack ();
 			} else if (state == "prepareAttack") {
 				Color color = bodyLight.GetComponent<SpriteRenderer>().color;
@@ -202,6 +213,37 @@ public class PlayerAttack : MonoBehaviour {
 		yield return new WaitForSeconds (0.02f);
 	}
 
+	IEnumerator SkillCorvo(){
+		Debug.Log ("Skill Corvo");
+		if (state == "wait" && playerMovement.state == "movement" && GameObject.Find("Global Controller").GetComponent<GlobalController>().defeatedFome) {
+			//			bodyAnim.SetTrigger ("SkillCorvo");
+			handAnim.SetTrigger ("SkillCorvo");
+			playerStats.energy -= playerStats.maxEnergy/4;
+			state = "skill";
+			//playerMovement.state = "skill";
+			yield return new WaitForSeconds (0.3f);
+			state = "wait";
+			//			playerMovement.state = "movement";
+			handAnim.SetTrigger ("Idle");
+		}
+		yield return new WaitForSeconds (0.02f);
+	}
+
+	IEnumerator SkillRaio(){
+		if (state == "wait" && playerMovement.state == "movement" && GameObject.Find("Global Controller").GetComponent<GlobalController>().defeatedTempestade) {
+			handAnim.SetTrigger ("SkillRaio");
+			playerStats.energy -= playerStats.maxEnergy/4;
+			state = "skill";
+			//playerMovement.state = "skill";
+			yield return new WaitForSeconds (0.35f);
+			state = "wait";
+			//			playerMovement.state = "movement";
+			handAnim.SetTrigger ("Idle");
+		}
+		yield return new WaitForSeconds (0.02f);
+	}
+
+
 	public void Attack(Collider2D other){
 		if (canHit&&(other.tag == "Boss"||other.tag == "Enemy"||other.tag == "TamborTrigger")) {
 			bool alreadyHit = false;
@@ -232,7 +274,7 @@ public class PlayerAttack : MonoBehaviour {
 					hit.Add (boss.GetInstanceID ());
 				} else if (other.tag == "Enemy") {
 					playerStats.GainEnergy ();
-					Debug.Log ("Hit Crow");
+					//Debug.Log ("Hit Crow");
 					if (chargedAttack) {
 						other.gameObject.GetComponent<EnemyStats> ().ReceiveDamage (4.0f * attackDamage);
 					} else {
@@ -245,7 +287,7 @@ public class PlayerAttack : MonoBehaviour {
 					} else {
 						other.transform.parent.GetComponent<TamborScript> ().RaioSimples (other.transform.position - transform.position);		
 					}
-					Debug.Log (other.gameObject.GetInstanceID ());
+					//Debug.Log (other.gameObject.GetInstanceID ());
 					hit.Add (other.gameObject.GetInstanceID ());
 				}
 			}

@@ -24,10 +24,10 @@ public class TamborScript : MonoBehaviour {
 		yield return new WaitForSeconds (0.1f);
 		raioShadow = (GameObject) Instantiate (raioShadowPrefab, transform.position, Quaternion.identity);
 
-		float rotAngle = Random.Range (-15f, 15f);
+		float rotAngle = Random.Range (-25f, 25f);
 		dir = Quaternion.Euler (0, 0, rotAngle)*dir;
 		dir = dir.normalized;
-		float distSqr = Random.Range (2.25f, 14f);
+		float distSqr = Random.Range (1.44f, 14f);
 		distSqr = Mathf.Sqrt (distSqr);
 
 		raioShadow.transform.position = new Vector3 (transform.position.x +dir.x * distSqr,transform.position.y +dir.y * distSqr * 6.2f/11f /*Elipse b/a*/,0);
@@ -41,9 +41,13 @@ public class TamborScript : MonoBehaviour {
 
 	IEnumerator RaioBoss(Vector3 dir){
 		StartCoroutine(CreateRaio (dir));
-		yield return new WaitForSeconds (0.2f);
+		yield return new WaitForSeconds (0.1f);
 		StartCoroutine(CreateRaio (dir));
-		yield return new WaitForSeconds (0.2f);
+		yield return new WaitForSeconds (0.1f);
+		StartCoroutine(CreateRaio (dir));
+		yield return new WaitForSeconds (0.1f);
+		StartCoroutine(CreateRaio (dir));
+		yield return new WaitForSeconds (0.1f);
 		StartCoroutine(CreateRaio (dir));
 	}
 
@@ -52,9 +56,15 @@ public class TamborScript : MonoBehaviour {
 		StartCoroutine(RaioBoss(dir));
 	}
 
+	IEnumerator RaioSimplesPlayer(Vector3 dir){
+		StartCoroutine(CreateRaio (dir));
+		yield return new WaitForSeconds (0.1f);
+		StartCoroutine(CreateRaio (dir));
+	}
+
 	public void RaioSimples(Vector3 dir){
 		GetComponent<Animator> ().SetTrigger ("HitLight");
-		StartCoroutine(CreateRaio (dir));
+		StartCoroutine (RaioSimplesPlayer (dir));
 	}
 
 }

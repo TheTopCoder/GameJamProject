@@ -30,10 +30,13 @@ public class TransitionScript : MonoBehaviour
 		currentScene = SceneManager.GetActiveScene ().name;
 		if (currentScene == "FomeCorridor"&&scene=="FomeTriangularArena") {
 			globalController.GetComponent<GlobalController> ().completedFomeCorridor = true;
-			Debug.Log ("Completed Fome Corridor");
+			globalController.GetComponent<GlobalController> ().playerEnergy = GameObject.Find ("Player").GetComponent<PlayerStats> ().energy;
+			globalController.GetComponent<GlobalController> ().playerLife = GameObject.Find ("Player").GetComponent<PlayerStats> ().life;
 		}
 		if (currentScene == "TempestadeCorridor"&&scene=="Tempestade") {
 			globalController.GetComponent<GlobalController> ().completedTempestadeCorridor = true;
+			globalController.GetComponent<GlobalController> ().playerEnergy = GameObject.Find ("Player").GetComponent<PlayerStats> ().energy;
+			globalController.GetComponent<GlobalController> ().playerLife = GameObject.Find ("Player").GetComponent<PlayerStats> ().life;
 		}
 		if (currentScene == "FomeTriangularArena"&&scene!="GameOver") {
 			scene = "Lobby New";

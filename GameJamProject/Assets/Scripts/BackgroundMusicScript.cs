@@ -10,7 +10,7 @@ public class BackgroundMusicScript : MonoBehaviour
     AudioSource loopSong;
 	void Start ()
     {
-        Invoke("PlayLoop", initialSong.clip.length - 3);
+        Invoke("PlayLoop", initialSong.clip.length - 1f);
 		
 	}
 

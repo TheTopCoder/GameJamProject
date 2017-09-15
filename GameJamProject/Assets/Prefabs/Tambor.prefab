@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212568935130298776}
   - component: {fileID: 58728264090499676}
   - component: {fileID: 114778227593114894}
+  - component: {fileID: 95400469034150496}
   m_Layer: 0
   m_Name: Tambor
   m_TagString: Tambor
@@ -105,9 +106,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04417211, y: 0}
+  m_Offset: {x: 0.002934903, y: -0.18842828}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.5
 --- !u!58 &58814995919837498
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -122,7 +123,24 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.016358733, y: 0}
   serializedVersion: 2
-  m_Radius: 1.25
+  m_Radius: 0.7
+--- !u!95 &95400469034150496
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1145805656350720}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d319763901ce74d4d925f3972417babd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114778227593114894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -4
-  m_Sprite: {fileID: 21300000, guid: 10891c99ff42be54bbfcfc7c339368ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f6b1394397c2ef468dba7ac3743ebab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

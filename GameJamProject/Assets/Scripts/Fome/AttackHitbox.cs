@@ -28,7 +28,7 @@ public class AttackHitbox : MonoBehaviour {
 		}
 		if (!hitBoss&&other.transform.tag == "Boss"&&transform.name=="RaioHitbox(Clone)") {
 			hitBoss = true;
-			boss.GetComponent<TempestadeController>().ReceiveDamage(player.GetComponent<PlayerStats>().attackDamage*5);
+			boss.GetComponent<TempestadeController>().ReceiveDamage(player.GetComponent<PlayerStats>().attackDamage*2.0f);
 			//boss.GetComponent<FomeController>().canHit = true;
 		}
 		if (!hit && transform.name!="RaioHitbox(Clone)" && other.transform.tag == "TamborTrigger") {

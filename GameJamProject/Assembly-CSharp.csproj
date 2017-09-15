@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\ExitGame.cs" />
      <Compile Include="Assets\Scripts\FadeBlackScript.cs" />
      <Compile Include="Assets\Scripts\FadeTransition.cs" />
+     <Compile Include="Assets\Scripts\Fome\ArenaFome.cs" />
      <Compile Include="Assets\Scripts\Fome\AttackHitbox.cs" />
      <Compile Include="Assets\Scripts\Fome\BoneScript.cs" />
      <Compile Include="Assets\Scripts\Fome\CrowMinion.cs" />
@@ -93,6 +94,8 @@
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\Player\ShadowScript.cs" />
+     <Compile Include="Assets\Scripts\Player\SkillCorvo.cs" />
+     <Compile Include="Assets\Scripts\Player\SkillRaio.cs" />
      <Compile Include="Assets\Scripts\PlayerShadow.cs" />
      <Compile Include="Assets\Scripts\Tempestade\HurricaneHitbox.cs" />
      <Compile Include="Assets\Scripts\Tempestade\RaioScript.cs" />

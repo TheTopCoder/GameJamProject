@@ -11,6 +11,17 @@ public class HandScript : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 
+	public void SummonCorvo(){
+		UnityEngine.Object corvoPrefab = Resources.Load("SkillCorvo");
+		GameObject corvo = (GameObject)Instantiate (corvoPrefab,transform.position,Quaternion.identity);
+	}
+
+	public void SummonRaio(){
+		UnityEngine.Object raioPrefab = Resources.Load("SkillRaio");
+		GameObject raio = (GameObject)Instantiate (raioPrefab, transform.position, Quaternion.identity);
+	}
+
+
 	public void CallFinishAttack(){
 		player.GetComponent<PlayerAttack> ().FinishAttack ();
 	}
