@@ -189,6 +189,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			if ((Input.GetAxisRaw ("XboxA") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Q) || Input.GetMouseButtonDown (1)) && rollCurrentCooldown < 0 && dirAbs != 0) {
 				state = "roll";
+				transform.FindChild ("DashSound").GetComponent<AudioSource> ().Play();
 			}
 			if ((Input.GetAxisRaw ("XboxB") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Space) || Input.GetMouseButtonDown (2))) {
 //				state = "jump";
@@ -215,7 +216,6 @@ public class PlayerMovement : MonoBehaviour {
 				jumpY = 0;
 			}
 		} else if (state == "roll") {
-			transform.FindChild ("DashSound").GetComponent<AudioSource> ().Play();
 			//groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
 			//transform.position = new Vector3 (groundReference.transform.position.x,groundReference.transform.position.y+shadowYOffset,transform.position.z);
 			if (spawnedTop) {
@@ -351,6 +351,7 @@ public class PlayerMovement : MonoBehaviour {
     {
 		if (col.name == "Soul") {
 			Destroy (col.gameObject);
+			transform.FindChild ("Sounds").transform.FindChild ("GetPowerSound").GetComponent<AudioSource> ().Play();
 			handAnim.SetBool("Walking",false);
 			bodyAnim.SetBool ("Walking", false);
 			bodyLightAnim.SetBool ("Walking", false);

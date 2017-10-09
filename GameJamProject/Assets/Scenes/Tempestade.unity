@@ -366,6 +366,11 @@ Prefab:
       propertyPath: tambor
       value: 
       objectReference: {fileID: 375576885}
+    - target: {fileID: 58235245282053386, guid: fa8bedbf3f700524dbdc52e022acd69f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa8bedbf3f700524dbdc52e022acd69f, type: 2}
   m_IsPrefabParent: 0
@@ -600,7 +605,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4405062486061738, guid: 577b3c611dacb7c418d2a57ac25123f0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.75
+      value: -2.86
       objectReference: {fileID: 0}
     - target: {fileID: 4405062486061738, guid: 577b3c611dacb7c418d2a57ac25123f0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -668,6 +673,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114477086246269960, guid: f7be2735367c9034b93d5bc716ca2c91,
+        type: 2}
+      propertyPath: groundShadow
+      value: 
+      objectReference: {fileID: 1282483906}
     - target: {fileID: 114298575459539336, guid: f7be2735367c9034b93d5bc716ca2c91,
         type: 2}
       propertyPath: Heart1
@@ -683,11 +693,11 @@ Prefab:
       propertyPath: Heart3
       value: 
       objectReference: {fileID: 919464390}
-    - target: {fileID: 114477086246269960, guid: f7be2735367c9034b93d5bc716ca2c91,
+    - target: {fileID: 82003246171602754, guid: f7be2735367c9034b93d5bc716ca2c91,
         type: 2}
-      propertyPath: groundShadow
-      value: 
-      objectReference: {fileID: 1282483906}
+      propertyPath: m_Volume
+      value: 0.805
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7be2735367c9034b93d5bc716ca2c91, type: 2}
   m_IsPrefabParent: 0

@@ -15,8 +15,8 @@ public class PlayerColliderAttack : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if ((playerAttack.curAttack == 1 && transform.name == "AttackCollider1") || (playerAttack.curAttack == 2 && transform.name == "AttackCollider2")) {
-			if (other.tag == "Boss")
-				Debug.Log (other.name);
+//			if (other.tag == "Boss")
+				//Debug.Log (other.name);
 			playerAttack.Attack (other);
 		}
 	}

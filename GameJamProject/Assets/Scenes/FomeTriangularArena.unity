@@ -1184,12 +1184,6 @@ Prefab:
       propertyPath: Heart3
       value: 
       objectReference: {fileID: 1504754560}
-    - target: {fileID: 114477086246269960, guid: f7be2735367c9034b93d5bc716ca2c91,
-        type: 2}
-      propertyPath: groundReference
-      value: 
-      objectReference: {fileID: 1808911129985320, guid: 8f1be6cbc98119642a486bbfd810ac13,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7be2735367c9034b93d5bc716ca2c91, type: 2}
   m_IsPrefabParent: 0

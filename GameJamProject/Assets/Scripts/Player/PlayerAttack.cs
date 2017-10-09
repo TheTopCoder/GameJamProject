@@ -76,6 +76,12 @@ public class PlayerAttack : MonoBehaviour {
 			}
 		}
 		if (state == "wait"||state == "prepareAttack") {
+			if (Time.time - beganChargeTime >= chargeAttackTime) {
+				if (transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().isPlaying) {
+					transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Stop ();
+				}
+			}
+
 			if (state=="wait"&&(Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKeyDown (KeyCode.E) || Input.GetMouseButtonDown (0))) {
 				//Debug.Log ("Preparing...");
 				beganChargeTime = Time.time;
@@ -85,6 +91,7 @@ public class PlayerAttack : MonoBehaviour {
 				} else {
 					handAnim.SetTrigger ("PrepareAttack2");
 				}
+				transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Play ();
 			}
 			if (state == "prepareAttack" && (Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKeyUp (KeyCode.E) || Input.GetMouseButtonUp (0))) {
 				if (Time.time - beganChargeTime >= chargeAttackTime) {
@@ -97,8 +104,11 @@ public class PlayerAttack : MonoBehaviour {
 				color.a = 0;
 				bodyLight.GetComponent<SpriteRenderer> ().color = color;
 				blinked = false;
-
+				if (transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().isPlaying) {
+					transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Stop ();
+				}
 				state = "attack";
+				transform.FindChild ("ShakeWeaponSound").GetComponent<AudioSource> ().time = 0.25f;
 				transform.FindChild ("ShakeWeaponSound").GetComponent<AudioSource> ().Play ();
 				if (curAttack == 1) {
 					curAttack = 2;
@@ -117,10 +127,12 @@ public class PlayerAttack : MonoBehaviour {
 				if (GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedTempestade) {
 					if (playerStats.energy >= playerStats.maxEnergy / 4) {
 						StartCoroutine (SkillRaio ());
+						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play();
 					}
 				} else {
 					if (playerStats.energy >= playerStats.maxEnergy / 4) {
 						StartCoroutine (SkillCorvo ());
+						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play();
 					}
 				}
 			} 
@@ -255,6 +267,8 @@ public class PlayerAttack : MonoBehaviour {
 			if (!alreadyHit) {
 //				Debug.Log (other.tag);
 				if (other.tag == "Boss") {
+					transform.FindChild ("Sounds").transform.FindChild ("HitBossSound").GetComponent<AudioSource> ().time = 0.7f;
+					transform.FindChild ("Sounds").transform.FindChild ("HitBossSound").GetComponent<AudioSource> ().Play ();
 					playerStats.GainEnergy ();
 					if (chargedAttack) {
 						if (other.name == "Fome") {

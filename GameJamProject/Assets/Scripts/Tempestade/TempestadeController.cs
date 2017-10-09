@@ -128,6 +128,12 @@ public class TempestadeController : MonoBehaviour
 	IEnumerator TempestadeDie(){
 		GetComponent<Animator> ().SetTrigger ("Tempestade_Die");
 		state = "die";
+
+		foreach (Transform t in transform.FindChild("Sounds")){
+			if (t.gameObject.GetComponent<AudioSource> ().isPlaying) {
+				t.gameObject.GetComponent<AudioSource> ().Stop ();
+			}
+		}
 //		Destroy (transform.FindChild ("Collider").GetComponent<Collider2D> ());
 //		Destroy (GetComponent<Collider2D> ());
 
@@ -547,9 +553,12 @@ void ChangeDirection(GameObject wall){
 }
 
 IEnumerator Stunned(){
-	GetComponent<Animator> ().SetTrigger ("Attack_Hurricane_Out");
-	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
-	yield return new WaitForSeconds (0);
+	if (life > 0) {
+		transform.FindChild ("Sounds").transform.FindChild ("HurricaneSound").GetComponent<AudioSource> ().Stop();
+		GetComponent<Animator> ().SetTrigger ("Attack_Hurricane_Out");
+		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+		yield return new WaitForSeconds (0);
+	}
 //	FinishAttack ();
 }
 
@@ -565,6 +574,7 @@ IEnumerator PinballAttack()
 //	Debug.Log ("Pinball");
 	GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
 	GetComponent<Animator> ().SetTrigger ("Prepare_Attack_Hurricane");
+	transform.FindChild ("Sounds").transform.FindChild ("HurricaneSound").GetComponent<AudioSource> ().Play();
 	while (!continuePinball) {
 		yield return new WaitForSeconds (Time.deltaTime);
 	}
@@ -640,6 +650,7 @@ IEnumerator JumpAttack(){
 	GetComponentInChildren<Animator>().SetTrigger("Attack_Jump_Fall");
 	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,-9f);
 	yield return new WaitForSeconds (1.25f*1.33f);
+	transform.FindChild ("Sounds").transform.FindChild ("GroundSound").GetComponent<AudioSource> ().Play();
 	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
 	GetComponentInChildren<Animator>().SetTrigger("Attack_Jump_Hit");
 }

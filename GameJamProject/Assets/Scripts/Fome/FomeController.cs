@@ -434,6 +434,8 @@ void DestroyHitbox(){
 		//Debug.Log ("Ground Attack");
 		GetComponentInChildren<Animator>().SetTrigger("Fome_PrepareGroundAttack");
 		yield return new WaitForSeconds(0.75f);
+//		transform.FindChild ("Sounds").transform.FindChild ("GroundAttackSound").GetComponent<AudioSource> ().;
+		transform.FindChild ("Sounds").transform.FindChild ("GroundAttackSound").GetComponent<AudioSource> ().Play();
 		GetComponentInChildren<Animator>().SetTrigger("Fome_GroundAttack");
 		UnityEngine.Object shockwave = Resources.Load ("Fome/Fome_Shockwave");
 		Instantiate (shockwave, new Vector3(transform.position.x-1.0f,transform.position.y-1f,0f), Quaternion.identity);
@@ -451,6 +453,8 @@ void DestroyHitbox(){
 //            StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
         }
 		GetComponent<Animator>().SetTrigger("Fome_SpitAttack");
+		
+		transform.FindChild ("Sounds").transform.FindChild ("VomitSound").GetComponent<AudioSource> ().Play();
 		yield return new WaitForSeconds(0.3f);
 //		GetComponentInChildren<Animator>().SetBool("EarthquakeAttack", false);
 		UnityEngine.Object vomitSpawnerObject = Resources.Load ("Fome/" + "VomitSpawner");
@@ -506,6 +510,7 @@ void DestroyHitbox(){
         //Debug.Log("Crow Attack");
 		GetComponent<Animator>().SetTrigger("Fome_CrowAttack");
 		transform.FindChild("Corvos").gameObject.GetComponentInChildren<Animator>().SetTrigger("CrowAttack");
+//		transform.FindChild ("Sounds").transform.FindChild ("CrowSound").GetComponent<AudioSource> ().Play();
         yield return new WaitForSeconds(0.5f);
 //        shakeDuration = 5f;
         StartCoroutine(SpawnCrow());
@@ -528,25 +533,16 @@ void DestroyHitbox(){
 		if (player != null) {
 			spawnableCrow = (GameObject)Instantiate (crowprefab, player.transform.position, Quaternion.identity);
 		}
-/*		yield return new WaitForSeconds(0.5f);
-        for(int i = 0; i < 5; i++)
-        {
-			if (Random.Range(0f,1f) > 0.3f){
-			Instantiate(rockSpawner, new Vector3(Random.Range(spitArea[0].position.x, spitArea[1].position.x), Random.Range(spitArea[0].position.y, spitArea[1].position.y)), new Quaternion(0f, 0f, 0f, 0f));
-			}
-			else{
-				Instantiate(rockSpawner, player.transform.position, new Quaternion(0f, 0f, 0f, 0f));
-			}
-            yield return new WaitForSeconds(0.5f);
-        }
-        GetComponentInChildren<Animator>().SetBool("EarthquakeAttack", false);
- */   }
+		yield return new WaitForSeconds (0.35f);
+		transform.FindChild ("Sounds").transform.FindChild ("GroundCrowSound").GetComponent<AudioSource> ().Play();
+   }
 
 	IEnumerator CrowMinion()
 	{
 		//Debug.Log("Crow Attack");
 		GetComponent<Animator>().SetTrigger("Fome_SpawnMinion");
 		transform.FindChild("Corvos").gameObject.GetComponentInChildren<Animator>().SetTrigger("CrowAttack");
+		transform.FindChild ("Sounds").transform.FindChild ("CrowSound").GetComponent<AudioSource> ().Play();
 		yield return new WaitForSeconds(0.5f);
 		//        shakeDuration = 5f;
 		StartCoroutine(SpawnMinion());
