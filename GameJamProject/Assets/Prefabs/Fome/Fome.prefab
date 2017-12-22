@@ -91,6 +91,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1531334714893286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4094863647196638}
+  m_Layer: 0
+  m_Name: Zmax
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1554431460892302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4103138612974240}
+  m_Layer: 0
+  m_Name: Zmin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1598964332805246
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +248,32 @@ Transform:
   m_Father: {fileID: 4719203227474820}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4094863647196638
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531334714893286}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.7, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.99999934, y: 0.99999934, z: 0.99999934}
+  m_Children: []
+  m_Father: {fileID: 4719203227474820}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4103138612974240
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554431460892302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.29, y: -2.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4719203227474820}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4244135228883220
 Transform:
   m_ObjectHideFlags: 1
@@ -291,6 +347,8 @@ Transform:
   - {fileID: 4352829676692004}
   - {fileID: 4837178373541716}
   - {fileID: 4244135228883220}
+  - {fileID: 4103138612974240}
+  - {fileID: 4094863647196638}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -429,7 +487,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -445,15 +503,15 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -2.235437, y: -0.25404993}
-      - {x: -2.1929579, y: -0.57798076}
+      - {x: -2.256565, y: -0.6097847}
       - {x: -1.2507899, y: -1.1851059}
-      - {x: -0.4108524, y: -1.4969708}
-      - {x: 1.0361944, y: -1.0726292}
+      - {x: 0.5432618, y: -1.9422233}
+      - {x: 1.545056, y: -1.9313334}
       - {x: 1.2463543, y: -0.7889006}
       - {x: 0.41810507, y: -0.04426119}
       - {x: -0.46930066, y: 0.27261353}
       - {x: -1.0636315, y: 0.54516804}
-      - {x: -2.128736, y: 0.5736943}
+      - {x: -2.6057932, y: 0.5418904}
 --- !u!82 &82161565601433372
 AudioSource:
   m_ObjectHideFlags: 1

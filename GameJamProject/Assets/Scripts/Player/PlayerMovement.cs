@@ -189,7 +189,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			if ((Input.GetAxisRaw ("XboxA") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Q) || Input.GetMouseButtonDown (1)) && rollCurrentCooldown < 0 && dirAbs != 0) {
 				state = "roll";
-				transform.FindChild ("DashSound").GetComponent<AudioSource> ().Play();
+				transform.FindChild("Sounds").FindChild ("DashSound").GetComponent<AudioSource> ().Play();
 			}
 			if ((Input.GetAxisRaw ("XboxB") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Space) || Input.GetMouseButtonDown (2))) {
 //				state = "jump";

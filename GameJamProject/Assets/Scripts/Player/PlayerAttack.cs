@@ -24,12 +24,12 @@ public class PlayerAttack : MonoBehaviour {
 	GameObject boss;
 	[SerializeField]
 	GameObject bodyLight;
-    [SerializeField]
-    Animator handAnim;
-    [SerializeField]
-    Animator bodyAnim;
-    [SerializeField]
-    AnimationClip handAttackAnim;
+	[SerializeField]
+	Animator handAnim;
+	[SerializeField]
+	Animator bodyAnim;
+	[SerializeField]
+	AnimationClip handAttackAnim;
 
 	// Use this for initialization
 	void Start () {
@@ -64,26 +64,11 @@ public class PlayerAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (state == "hit") {
-			Color color = bodyLight.GetComponent<SpriteRenderer>().color;
-			color.a = 0;
-			bodyLight.GetComponent<SpriteRenderer> ().color = color;
-			blinked = false;
-
-			canHit = false;
-			//handAnim.SetTrigger ("FinishAttack");
-			if (hit.Count > 0) {
-				hit.Clear ();
-			}
+			FinishAttack();
+			state = "hit";
 		}
-		if (state == "wait"||state == "prepareAttack") {
-			if (Time.time - beganChargeTime >= chargeAttackTime) {
-				if (transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().isPlaying) {
-					transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Stop ();
-				}
-			}
-
-			if (state=="wait"&&(Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKeyDown (KeyCode.E) || Input.GetMouseButtonDown (0))) {
-				//Debug.Log ("Preparing...");
+		else if (state == "wait"){
+			if ((Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKeyDown (KeyCode.E) || Input.GetMouseButtonDown (0))) {
 				beganChargeTime = Time.time;
 				state = "prepareAttack";
 				if (curAttack == 1) {
@@ -93,13 +78,24 @@ public class PlayerAttack : MonoBehaviour {
 				}
 				transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Play ();
 			}
-			if (state == "prepareAttack" && (Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKeyUp (KeyCode.E) || Input.GetMouseButtonUp (0))) {
-				if (Time.time - beganChargeTime >= chargeAttackTime) {
-					chargedAttack = true;
-				} else {
-					chargedAttack = false;
+			else if (Input.GetKeyDown (KeyCode.Space)||Input.GetAxisRaw("XboxY")>0|| Input.GetAxisRaw ("XboxL2") > 0) {
+				if (playerStats.energy >= playerStats.maxEnergy / 2) {
+					StartCoroutine (SkillLife ());
 				}
-
+			}
+		}
+		else if (state == "prepareAttack"){
+			if (Time.time - beganChargeTime >= chargeAttackTime && !chargedAttack) {
+				if (transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().isPlaying) {
+					transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Stop ();
+				}
+			}
+			if (Time.time - beganChargeTime >= chargeAttackTime) {
+				chargedAttack = true;
+			} else {
+				chargedAttack = false;
+			}
+			if(!(Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKey (KeyCode.E) || Input.GetMouseButton (0))){
 				Color color = bodyLight.GetComponent<SpriteRenderer>().color;
 				color.a = 0;
 				bodyLight.GetComponent<SpriteRenderer> ().color = color;
@@ -108,8 +104,8 @@ public class PlayerAttack : MonoBehaviour {
 					transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Stop ();
 				}
 				state = "attack";
-				transform.FindChild ("ShakeWeaponSound").GetComponent<AudioSource> ().time = 0.25f;
-				transform.FindChild ("ShakeWeaponSound").GetComponent<AudioSource> ().Play ();
+				transform.FindChild ("Sounds").FindChild ("ShakeWeaponSound").GetComponent<AudioSource> ().time = 0.25f;
+				transform.FindChild ("Sounds").FindChild ("ShakeWeaponSound").GetComponent<AudioSource> ().Play ();
 				if (curAttack == 1) {
 					curAttack = 2;
 					handAnim.SetTrigger ("Attack");
@@ -118,87 +114,54 @@ public class PlayerAttack : MonoBehaviour {
 					handAnim.SetTrigger ("Attack2");
 				}
 			} else if (Input.GetAxisRaw ("XboxL2") > 0) {
-//				state = "attackStrong";
-			} else if (Input.GetKeyDown (KeyCode.Space)||Input.GetAxisRaw("XboxY")>0|| Input.GetAxisRaw ("XboxL2") > 0) {
-				if (playerStats.energy >= playerStats.maxEnergy / 2) {
-					StartCoroutine (SkillLife ());
-				}
+				//				state = "attackStrong";
 			} else if (Input.GetKeyDown (KeyCode.F)||Input.GetMouseButtonDown(2)||Input.GetAxisRaw("XboxB")>0|| Input.GetAxisRaw ("XboxR1") > 0) {
 				if (GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedTempestade) {
 					if (playerStats.energy >= playerStats.maxEnergy / 4) {
 						StartCoroutine (SkillRaio ());
-						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play();
+						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play ();
 					}
-				} else {
+				}
+				else if (GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedFome) {
 					if (playerStats.energy >= playerStats.maxEnergy / 4) {
 						StartCoroutine (SkillCorvo ());
 						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play();
 					}
 				}
-			} 
-			else if ((state == "wait" || state == "prepareAttack") && !(Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKey (KeyCode.E) || Input.GetMouseButton (0))) {
-				FinishAttack ();
-			} else if (state == "prepareAttack") {
-				Color color = bodyLight.GetComponent<SpriteRenderer>().color;
-				if (blinked){
-					if (Time.time - blinkedTime < 0.08f) {
-						color.a = 1f;
-					}
-					else if (Time.time - blinkedTime < 0.16f) {
-						color.a = 0.5f;
-					}
-					else if (Time.time - blinkedTime < 0.24f) {
-						color.a = 1f;
-					}
-					else
-						color.a = 0.5f;
-					bodyLight.GetComponent<SpriteRenderer> ().color = color;
-				}
-				else if (color.a < 0.5f) {
-					color.a += 0.5f*Time.deltaTime/chargeAttackTime;
-					bodyLight.GetComponent<SpriteRenderer> ().color = color;
-				}
-				else if (color.a > 0.5f) {
-					blinked = true;
-					blinkedTime = Time.time;
-					color.a = 0;
-					bodyLight.GetComponent<SpriteRenderer> ().color = color;
-				}
 			}
+
+			Color c = bodyLight.GetComponent<SpriteRenderer>().color;
+			if (blinked){
+				if (Time.time - blinkedTime < 0.08f) {
+					c.a = 1f;
+				}
+				else if (Time.time - blinkedTime < 0.16f) {
+					c.a = 0.5f;
+				}
+				else if (Time.time - blinkedTime < 0.24f) {
+					c.a = 1f;
+				}
+				else
+					c.a = 0.5f;
+				bodyLight.GetComponent<SpriteRenderer> ().color = c;
+			}
+			else if (c.a < 0.5f) {
+				c.a += 0.5f*Time.deltaTime/chargeAttackTime;
+				bodyLight.GetComponent<SpriteRenderer> ().color = c;
+			}
+			else if (c.a > 0.5f) {
+				blinked = true;
+				blinkedTime = Time.time;
+				c.a = 0;
+				bodyLight.GetComponent<SpriteRenderer> ().color = c;
+			}
+
 		}
 		if (state == "attack") {
 			canHit = true;
-//			attackCurrentTime -= Time.deltaTime;
-			//if (attackCurrentTime < 0) {
-				//attackCurrentTime = attackTime;
-				
-			//}
 		}
-//		if (Input.GetAxisRaw ("XboxX") == 0 && Input.GetAxisRaw ("XboxR2") == 0 && !Input.GetKeyDown (KeyCode.E) && !Input.GetMouseButtonDown (0) &&state=="prepareAttack"){
-//			state = "wait";
-//		}
-		//Aqui atira o tacape
-/*		if (state == "attackStrong") {
-			handAnim.SetBool ("Estocada", true);
-			bodyAnim.SetBool ("Estocada", true);
-			Debug.Log ("AttackStrong");
-			if (boss.name.Equals ("BoneBoss")) {
-				boss.GetComponent<BoneBossController> ().life -= attackStrongDamage;
-			} else if (boss.name.Equals ("FireBoss")) {
-//                    boss.GetComponent<FireBossController>().life -= attackStrongDamage;
-                    
-			}
-			attackCurrentTime -= Time.deltaTime;
-			if (attackCurrentTime < 0) {
-                handAnim.SetBool("Estocada", false);
-                bodyAnim.SetBool("Estocada", false);
-                attackCurrentTime = attackStrongTime;
-				state = "wait";
-			}
-		}
-*/
 	}
- 
+
 	IEnumerator Blink(){
 		yield return null;
 	}
@@ -265,7 +228,7 @@ public class PlayerAttack : MonoBehaviour {
 				}
 			}
 			if (!alreadyHit) {
-//				Debug.Log (other.tag);
+				//				Debug.Log (other.tag);
 				if (other.tag == "Boss") {
 					transform.FindChild ("Sounds").transform.FindChild ("HitBossSound").GetComponent<AudioSource> ().time = 0.7f;
 					transform.FindChild ("Sounds").transform.FindChild ("HitBossSound").GetComponent<AudioSource> ().Play ();
@@ -319,10 +282,10 @@ public class PlayerAttack : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D other){
 		if (other.tag == "Boss") {
-			
+
 		}
 	}
-/*	IEnumerator DamageTime()
+	/*	IEnumerator DamageTime()
 	{
 		yield return new WaitForSeconds(handAttackAnim.length);
 		if (boss != null) {

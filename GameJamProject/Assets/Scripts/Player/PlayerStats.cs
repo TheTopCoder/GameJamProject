@@ -121,7 +121,7 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	public void DamagePlayer(){
-		transform.FindChild ("HitSound").GetComponent<AudioSource>().Play();
+		transform.FindChild ("Sounds").FindChild ("HitSound").GetComponent<AudioSource>().Play();
 		life --;
 	}
 }

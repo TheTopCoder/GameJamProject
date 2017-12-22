@@ -64,6 +64,10 @@ public class PauseScript : MonoBehaviour
             a.volume = volumeSlider.value;
         }
 		 
+		foreach (Transform t in GameObject.Find("Player").transform.FindChild("Sounds")) {
+			t.GetComponent<AudioSource> ().volume = volumeSlider.value;
+		}
+
         volumeAux = volumeSlider.value;
     }
 
@@ -75,6 +79,9 @@ public class PauseScript : MonoBehaviour
 				mainPanel.SetActive (true);
 				foreach (AudioSource a in audios) {
 					a.Pause ();
+				}
+				foreach (Transform t in GameObject.Find("Player").transform.FindChild("Sounds")) {
+					t.GetComponent<AudioSource> ().Pause();
 				}
 				this.GetComponent<Canvas> ().enabled = true;
 				eventSystem.GetComponent<EventSystem> ().SetSelectedGameObject (resumeButton);
@@ -144,6 +151,9 @@ public class PauseScript : MonoBehaviour
 //            a.Play();
 			a.UnPause();
         }
+		foreach (Transform t in GameObject.Find("Player").transform.FindChild("Sounds")) {
+			t.GetComponent<AudioSource> ().UnPause();
+		}
     }
 
     public void OnBackToMainMenu()
