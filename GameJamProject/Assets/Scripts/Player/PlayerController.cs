@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 	bool faceRight = true;
 	bool canEnterDoor = false;
 	bool invulnerable;
-	bool spawnedTop = true;
+	bool spawnedDust = false;
 	float jumpY = 0;
 	float jumpSpeed = 4.5f;
 	float jumpSpeedCur = 0;
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour {
 	GameObject canvas;
 
 	//From PlayerAttack	
-//	public string state;//wait,attack,attackStrong,recoverAttack
+	//	public string state;//wait,attack,attackStrong,recoverAttack
 	bool canHit;
 	public int curAttack;
 	ArrayList hit;
@@ -79,13 +79,16 @@ public class PlayerController : MonoBehaviour {
 	GameObject boss;
 	[SerializeField]
 	GameObject bodyLight;
-//	[SerializeField]
-//	Animator handAnim;
-//	[SerializeField]
-//	Animator bodyAnim;
+	//	[SerializeField]
+	//	Animator handAnim;
+	//	[SerializeField]
+	//	Animator bodyAnim;
 	[SerializeField]
 	AnimationClip handAttackAnim;
 
+	//New Variables
+	public bool damaged;
+	bool changedState;
 
 	// Use this for initialization
 	void Start (){
@@ -111,8 +114,7 @@ public class PlayerController : MonoBehaviour {
 		rollCurrentCooldown = 0;
 		invulnerable = false;
 		walkingAudio.Pause();
-		spawnedTop = true;
-
+		spawnedDust = false;
 
 		//From PlayerAttack
 		attackDamage = playerStats.attackDamage;
@@ -126,6 +128,8 @@ public class PlayerController : MonoBehaviour {
 		hit = new ArrayList();
 		//attackCurrentTime = attackTime;
 		boss = GameObject.FindGameObjectWithTag ("Boss");
+
+		damaged = false;
 	}
 
 	void Move(){
@@ -170,8 +174,6 @@ public class PlayerController : MonoBehaviour {
 			if (pushSpeed < 0)
 				pushSpeed = 0;
 		}
-
-		//		GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
 		lookDirX = Input.GetAxis ("Horizontal");
 		lookDirY = Input.GetAxis ("Vertical");
 		float lookDirAbs = Mathf.Sqrt (dirX * dirX + dirY * dirY);
@@ -188,28 +190,33 @@ public class PlayerController : MonoBehaviour {
 		pushSpeed = pushForce;
 	}
 
-	public void FinishAttack(){
-		Color color = bodyLight.GetComponent<SpriteRenderer>().color;
-		color.a = 0;
-		bodyLight.GetComponent<SpriteRenderer> ().color = color;
-		blinked = false;
-		canHit = false;
-		//handAnim.SetTrigger ("FinishAttack");
-		if (hit.Count > 0) {
-			hit.Clear ();
-		}
-		state = "movement";
-	}
+	void State(){
+		//Movement
+		if (state == "movement"){
+			Move ();
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (groundReference.transform.position.x - lastShadowX, groundReference.transform.position.y - lastShadowY) / Time.deltaTime;
+			lastShadowX = groundReference.transform.position.x;
+			lastShadowY = groundReference.transform.position.y;
 
-	// Update is called once per frame
-	void FixedUpdate () {
-		if (state == "hit") {
-			FinishAttack ();
-			state = "hit";
-		} else if (state == "prepareAttack") {
-			//Stop Moving
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
-			groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+			if(canEnterDoor /*&& (Input.GetButtonDown("XboxX") || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))*/)
+			{
+				canvas.GetComponent<TransitionScript>().ChangeScene();
+			}
+		}
+
+		//Hit
+
+		//Skill
+
+		//Recover Energy
+		if (state == "recoverEnergy") {
+			playerStats.energy += 2;
+		}
+
+		//Recover Life
+
+		//PrepareAttack
+		if (state == "prepareAttack") {
 
 			if (Time.time - beganChargeTime >= chargeAttackTime && !chargedAttack) {
 				if (transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().isPlaying) {
@@ -221,40 +228,8 @@ public class PlayerController : MonoBehaviour {
 			} else {
 				chargedAttack = false;
 			}
-			if (!(Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKey (KeyCode.E) || Input.GetMouseButton (0))) {
-				Color color = bodyLight.GetComponent<SpriteRenderer> ().color;
-				color.a = 0;
-				bodyLight.GetComponent<SpriteRenderer> ().color = color;
-				blinked = false;
-				if (transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().isPlaying) {
-					transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Stop ();
-				}
-				state = "attack";
-				transform.FindChild ("Sounds").FindChild ("ShakeWeaponSound").GetComponent<AudioSource> ().time = 0.25f;
-				transform.FindChild ("Sounds").FindChild ("ShakeWeaponSound").GetComponent<AudioSource> ().Play ();
-				if (curAttack == 1) {
-					curAttack = 2;
-					handAnim.SetTrigger ("Attack");
-				} else {
-					curAttack = 1;
-					handAnim.SetTrigger ("Attack2");
-				}
-			} else if (Input.GetAxisRaw ("XboxL2") > 0) {
-				//				state = "attackStrong";
-			} else if (Input.GetKeyDown (KeyCode.F) || Input.GetMouseButtonDown (2) || Input.GetAxisRaw ("XboxB") > 0 || Input.GetAxisRaw ("XboxR1") > 0) {
-				if (GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedTempestade) {
-					if (playerStats.energy >= playerStats.maxEnergy / 4) {
-						StartCoroutine (SkillRaio ());
-						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play ();
-					}
-				} else if (GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedFome) {
-					if (playerStats.energy >= playerStats.maxEnergy / 4) {
-						StartCoroutine (SkillCorvo ());
-						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play ();
-					}
-				}
-			}
 
+			//blink when charging
 			Color c = bodyLight.GetComponent<SpriteRenderer> ().color;
 			if (blinked) {
 				if (Time.time - blinkedTime < 0.08f) {
@@ -275,74 +250,11 @@ public class PlayerController : MonoBehaviour {
 				c.a = 0;
 				bodyLight.GetComponent<SpriteRenderer> ().color = c;
 			}
+		}
+		//Attack
 
-		} else if (state == "attack") {
-			canHit = true;
-		} else if (state == "movement") {
-			GetComponent<Collider2D> ().enabled = true;
-			Move ();
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (groundReference.transform.position.x - lastShadowX, groundReference.transform.position.y - lastShadowY) / Time.deltaTime;
-			lastShadowX = groundReference.transform.position.x;
-			lastShadowY = groundReference.transform.position.y;
-
-			//groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
-			/*			GetComponent<Rigidbody2D> ().velocity = groundReference.GetComponent<Rigidbody2D> ().velocity;
-			if (GetComponent<Rigidbody2D> ().velocity.y > 0&&transform.position.y - groundReference.transform.position.y > shadowYOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(GetComponent<Rigidbody2D> ().velocity.x,0);
-			}
-			else if (GetComponent<Rigidbody2D> ().velocity.y < 0&&transform.position.y - groundReference.transform.position.y < shadowYOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(GetComponent<Rigidbody2D> ().velocity.x,0);
-			}
-			if (GetComponent<Rigidbody2D> ().velocity.x < 0&&transform.position.x - groundReference.transform.position.x < shadowXOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(0,GetComponent<Rigidbody2D> ().velocity.y);
-			}
-			else if (GetComponent<Rigidbody2D> ().velocity.x > 0&&transform.position.x - groundReference.transform.position.x > shadowXOffset){
-				GetComponent<Rigidbody2D> ().velocity = new Vector2(0,GetComponent<Rigidbody2D> ().velocity.y);
-			}
-*/			//transform.position = new Vector3 (groundReference.transform.position.x,groundReference.transform.position.y+shadowYOffset,transform.position.z);
-
-			//			groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
-			//			groundReference.transform.position = transform.position+new Vector3(0,-shadowYOffset,0);
-
-
-			if ((Input.GetAxisRaw ("XboxA") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Q) || Input.GetMouseButtonDown (1)) && rollCurrentCooldown < 0 && dirAbs != 0) {
-				state = "roll";
-				transform.FindChild ("Sounds").FindChild ("DashSound").GetComponent<AudioSource> ().Play ();
-			} else if ((Input.GetAxisRaw ("XboxB") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Space) || Input.GetMouseButtonDown (2))) {
-				//				state = "jump";
-				//				jumpY = 0;
-				//				Jump ();
-			}
-			if ((Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKeyDown (KeyCode.E) || Input.GetMouseButtonDown (0))) {
-				beganChargeTime = Time.time;
-				state = "prepareAttack";
-				if (curAttack == 1) {
-					handAnim.SetTrigger ("PrepareAttack");
-				} else {
-					handAnim.SetTrigger ("PrepareAttack2");
-				}
-				transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Play ();
-			} else if (Input.GetKeyDown (KeyCode.Space) || Input.GetAxisRaw ("XboxY") > 0 || Input.GetAxisRaw ("XboxL2") > 0) {
-				if (playerStats.energy >= playerStats.maxEnergy / 2) {
-					StartCoroutine (SkillLife ());
-				}
-			}
-			else if (Input.GetKey (KeyCode.C)) {
-				state = "recoverEnergy";
-			}
-		} else if (state == "roll") {
-			//groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
-			//transform.position = new Vector3 (groundReference.transform.position.x,groundReference.transform.position.y+shadowYOffset,transform.position.z);
-			if (spawnedTop) {
-				Instantiate (dashDust, dashDustPosition.transform.position, new Quaternion (0f, 0f, 0f, 0f), gameObject.transform);
-				spawnedTop = false;
-			}
-			handAnim.SetBool ("Dash", true);
-			bodyAnim.SetBool ("Dash", true);
-			bodyLightAnim.SetBool ("Dash", true);
-			speedX = rollDirX * rollSpeed;
-			speedY = rollDirY * rollSpeed * speedYMult;
-
+		//Roll
+		if (state == "roll"){
 			groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (speedX, speedY);
 			groundReference.GetComponent<Rigidbody2D> ().velocity -= new Vector2 (pushSpeed, 0);
 			if (pushSpeed > 0) {
@@ -354,50 +266,216 @@ public class PlayerController : MonoBehaviour {
 			lastShadowX = groundReference.transform.position.x;
 			lastShadowY = groundReference.transform.position.y;
 			rollCurrentTime -= Time.deltaTime;
-			if (rollCurrentTime < 0) {
-				handAnim.SetBool ("Dash", false);
-				bodyAnim.SetBool ("Dash", false);
-				bodyLightAnim.SetBool ("Dash", false);
-				Destroy (GameObject.FindGameObjectWithTag ("DashDust"));
-				spawnedTop = true;
-				rollCurrentTime = rollTime;
-				rollCurrentCooldown = rollCooldown;
-				state = "movement";
-			}
-		} else if (state == "skill") {
-
-		} else if (state == "recoverEnergy") {
-			playerStats.energy += 2;
-			if (!Input.GetKey (KeyCode.C)) {
-				state = "movement";
-			}
-		}
-
-		if(canEnterDoor /*&& (Input.GetButtonDown("XboxX") || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))*/)
-		{
-			canvas.GetComponent<TransitionScript>().ChangeScene();
 		}
 	}
 
-	public IEnumerator DamagedPlayer()
-	{
-		//Debug.Log ("Damaged");
-		if (invulnerable == false) {
+	void BeginState(string newState){
+		state = newState;
+
+		//Movement
+		if (state == "movement"){
+			GetComponent<Collider2D> ().enabled = true;
+		}		
+		//Hit
+		if (state == "hit"){
 			invulnerable = true;
+			handAnim.SetBool("Flint", true);
+			bodyAnim.SetBool("Flint", true);
+			bodyLightAnim.SetBool("Flint", true);
 			StartCoroutine ("ReceiveDamage");
 		}
-		yield return null;
+		//Skill
+
+		//Recover Energy
+
+		//Recover Life
+
+		//PrepareAttack
+		if (state == "prepareAttack"){
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+			groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+		}
+		//Attack
+
+		//Roll
+		if (state == "roll"){
+			Instantiate (dashDust, dashDustPosition.transform.position, new Quaternion (0f, 0f, 0f, 0f), gameObject.transform);
+			handAnim.SetBool ("Dash", true);
+			bodyAnim.SetBool ("Dash", true);
+			bodyLightAnim.SetBool ("Dash", true);
+			speedX = rollDirX * rollSpeed;
+			speedY = rollDirY * rollSpeed * speedYMult;
+		}
+	}
+
+	public void FinishState(){
+		//Movement
+
+		//Hit
+		if (state == "hit"){
+			damaged = false;
+		}
+		//Skill
+
+		//Recover Energy
+
+		//Recover Life
+
+		//PrepareAttack
+
+		//Attack
+		if (state == "attack"){
+			Color color = bodyLight.GetComponent<SpriteRenderer>().color;
+			color.a = 0;
+			bodyLight.GetComponent<SpriteRenderer> ().color = color;
+			blinked = false;
+			canHit = false;
+			if (hit.Count > 0) {
+				hit.Clear ();
+			}
+		}
+
+		//Roll
+		if (state == "roll"){
+			handAnim.SetBool ("Dash", false);
+			bodyAnim.SetBool ("Dash", false);
+			bodyLightAnim.SetBool ("Dash", false);
+			Destroy (GameObject.FindGameObjectWithTag ("DashDust"));
+			spawnedDust = false;
+			rollCurrentTime = rollTime;
+			rollCurrentCooldown = rollCooldown;
+		}
+
+		state = "";
+	}
+
+	void ChangeState(string newState){
+		if (!changedState){
+			changedState = true;
+			FinishState();
+			BeginState(newState);
+		}
+	}
+
+	void DecideState(){
+		changedState = false;
+
+		//Movement
+		if (state == ""){
+			ChangeState("movement");
+		}
+		if (state == "recoverEnergy"){
+			if (!Input.GetKey(KeyCode.C)){
+				ChangeState("movement");
+			}
+		}
+		if (state == "roll"){
+			if (rollCurrentTime < 0) {
+				ChangeState("movement");
+			}
+		}
+
+		//Hit
+		if (state != "hit") {
+			if (damaged) {
+				ChangeState ("hit");
+			}
+		}
+
+		//Skill
+		if (state == "movement"){
+			if (Input.GetKeyDown (KeyCode.F) || Input.GetMouseButtonDown (2) || Input.GetAxisRaw ("XboxB") > 0 || Input.GetAxisRaw ("XboxR1") > 0) {
+				if (GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedTempestade) {
+					if (playerStats.energy >= playerStats.maxEnergy / 4) {
+						StartCoroutine (SkillRaio ());
+						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play ();
+					}
+				} else if (GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedFome) {
+					if (playerStats.energy >= playerStats.maxEnergy / 4) {
+						StartCoroutine (SkillCorvo ());
+						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play ();
+					}
+				}
+			}
+		}
+
+		//Recover Energy
+		if (state == "movement"){
+			if (Input.GetKey (KeyCode.C)) {
+				ChangeState("recoverEnergy");
+			}
+		}
+
+		//Recover Life
+		if (state == "movement"){
+			if (Input.GetKeyDown (KeyCode.Space) || Input.GetAxisRaw ("XboxY") > 0 || Input.GetAxisRaw ("XboxL2") > 0) {
+				if (playerStats.energy >= playerStats.maxEnergy / 2) {
+					StartCoroutine (SkillLife ());
+				}
+			}
+		}
+
+		//PrepareAttack
+		if (state == "movement"){
+			if ((Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKeyDown (KeyCode.E) || Input.GetMouseButtonDown (0))) {
+				ChangeState("prepareAttack");
+				beganChargeTime = Time.time;
+				if (curAttack == 1) {
+					handAnim.SetTrigger ("PrepareAttack");
+				} else {
+					handAnim.SetTrigger ("PrepareAttack2");
+				}
+				transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Play ();
+			}
+		}
+
+		//Attack
+		if (state == "prepareAttack"){
+			if (!(Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKey (KeyCode.E) || Input.GetMouseButton (0))) {
+				ChangeState("attack");
+				Color color = bodyLight.GetComponent<SpriteRenderer> ().color;
+				color.a = 0;
+				bodyLight.GetComponent<SpriteRenderer> ().color = color;
+				blinked = false;
+				if (transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().isPlaying) {
+					transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Stop ();
+				}
+				transform.FindChild ("Sounds").FindChild ("ShakeWeaponSound").GetComponent<AudioSource> ().time = 0.25f;
+				transform.FindChild ("Sounds").FindChild ("ShakeWeaponSound").GetComponent<AudioSource> ().Play ();
+				if (curAttack == 1) {
+					curAttack = 2;
+					handAnim.SetTrigger ("Attack");
+				} else {
+					curAttack = 1;
+					handAnim.SetTrigger ("Attack2");
+				}
+			}
+		}
+
+		//Roll
+		if (state == "movement"){
+			if ((Input.GetAxisRaw ("XboxA") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Q) || Input.GetMouseButtonDown (1)) && rollCurrentCooldown < 0 && dirAbs != 0) {
+				ChangeState("roll");
+				transform.FindChild ("Sounds").FindChild ("DashSound").GetComponent<AudioSource> ().Play ();
+			}
+		}
+	}
+
+	// Update is called once per frame
+	void FixedUpdate () {
+		DecideState();
+		State();
+	}
+
+	public void DamagePlayer()
+	{
+		if (!invulnerable){
+			damaged = true;
+		}
 	}
 
 	public IEnumerator ReceiveDamage()
 	{
-		//Debug.Log (invulnerable);
-		//			handAnim.SetTrigger("FinishAttack");
-		FinishAttack();
-		state = "hit";
-		handAnim.SetBool("Flint", true);
-		bodyAnim.SetBool("Flint", true);
-		bodyLightAnim.SetBool("Flint", true);
 		GetComponent<PlayerStats> ().DamagePlayer ();
 		Color auxColor = new Color(bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.r, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.g, bodyAnim.gameObject.GetComponent<SpriteRenderer>().color.b, 0);
 		StartCoroutine(KnockBack());
@@ -419,7 +497,6 @@ public class PlayerController : MonoBehaviour {
 		bodyAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
 		//			Debug.Log ("Vulnerable");
 		invulnerable = false;
-		state = "movement";
 	}
 	IEnumerator KnockBack()
 	{
@@ -443,7 +520,8 @@ public class PlayerController : MonoBehaviour {
 		handAnim.SetBool("Flint", false);
 		bodyAnim.SetBool("Flint", false);
 		bodyLightAnim.SetBool("Flint", false);
-		state = "wait";
+		FinishState ();
+		//state = "wait";
 		//invulnerable = false;
 	}
 
@@ -459,14 +537,6 @@ public class PlayerController : MonoBehaviour {
 		transform.localScale = scale;
 	}
 
-	/*	void OnCollisionEnter2D(Collision2D col){
-		if (state == "jump" && col.transform.tag == "Boss") {
-			Physics2D.IgnoreCollision (col.collider, GetComponent<Collision2D> ().collider, true);
-		} else if (state != "jump") {
-			Physics2D.IgnoreCollision (col.collider, GetComponent<Collision2D> ().collider, false);
-		}
-	}
-*/
 	IEnumerator ChangeScene(){
 		yield return new WaitForSeconds (0.75f);
 		GameObject.Find ("TransitionCanvas").GetComponent<TransitionScript> ().ChangeScene ();
@@ -480,19 +550,16 @@ public class PlayerController : MonoBehaviour {
 			GameObject.FindGameObjectWithTag ("Light").GetComponent<Animator> ().Play(0);
 			GameObject.FindGameObjectWithTag ("Light").GetComponent<SpriteRenderer> ().enabled = true;
 			playerStats.energy -= playerStats.maxEnergy/2;
-			state = "skill";
-			state = "skill";
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 			groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 			yield return new WaitForSeconds (0.425f);
 			playerStats.life++;
-			state = "wait";
-			state = "movement";
 			bodyAnim.SetTrigger ("Idle");
 			handAnim.SetTrigger ("Idle");
 			GameObject.FindGameObjectWithTag ("Light").GetComponent<SpriteRenderer> ().enabled = false;
 		}
-		yield return new WaitForSeconds (0.02f);
+		yield return new WaitForSeconds (0);
+		FinishState();
 	}
 
 	IEnumerator SkillCorvo(){
@@ -509,6 +576,7 @@ public class PlayerController : MonoBehaviour {
 			handAnim.SetTrigger ("Idle");
 		}
 		yield return new WaitForSeconds (0.02f);
+		FinishState();
 	}
 
 	IEnumerator SkillRaio(){
@@ -523,6 +591,7 @@ public class PlayerController : MonoBehaviour {
 			handAnim.SetTrigger ("Idle");
 		}
 		yield return new WaitForSeconds (0.02f);
+		FinishState();
 	}
 
 
@@ -535,7 +604,6 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 			if (!alreadyHit) {
-				//				Debug.Log (other.tag);
 				if (other.tag == "Boss") {
 					transform.FindChild ("Sounds").transform.FindChild ("HitBossSound").GetComponent<AudioSource> ().time = 0.7f;
 					transform.FindChild ("Sounds").transform.FindChild ("HitBossSound").GetComponent<AudioSource> ().Play ();
@@ -576,6 +644,7 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 		}
+		FinishState();
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
@@ -588,7 +657,7 @@ public class PlayerController : MonoBehaviour {
 			bodyLightAnim.SetBool ("Walking", false);
 			bodyAnim.SetTrigger ("Idle");
 			bodyLightAnim.SetTrigger("Idle");
-			state = "victory";
+//			state = "victory";
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
 			groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,0);
 			if (GameObject.Find ("Soul_Pulse")) {

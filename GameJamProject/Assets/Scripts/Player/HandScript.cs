@@ -23,7 +23,7 @@ public class HandScript : MonoBehaviour {
 
 
 	public void CallFinishAttack(){
-		player.GetComponent<PlayerController> ().FinishAttack ();
+		player.GetComponent<PlayerController> ().FinishState ();
 	}
 
 	// Update is called once per frame

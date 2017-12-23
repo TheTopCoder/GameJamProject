@@ -151,8 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14188860577447545b143a8a7cd5d687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSong: {fileID: 818566613}
-  loopSong: {fileID: 1483359880}
+  initialSong: {fileID: 0}
+  loopSong: {fileID: 0}
 --- !u!1 &57963711
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,14 +886,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864ac90211c854c48adba3774e092cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 337006064}
-  nome: 
---- !u!114 &337006064 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114493866596784606, guid: 46f901dd47d6f5d4e86c03b63f8d8986,
-    type: 2}
-  m_PrefabInternal: {fileID: 337006061}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  panel: {fileID: 0}
+  nome: GameOver
 --- !u!224 &337006068 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224881416098784392, guid: 46f901dd47d6f5d4e86c03b63f8d8986,

@@ -38,14 +38,14 @@ public class SpawnableCrown : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (!hit&&other.tag == "PlayerBase"&&enabledHit){
 			hit = true;
-			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+			player.GetComponent<PlayerController>().DamagePlayer();
 //			boss.GetComponent<FomeController> ().canHit = true;
 		}
 	}
 	void OnTriggerStay2D(Collider2D other){
 		if (!hit&&other.tag == "PlayerBase"&&enabledHit){
 			hit = true;
-			StartCoroutine(player.GetComponent<PlayerController>().DamagedPlayer());
+			player.GetComponent<PlayerController>().DamagePlayer();
 //			boss.GetComponent<FomeController> ().canHit = true;
 		}
 	}
