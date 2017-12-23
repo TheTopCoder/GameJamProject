@@ -45,7 +45,7 @@ public class SpawnableCrown : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D other){
 		if (!hit&&other.tag == "PlayerBase"&&enabledHit){
 			hit = true;
-			StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+			StartCoroutine(player.GetComponent<PlayerController>().DamagedPlayer());
 //			boss.GetComponent<FomeController> ().canHit = true;
 		}
 	}

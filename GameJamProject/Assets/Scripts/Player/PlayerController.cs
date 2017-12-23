@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 	float life;
 	float maxLife = 10;
 	float dirX;
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour {
 	GameObject canvas;
 
 	//From PlayerAttack	
-	public string state;//wait,attack,attackStrong,recoverAttack
+//	public string state;//wait,attack,attackStrong,recoverAttack
 	bool canHit;
 	public int curAttack;
 	ArrayList hit;
@@ -79,10 +79,10 @@ public class PlayerMovement : MonoBehaviour {
 	GameObject boss;
 	[SerializeField]
 	GameObject bodyLight;
-	[SerializeField]
-	Animator handAnim;
-	[SerializeField]
-	Animator bodyAnim;
+//	[SerializeField]
+//	Animator handAnim;
+//	[SerializeField]
+//	Animator bodyAnim;
 	[SerializeField]
 	AnimationClip handAttackAnim;
 
@@ -120,7 +120,6 @@ public class PlayerMovement : MonoBehaviour {
 		attackStrongDamage = playerStats.attackStrongDamage;
 		attackStrongTime = playerStats.attackStrongTime;
 		blinked = false;
-		state = "wait";
 		canHit = false;
 		chargeAttackTime = 0.6f;
 		curAttack = 1;
@@ -189,13 +188,29 @@ public class PlayerMovement : MonoBehaviour {
 		pushSpeed = pushForce;
 	}
 
+	public void FinishAttack(){
+		Color color = bodyLight.GetComponent<SpriteRenderer>().color;
+		color.a = 0;
+		bodyLight.GetComponent<SpriteRenderer> ().color = color;
+		blinked = false;
+		canHit = false;
+		//handAnim.SetTrigger ("FinishAttack");
+		if (hit.Count > 0) {
+			hit.Clear ();
+		}
+		state = "movement";
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (state == "hit") {
-			FinishAttack();
+			FinishAttack ();
 			state = "hit";
-		}
-		else if (state == "prepareAttack"){
+		} else if (state == "prepareAttack") {
+			//Stop Moving
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+			groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+
 			if (Time.time - beganChargeTime >= chargeAttackTime && !chargedAttack) {
 				if (transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().isPlaying) {
 					transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Stop ();
@@ -206,8 +221,8 @@ public class PlayerMovement : MonoBehaviour {
 			} else {
 				chargedAttack = false;
 			}
-			if(!(Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKey (KeyCode.E) || Input.GetMouseButton (0))){
-				Color color = bodyLight.GetComponent<SpriteRenderer>().color;
+			if (!(Input.GetAxisRaw ("XboxX") > 0 || Input.GetAxisRaw ("XboxR2") > 0 || Input.GetKey (KeyCode.E) || Input.GetMouseButton (0))) {
+				Color color = bodyLight.GetComponent<SpriteRenderer> ().color;
 				color.a = 0;
 				bodyLight.GetComponent<SpriteRenderer> ().color = color;
 				blinked = false;
@@ -226,52 +241,44 @@ public class PlayerMovement : MonoBehaviour {
 				}
 			} else if (Input.GetAxisRaw ("XboxL2") > 0) {
 				//				state = "attackStrong";
-			} else if (Input.GetKeyDown (KeyCode.F)||Input.GetMouseButtonDown(2)||Input.GetAxisRaw("XboxB")>0|| Input.GetAxisRaw ("XboxR1") > 0) {
+			} else if (Input.GetKeyDown (KeyCode.F) || Input.GetMouseButtonDown (2) || Input.GetAxisRaw ("XboxB") > 0 || Input.GetAxisRaw ("XboxR1") > 0) {
 				if (GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedTempestade) {
 					if (playerStats.energy >= playerStats.maxEnergy / 4) {
 						StartCoroutine (SkillRaio ());
 						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play ();
 					}
-				}
-				else if (GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedFome) {
+				} else if (GameObject.Find ("Global Controller").GetComponent<GlobalController> ().defeatedFome) {
 					if (playerStats.energy >= playerStats.maxEnergy / 4) {
 						StartCoroutine (SkillCorvo ());
-						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play();
+						transform.FindChild ("Sounds").transform.FindChild ("SpecialAttackSound").GetComponent<AudioSource> ().Play ();
 					}
 				}
 			}
 
-			Color c = bodyLight.GetComponent<SpriteRenderer>().color;
-			if (blinked){
+			Color c = bodyLight.GetComponent<SpriteRenderer> ().color;
+			if (blinked) {
 				if (Time.time - blinkedTime < 0.08f) {
 					c.a = 1f;
-				}
-				else if (Time.time - blinkedTime < 0.16f) {
+				} else if (Time.time - blinkedTime < 0.16f) {
 					c.a = 0.5f;
-				}
-				else if (Time.time - blinkedTime < 0.24f) {
+				} else if (Time.time - blinkedTime < 0.24f) {
 					c.a = 1f;
-				}
-				else
+				} else
 					c.a = 0.5f;
 				bodyLight.GetComponent<SpriteRenderer> ().color = c;
-			}
-			else if (c.a < 0.5f) {
-				c.a += 0.5f*Time.deltaTime/chargeAttackTime;
+			} else if (c.a < 0.5f) {
+				c.a += 0.5f * Time.deltaTime / chargeAttackTime;
 				bodyLight.GetComponent<SpriteRenderer> ().color = c;
-			}
-			else if (c.a > 0.5f) {
+			} else if (c.a > 0.5f) {
 				blinked = true;
 				blinkedTime = Time.time;
 				c.a = 0;
 				bodyLight.GetComponent<SpriteRenderer> ().color = c;
 			}
 
-		}
-		else if (state == "attack") {
+		} else if (state == "attack") {
 			canHit = true;
-		}
-		else if (state == "movement") {
+		} else if (state == "movement") {
 			GetComponent<Collider2D> ().enabled = true;
 			Move ();
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (groundReference.transform.position.x - lastShadowX, groundReference.transform.position.y - lastShadowY) / Time.deltaTime;
@@ -300,9 +307,8 @@ public class PlayerMovement : MonoBehaviour {
 
 			if ((Input.GetAxisRaw ("XboxA") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Q) || Input.GetMouseButtonDown (1)) && rollCurrentCooldown < 0 && dirAbs != 0) {
 				state = "roll";
-				transform.FindChild("Sounds").FindChild ("DashSound").GetComponent<AudioSource> ().Play();
-			}
-			else if ((Input.GetAxisRaw ("XboxB") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Space) || Input.GetMouseButtonDown (2))) {
+				transform.FindChild ("Sounds").FindChild ("DashSound").GetComponent<AudioSource> ().Play ();
+			} else if ((Input.GetAxisRaw ("XboxB") > 0 || (Input.GetAxisRaw ("XboxL1") > 0) || Input.GetKey (KeyCode.Space) || Input.GetMouseButtonDown (2))) {
 				//				state = "jump";
 				//				jumpY = 0;
 				//				Jump ();
@@ -316,11 +322,13 @@ public class PlayerMovement : MonoBehaviour {
 					handAnim.SetTrigger ("PrepareAttack2");
 				}
 				transform.FindChild ("Sounds").transform.FindChild ("ChargedAttackSound").GetComponent<AudioSource> ().Play ();
-			}
-			else if (Input.GetKeyDown (KeyCode.Space)||Input.GetAxisRaw("XboxY")>0|| Input.GetAxisRaw ("XboxL2") > 0) {
+			} else if (Input.GetKeyDown (KeyCode.Space) || Input.GetAxisRaw ("XboxY") > 0 || Input.GetAxisRaw ("XboxL2") > 0) {
 				if (playerStats.energy >= playerStats.maxEnergy / 2) {
 					StartCoroutine (SkillLife ());
 				}
+			}
+			else if (Input.GetKey (KeyCode.C)) {
+				state = "recoverEnergy";
 			}
 		} else if (state == "roll") {
 			//groundReference.GetComponent<Rigidbody2D> ().velocity = GetComponent<Rigidbody2D> ().velocity;
@@ -358,6 +366,11 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		} else if (state == "skill") {
 
+		} else if (state == "recoverEnergy") {
+			playerStats.energy += 2;
+			if (!Input.GetKey (KeyCode.C)) {
+				state = "movement";
+			}
 		}
 
 		if(canEnterDoor /*&& (Input.GetButtonDown("XboxX") || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))*/)
@@ -380,8 +393,8 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		//Debug.Log (invulnerable);
 		//			handAnim.SetTrigger("FinishAttack");
-		playerAttack.FinishAttack();
-		playerAttack.state = "hit";
+		FinishAttack();
+		state = "hit";
 		handAnim.SetBool("Flint", true);
 		bodyAnim.SetBool("Flint", true);
 		bodyLightAnim.SetBool("Flint", true);
@@ -406,6 +419,7 @@ public class PlayerMovement : MonoBehaviour {
 		bodyAnim.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
 		//			Debug.Log ("Vulnerable");
 		invulnerable = false;
+		state = "movement";
 	}
 	IEnumerator KnockBack()
 	{
@@ -429,7 +443,7 @@ public class PlayerMovement : MonoBehaviour {
 		handAnim.SetBool("Flint", false);
 		bodyAnim.SetBool("Flint", false);
 		bodyLightAnim.SetBool("Flint", false);
-		playerAttack.state = "wait";
+		state = "wait";
 		//invulnerable = false;
 	}
 
@@ -460,20 +474,20 @@ public class PlayerMovement : MonoBehaviour {
 
 
 	IEnumerator SkillLife(){
-		if (playerStats.life < playerStats.maxLife && state == "wait" && playerMovement.state == "movement") {
+		if (playerStats.life < playerStats.maxLife && state == "wait" && state == "movement") {
 			bodyAnim.SetTrigger ("SkillLife");
 			handAnim.SetTrigger ("SkillLife");
 			GameObject.FindGameObjectWithTag ("Light").GetComponent<Animator> ().Play(0);
 			GameObject.FindGameObjectWithTag ("Light").GetComponent<SpriteRenderer> ().enabled = true;
 			playerStats.energy -= playerStats.maxEnergy/2;
 			state = "skill";
-			playerMovement.state = "skill";
+			state = "skill";
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
-			playerMovement.groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+			groundReference.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 			yield return new WaitForSeconds (0.425f);
 			playerStats.life++;
 			state = "wait";
-			playerMovement.state = "movement";
+			state = "movement";
 			bodyAnim.SetTrigger ("Idle");
 			handAnim.SetTrigger ("Idle");
 			GameObject.FindGameObjectWithTag ("Light").GetComponent<SpriteRenderer> ().enabled = false;
@@ -483,29 +497,29 @@ public class PlayerMovement : MonoBehaviour {
 
 	IEnumerator SkillCorvo(){
 		Debug.Log ("Skill Corvo");
-		if (state == "wait" && playerMovement.state == "movement" && GameObject.Find("Global Controller").GetComponent<GlobalController>().defeatedFome) {
+		if (state == "wait" && state == "movement" && GameObject.Find("Global Controller").GetComponent<GlobalController>().defeatedFome) {
 			//			bodyAnim.SetTrigger ("SkillCorvo");
 			handAnim.SetTrigger ("SkillCorvo");
 			playerStats.energy -= playerStats.maxEnergy/4;
 			state = "skill";
-			//playerMovement.state = "skill";
+			//state = "skill";
 			yield return new WaitForSeconds (0.3f);
 			state = "wait";
-			//			playerMovement.state = "movement";
+			//			state = "movement";
 			handAnim.SetTrigger ("Idle");
 		}
 		yield return new WaitForSeconds (0.02f);
 	}
 
 	IEnumerator SkillRaio(){
-		if (state == "wait" && playerMovement.state == "movement" && GameObject.Find("Global Controller").GetComponent<GlobalController>().defeatedTempestade) {
+		if (state == "wait" && state == "movement" && GameObject.Find("Global Controller").GetComponent<GlobalController>().defeatedTempestade) {
 			handAnim.SetTrigger ("SkillRaio");
 			playerStats.energy -= playerStats.maxEnergy/4;
 			state = "skill";
-			//playerMovement.state = "skill";
+			//state = "skill";
 			yield return new WaitForSeconds (0.35f);
 			state = "wait";
-			//			playerMovement.state = "movement";
+			//			state = "movement";
 			handAnim.SetTrigger ("Idle");
 		}
 		yield return new WaitForSeconds (0.02f);

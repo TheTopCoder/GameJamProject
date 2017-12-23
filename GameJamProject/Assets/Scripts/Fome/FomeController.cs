@@ -24,7 +24,6 @@ public class FomeController : MonoBehaviour
 	AnimationClip animClipDown;
 	[SerializeField]
 	AnimationClip animClip;
-	[SerializeField]
 	GameObject player;
 	[SerializeField]
 	float range;
@@ -69,6 +68,8 @@ public class FomeController : MonoBehaviour
 	#endregion
 	void Start()
 	{
+		player = GameObject.FindGameObjectWithTag ("Player");
+
 		life = maxLife;
 		cooldownMovement = 0;
 		cooldownAbility = 2f;

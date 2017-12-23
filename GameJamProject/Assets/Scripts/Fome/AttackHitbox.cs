@@ -25,12 +25,12 @@ public class AttackHitbox : MonoBehaviour {
 			if (other.transform.FindChild("Zmin").position.y <= transform.FindChild("Zmax").position.y&&other.transform.FindChild("Zmax").position.y >= transform.FindChild("Zmin").position.y){
 				if (!hit&&other.transform.tag == "Player"&&!(transform.name == "RaioHitbox(Clone)"||transform.name == "Tempestade_JumpAttack_Hitbox(Clone)"||transform.name == "Tempestade_GroundAttack_Hitbox(Clone)")) {
 					hit = true;
-					StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+					player.GetComponent<PlayerControllerUpdated>().DamagePlayer();
 					//boss.GetComponent<FomeController>().canHit = true;
 				}
 				if (!hit && other.transform.tag == "Player" && (transform.name == "RaioHitbox(Clone)"||transform.name == "Tempestade_JumpAttack_Hitbox(Clone)"||transform.name == "Tempestade_GroundAttack_Hitbox(Clone)")) {
 					hit = true;
-					StartCoroutine(player.GetComponent<PlayerMovement>().DamagedPlayer());
+					player.GetComponent<PlayerControllerUpdated>().DamagePlayer();
 				}
 				if (!hitBoss&&other.transform.tag == "Boss"&&transform.name=="RaioHitbox(Clone)") {
 					hitBoss = true;

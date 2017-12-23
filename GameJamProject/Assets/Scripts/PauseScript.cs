@@ -9,6 +9,7 @@ using System;
 public class PauseScript : MonoBehaviour
 {
     #region Variables
+		GameObject player;
         [SerializeField]
         AudioSource[] audios;
         [SerializeField]
@@ -44,6 +45,7 @@ public class PauseScript : MonoBehaviour
 
     void Start()
     {
+		player = GameObject.FindGameObjectWithTag ("Player");
 		GlobalController = GameObject.Find ("Global Controller");
 		paused = false;
         this.GetComponent<Canvas>().enabled = false;
@@ -61,11 +63,11 @@ public class PauseScript : MonoBehaviour
 
         foreach (AudioSource a in audios)
         {
-            a.volume = volumeSlider.value;
+//            a.volume = volumeSlider.value;
         }
 		 
-		foreach (Transform t in GameObject.Find("Player").transform.FindChild("Sounds")) {
-			t.GetComponent<AudioSource> ().volume = volumeSlider.value;
+		foreach (Transform t in player.transform.FindChild("Sounds")) {
+//			t.GetComponent<AudioSource> ().volume = volumeSlider.value;
 		}
 
         volumeAux = volumeSlider.value;

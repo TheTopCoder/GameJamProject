@@ -880,12 +880,11 @@ MonoBehaviour:
   waveAttack: {fileID: 0}
   groundAttack: {fileID: 0}
   life: 0
-  maxLife: 350
+  maxLife: 250
   FadeOut: {fileID: 1518292290722822, guid: 69121602aaa6ab94c8ef037b74c26b28, type: 2}
   animClipUp: {fileID: 0}
   animClipDown: {fileID: 0}
   animClip: {fileID: 0}
-  player: {fileID: 0}
   range: 0
   spitArea:
   - {fileID: 0}
